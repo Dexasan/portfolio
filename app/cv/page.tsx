@@ -60,7 +60,7 @@ export default function CVPage() {
 
         {/* ── HEADER ── */}
         <h1 className={styles.name}>SANDESH CHAPAGAIN</h1>
-        <p className={styles.tagline}>Infrastructure Engineer · Co-founder · Rome, Italy</p>
+        <p className={styles.tagline}>Backend Engineer · Rome, Italy</p>
         <div className={styles.contact}>
           <a href="mailto:sendmailtodex@gmail.com">sendmailtodex@gmail.com</a>
           <span className={styles.contactSep}>·</span>
