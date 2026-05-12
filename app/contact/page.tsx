@@ -14,8 +14,8 @@ interface Channel {
 const channels: Channel[] = [
   {
     type: 'EMAIL',
-    value: 'sandeshchapagain2060@gmail.com',
-    href: 'mailto:sandeshchapagain2060@gmail.com',
+    value: 'sendmailtodex@gmail.com',
+    href: 'mailto:sendmailtodex@gmail.com',
     status: 'OPEN',
     external: false,
   },

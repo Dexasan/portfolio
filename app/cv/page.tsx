@@ -62,7 +62,7 @@ export default function CVPage() {
         <h1 className={styles.name}>SANDESH CHAPAGAIN</h1>
         <p className={styles.tagline}>Infrastructure Engineer · Co-founder · Rome, Italy</p>
         <div className={styles.contact}>
-          <a href="mailto:sandeshchapagain2060@gmail.com">sandeshchapagain2060@gmail.com</a>
+          <a href="mailto:sendmailtodex@gmail.com">sendmailtodex@gmail.com</a>
           <span className={styles.contactSep}>·</span>
           <a href="tel:+393445946149">(+39) 344 594 6149</a>
           <span className={styles.contactSep}>·</span>
