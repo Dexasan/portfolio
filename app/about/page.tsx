@@ -3,13 +3,13 @@ import Link from 'next/link';
 export const metadata = {
   title: 'About — Sandesh Chapagain',
   description:
-    'Co-founder of Ditch, first-year Engineering Sciences at Tor Vergata. Building real-time infrastructure from scratch.',
+    'Second-year Engineering Sciences at Tor Vergata. Building real-time systems and streaming architectures. Ditch is the current one, live since January.',
 };
 
 const timeline = [
   {
     period: 'Jan 2025 — Now',
-    role: 'Co-founder & Engineer',
+    role: 'Founder & Engineer',
     org: 'Ditch',
     detail:
       'Designed and built the complete technical stack alone: RTMP relay engine, WebRTC pipeline, canvas compositor, real-time server, REST API, and browser studio. Monorepo with four apps and two shared packages.',
@@ -96,15 +96,16 @@ export default function AboutPage() {
               SANDESH<br />CHAPAGAIN
             </h1>
             <p className="font-mono text-[11px] font-semibold tracking-[0.07em] uppercase text-muted mt-4 mb-10">
-              Infrastructure Engineer · Rome, Italy
+              Backend Engineer · Rome, Italy
             </p>
 
             <div className="flex flex-col gap-5 max-w-[520px]">
               <p className="text-[15px] text-muted leading-[1.78]">
-                First-year Engineering Sciences at Tor Vergata and co-founder of Ditch.
-                I designed and built the complete technical stack: RTMP relay engine,
-                WebRTC pipeline, canvas compositor, real-time server, REST API, and
-                browser studio. One engineer. No shortcuts.
+                Second-year Engineering Sciences at Tor Vergata. I spend most of
+                my time building real-time systems and streaming architectures.
+                Ditch is the current one — I started it and built the whole stack
+                myself: RTMP relay engine, WebRTC pipeline, canvas compositor,
+                real-time server, REST API, browser studio. Live since January.
               </p>
               <p className="text-[15px] text-muted leading-[1.78]">
                 Before writing production code I ran growth systems for BarcaBuzz — a
