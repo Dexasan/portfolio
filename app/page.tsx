@@ -4,7 +4,7 @@ import LiveTimecode from '@/components/LiveTimecode';
 export const metadata = {
   title: 'Sandesh Chapagain — Infrastructure Engineer',
   description:
-    'Co-founder of Ditch and first-year engineering student at Tor Vergata. I build real-time infrastructure: RTMP relay engines, WebRTC pipelines, browser-native studio tooling.',
+    'Started university in December. Spent the months since building Ditch — a live-streaming platform — alone, from scratch. It runs in production. Year one.',
 };
 
 function SigRow({
@@ -137,9 +137,9 @@ export default function HomePage() {
                   className="text-[15px] text-muted leading-[1.78] mt-6 max-w-[460px] anim-up"
                   style={{ animationDelay: '0.28s' }}
                 >
-                  First-year engineering at Tor Vergata. Co-founder of Ditch.
-                  RTMP relay engines, WebRTC pipelines, browser-native studio
-                  tooling — already shipping to production.
+                  Started university in December. Spent the months since
+                  building Ditch — a live-streaming platform, relay engine and
+                  all — alone, from scratch. It runs in production. Year one.
                 </p>
                 <div
                   className="flex items-center gap-3 mt-10 flex-wrap anim-up"
