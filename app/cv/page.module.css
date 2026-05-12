@@ -1,0 +1,261 @@
+/* ── ROOT ── */
+
+.root {
+  background: #fff;
+  color: #111;
+  min-height: 100vh;
+  padding: 48px 0 64px;
+}
+
+.doc {
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: #222;
+}
+
+/* ── HEADER ── */
+
+.name {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #0e0e0c;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-size: 12.5px;
+  color: #444;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.contact {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: #666;
+  letter-spacing: 0.02em;
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.contact a {
+  color: #666;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: #e8212e;
+}
+
+.contactSep {
+  color: #bbb;
+  margin: 0 7px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 14px 0 0;
+}
+
+/* ── SECTION ── */
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  margin-bottom: 12px;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #e8212e;
+  white-space: nowrap;
+}
+
+.sectionRule {
+  flex: 1;
+  height: 1px;
+  background: #e8e8e8;
+}
+
+/* ── PROFILE ── */
+
+.profile {
+  font-size: 10.5px;
+  line-height: 1.65;
+  color: #333;
+  max-width: 640px;
+}
+
+/* ── ENTRY ── */
+
+.entry {
+  margin-bottom: 16px;
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 1px;
+}
+
+.entryTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.01em;
+}
+
+.entryDate {
+  font-family: var(--font-mono), monospace;
+  font-size: 9.5px;
+  color: #888;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.entryOrg {
+  font-size: 10px;
+  font-weight: 500;
+  color: #e8212e;
+  margin-bottom: 6px;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 7px 0;
+}
+
+.bullet {
+  font-size: 10.5px;
+  line-height: 1.58;
+  color: #333;
+  padding-left: 13px;
+  position: relative;
+  margin-bottom: 2.5px;
+}
+
+.bullet::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #bbb;
+  font-size: 10px;
+  top: 1px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 8.5px;
+  color: #555;
+  border: 1px solid #ddd;
+  padding: 1.5px 5px;
+  border-radius: 2px;
+  background: #fafafa;
+}
+
+/* ── SKILLS TABLE ── */
+
+.skillsTable {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.skillRow {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 10px;
+  padding: 3.5px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.skillRowLast {
+  border-bottom: none;
+}
+
+.skillKey {
+  font-family: var(--font-mono), monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #999;
+  padding-top: 1px;
+}
+
+.skillVal {
+  font-size: 10.5px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ── LANGUAGES ── */
+
+.langLine {
+  font-size: 10.5px;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* ── PRINT ── */
+
+@media print {
+  .root {
+    padding: 0;
+    background: white;
+  }
+
+  .doc {
+    max-width: none;
+    padding: 14mm 18mm;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+
+  .section {
+    margin-top: 14px;
+  }
+
+  :global(a) {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}
