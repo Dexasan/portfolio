@@ -33,9 +33,10 @@ export default function Nav() {
       <div className="max-w-[1100px] mx-auto px-8 h-full flex items-center justify-between">
         <Link
           href="/"
-          className="font-mono text-[13px] font-bold tracking-[0.04em] text-accent"
+          className="font-mono text-[13px] font-bold tracking-[0.06em] flex items-center gap-0"
         >
-          sandesh.
+          <span style={{ color: 'var(--color-muted)' }}>CH·</span>
+          <span style={{ color: 'var(--color-accent)' }}>DEX</span>
         </Link>
         <nav className="flex items-center gap-0.5">
           {links.map(({ href, label }) => {
