@@ -6,6 +6,46 @@ export const metadata = {
     'Second year engineering at Tor Vergata. I spend most of my time building real-time systems and streaming architectures. The current one is Ditch. Went live in January and it is still running.',
 };
 
+function CwLine({ n, children }: { n: number; children: React.ReactNode }) {
+  return (
+    <div className="cw-line">
+      <span className="cw-ln">{n}</span>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function CodeWindow() {
+  return (
+    <div className="code-window" aria-hidden="true">
+      <div className="cw-header">
+        <span className="font-mono text-[9.5px] tracking-[0.04em]" style={{ color: 'oklch(52% 0.007 258)' }}>
+          relay/server.ts
+        </span>
+        <span className="font-mono text-[9.5px] tracking-[0.04em]" style={{ color: 'oklch(40% 0.007 258)' }}>
+          TypeScript
+        </span>
+      </div>
+      <div className="cw-body font-mono text-[11px] leading-[1.72]">
+        <CwLine n={1}><span className="tok-cmt">{'// ditch · relay engine'}</span></CwLine>
+        <CwLine n={2}><span className="tok-kw">import</span><span className="tok-txt">{' { RTMPServer } '}</span><span className="tok-kw">from</span><span className="tok-str">{" './rtmp'"}</span></CwLine>
+        <CwLine n={3}><span className="tok-txt">&nbsp;</span></CwLine>
+        <CwLine n={4}><span className="tok-kw">const</span><span className="tok-txt">{' KEYS = {'}</span></CwLine>
+        <CwLine n={5}><span className="tok-txt">{'  '}</span><span className="tok-prop">twitch</span><span className="tok-txt">{':  env.'}</span><span className="tok-fn">TWITCH_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={6}><span className="tok-txt">{'  '}</span><span className="tok-prop">youtube</span><span className="tok-txt">{': env.'}</span><span className="tok-fn">YT_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={7}><span className="tok-txt">{'  '}</span><span className="tok-prop">tiktok</span><span className="tok-txt">{':  env.'}</span><span className="tok-fn">TIKTOK_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={8}><span className="tok-txt">{'  '}</span><span className="tok-prop">kick</span><span className="tok-txt">{':    env.'}</span><span className="tok-fn">KICK_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={9}><span className="tok-txt">{'}'}</span></CwLine>
+        <CwLine n={10}><span className="tok-txt">&nbsp;</span></CwLine>
+        <CwLine n={11}><span className="tok-txt">relay.</span><span className="tok-fn">on</span><span className="tok-txt">{'('}</span><span className="tok-str">{'\'publish\''}</span><span className="tok-txt">{', (s) => {'}</span></CwLine>
+        <CwLine n={12}><span className="tok-txt">{'  s.'}</span><span className="tok-fn">fanout</span><span className="tok-txt">{'(KEYS)'}</span></CwLine>
+        <CwLine n={13}><span className="tok-txt">{'  '}</span><span className="tok-cmt">{'// → 4 platforms'}</span></CwLine>
+        <CwLine n={14}><span className="tok-txt">{'})'}</span></CwLine>
+      </div>
+    </div>
+  );
+}
+
 function SigRow({
   label,
   pct,
@@ -36,10 +76,7 @@ function SigRow({
         style={{ background: 'var(--color-border)' }}
         aria-hidden="true"
       >
-        <div
-          className="h-full rounded-full"
-          style={{ width: `${pct}%`, background: color }}
-        />
+        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color }} />
       </div>
     </div>
   );
@@ -75,16 +112,16 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section
-        className="flex flex-col pt-16"
+        className="hero-grid flex flex-col pt-16"
         style={{ minHeight: '100dvh' }}
         aria-label="Introduction"
       >
         <div className="flex-1 flex items-center py-16 px-5 sm:px-8">
           <div className="max-w-[1100px] mx-auto w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_296px] gap-12 lg:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 lg:items-start">
 
-              {/* Identity */}
-              <div>
+              {/* Left: Identity */}
+              <div className="lg:pt-6">
                 <p className="section-label anim-up" style={{ animationDelay: '0.05s' }}>
                   Infrastructure Engineer
                 </p>
@@ -112,22 +149,25 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Build status */}
-              <div
-                className="border border-border rounded-2xl overflow-hidden anim-up"
-                style={{ animationDelay: '0.2s' }}
-                aria-label="Build status"
-              >
-                <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-bg-card">
-                  <span className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase text-muted">
-                    Build status
-                  </span>
-                  <span className="font-mono text-[9px] text-dim">Ditch</span>
+              {/* Right: Code window + Build status */}
+              <div className="flex flex-col gap-3 anim-up" style={{ animationDelay: '0.18s' }}>
+                <CodeWindow />
+
+                <div
+                  className="border border-border rounded-2xl overflow-hidden"
+                  aria-label="Build status"
+                >
+                  <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-bg-card">
+                    <span className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase text-muted">
+                      Build status
+                    </span>
+                    <span className="font-mono text-[9px] text-dim">Ditch</span>
+                  </div>
+                  <SigRow label="RTMP fanout"       pct={88} status="active" />
+                  <SigRow label="WebRTC pipeline"   pct={92} status="active" />
+                  <SigRow label="Canvas compositor" pct={45} status="wip" />
+                  <SigRow label="Chat aggregator"   pct={22} status="wip" />
                 </div>
-                <SigRow label="RTMP fanout"       pct={88} status="active" />
-                <SigRow label="WebRTC pipeline"   pct={92} status="active" />
-                <SigRow label="Canvas compositor" pct={45} status="wip" />
-                <SigRow label="Chat aggregator"   pct={22} status="wip" />
               </div>
 
             </div>
