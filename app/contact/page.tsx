@@ -13,24 +13,24 @@ interface Channel {
 
 const channels: Channel[] = [
   {
-    type: 'EMAIL',
+    type: 'Email',
     value: 'sendmailtodex@gmail.com',
     href: 'mailto:sendmailtodex@gmail.com',
-    status: 'OPEN',
+    status: 'Open',
     external: false,
   },
   {
-    type: 'GITHUB',
+    type: 'GitHub',
     value: 'github.com/Dexasan',
     href: 'https://github.com/Dexasan',
-    status: 'ACTIVE',
+    status: 'Active',
     external: true,
   },
   {
-    type: 'PHONE',
+    type: 'Phone',
     value: '+39 344 594 6149',
     href: 'tel:+393445946149',
-    status: 'AVAILABLE',
+    status: 'Available',
     external: false,
   },
 ];
@@ -72,26 +72,12 @@ function ChannelRow({ type, value, href, status, external }: Channel) {
 export default function ContactPage() {
   return (
     <div className="pt-16" style={{ minHeight: '100dvh' }}>
-
-      {/* Broadcast status bar */}
-      <div className="bc-bar">
-        <div className="flex items-center gap-2">
-          <span className="bc-label">CH-03</span>
-          <span className="bc-sep mx-2" aria-hidden="true" />
-          <span className="bc-label">CONTACT</span>
-        </div>
-        <span className="bc-label hidden sm:inline">3 CHANNELS</span>
-        <span className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase text-signal">
-          OPEN TO ROLES
-        </span>
-      </div>
-
-      <div className="max-w-[680px] mx-auto px-5 sm:px-8 py-16">
+      <div className="max-w-[680px] mx-auto px-5 sm:px-8 py-20">
 
         <header className="mb-12">
-          <p className="bc-label mb-4">Contact</p>
+          <p className="section-label">Contact</p>
           <h1
-            className="font-extrabold leading-[0.93] tracking-[-0.04em] text-text"
+            className="font-extrabold leading-[1.0] tracking-[-0.04em] text-text"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}
           >
             Let&apos;s talk.
@@ -102,24 +88,22 @@ export default function ContactPage() {
           </p>
         </header>
 
-        {/* Channels */}
         <div className="flex flex-col border-t border-border mb-12">
           {channels.map((ch) => (
             <ChannelRow key={ch.type} {...ch} />
           ))}
         </div>
 
-        {/* Availability */}
-        <div
-          className="border border-border-hi p-5"
-          style={{ borderRadius: 0 }}
-        >
+        <div className="border border-border rounded-xl p-5">
           <div className="flex items-center justify-between mb-3">
             <span className="font-mono text-[9px] font-bold tracking-[0.1em] uppercase text-muted">
               Availability
             </span>
-            <span className="font-mono text-[9px]" style={{ color: 'var(--color-dim)' }}>
-              CH-03
+            <span
+              className="font-mono text-[9px] font-semibold tracking-[0.08em] uppercase"
+              style={{ color: 'var(--color-signal)' }}
+            >
+              Open
             </span>
           </div>
           <p className="text-[13px] text-muted leading-[1.75]">

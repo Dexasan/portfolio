@@ -7,7 +7,7 @@ export default function Icon() {
   return new ImageResponse(
     <div
       style={{
-        background: '#0e0e0c',
+        background: '#f5f5f8',
         width: '100%',
         height: '100%',
         display: 'flex',
@@ -20,7 +20,7 @@ export default function Icon() {
           fontFamily: 'monospace',
           fontSize: 22,
           fontWeight: 800,
-          color: '#e8212e',
+          color: '#c81e27',
           lineHeight: 1,
         }}
       >

@@ -5,10 +5,10 @@ import Link from 'next/link';
 import type { Project, Badge } from '@/lib/projects';
 
 const statusMap: Record<Badge, { label: string; color: string }> = {
-  live:  { label: '●REC',   color: 'var(--color-accent)' },
-  wip:   { label: '○ WIP',  color: 'var(--color-amber)'  },
-  dim:   { label: '· DONE', color: 'var(--color-dim)'    },
-  blue:  { label: '◆ COMP', color: 'var(--color-signal)' },
+  live:  { label: 'Live',        color: 'var(--color-accent)' },
+  wip:   { label: 'In progress', color: 'var(--color-amber)'  },
+  dim:   { label: 'Complete',    color: 'var(--color-dim)'    },
+  blue:  { label: 'Complete',    color: 'var(--color-signal)' },
 };
 
 export default function WorkGrid({ projects }: { projects: Project[] }) {
@@ -34,9 +34,9 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
   }, [projects.length]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] items-start border border-border">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] items-start border border-border rounded-xl overflow-hidden">
 
-      {/* ── LEFT: sticky detail panel ── */}
+      {/* LEFT: sticky detail panel */}
       <div className="hidden lg:flex flex-col sticky top-24 border-r border-border p-10 min-h-[480px]">
         <div
           key={active}
@@ -44,12 +44,12 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
           className="flex flex-col h-full"
         >
           <div className="flex items-center gap-3 mb-8">
-            <span className="font-mono text-[9px] font-bold tracking-[0.12em] uppercase text-muted">
-              SRC-{String(active + 1).padStart(2, '0')}
+            <span className="font-mono text-[9px] font-semibold tracking-[0.08em] uppercase text-muted">
+              {String(active + 1).padStart(2, '0')}
             </span>
             <span className="bc-sep" />
             <span
-              className="font-mono text-[9px] font-bold tracking-[0.1em] uppercase"
+              className="font-mono text-[9px] font-semibold tracking-[0.08em] uppercase"
               style={{ color: status.color }}
             >
               {status.label}
@@ -57,7 +57,7 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
           </div>
 
           <h2
-            className="font-extrabold tracking-[-0.04em] text-text leading-[0.93] mb-6"
+            className="font-extrabold tracking-[-0.035em] text-text leading-[1.0] mb-6"
             style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)' }}
           >
             {project.name}
@@ -80,17 +80,17 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
               rel="noopener noreferrer"
               className="btn-primary self-start"
             >
-              [ OPEN PROJECT ]
+              Open project
             </a>
           ) : (
             <Link href={`/work/${project.slug}`} className="btn-ghost self-start">
-              [ VIEW DETAILS ]
+              View details
             </Link>
           )}
         </div>
       </div>
 
-      {/* ── RIGHT: scrollable channel list ── */}
+      {/* RIGHT: scrollable list */}
       <div>
         {projects.map((p, i) => {
           const s = statusMap[p.badge];
@@ -108,7 +108,6 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
                 transition: 'background 0.15s ease',
               }}
             >
-              {/* Row header — always visible */}
               <div className="flex items-center justify-between gap-4 px-7 py-5">
                 <div className="flex items-center gap-5 min-w-0">
                   <span className="font-mono text-[10px] font-semibold tracking-[0.06em] text-dim flex-shrink-0">
@@ -125,14 +124,14 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
                   </span>
                 </div>
                 <span
-                  className="font-mono text-[9px] font-bold tracking-[0.08em] uppercase flex-shrink-0 transition-colors duration-150"
+                  className="font-mono text-[9px] font-semibold tracking-[0.06em] uppercase flex-shrink-0 transition-colors duration-150"
                   style={{ color: isActive ? s.color : 'var(--color-dim)' }}
                 >
                   {s.label}
                 </span>
               </div>
 
-              {/* Mobile expanded detail */}
+              {/* Mobile expanded */}
               {isActive && (
                 <div
                   className="lg:hidden px-7 pb-6"
@@ -153,11 +152,11 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
                       rel="noopener noreferrer"
                       className="btn-primary"
                     >
-                      [ OPEN PROJECT ]
+                      Open project
                     </a>
                   ) : (
                     <Link href={`/work/${p.slug}`} className="btn-ghost">
-                      [ VIEW DETAILS ]
+                      View details
                     </Link>
                   )}
                 </div>

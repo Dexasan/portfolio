@@ -15,22 +15,23 @@ interface Props {
 }
 
 const statusMap: Record<Badge, { label: string; color: string }> = {
-  live:  { label: '●REC',   color: 'var(--color-accent)' },
-  wip:   { label: '○ WIP',  color: 'var(--color-amber)'  },
-  dim:   { label: '· DONE', color: 'var(--color-dim)'    },
-  blue:  { label: '◆ COMP', color: 'var(--color-signal)' },
+  live:  { label: 'Live',        color: 'var(--color-accent)' },
+  wip:   { label: 'In progress', color: 'var(--color-amber)'  },
+  dim:   { label: 'Complete',    color: 'var(--color-dim)'    },
+  blue:  { label: 'Complete',    color: 'var(--color-signal)' },
 };
 
 export default function MonitorCard({ slug, index, name, badge, description, tags, externalHref }: Props) {
-  const channel = `SRC-${String(index).padStart(2, '0')}`;
-  const status  = statusMap[badge];
+  const status = statusMap[badge];
 
   const inner = (
     <div className="monitor-card" style={{ height: '100%' }}>
       <div className="monitor-top">
-        <span className="bc-label">{channel}</span>
+        <span className="font-mono text-[9px] font-semibold tracking-[0.06em] uppercase text-dim">
+          {String(index).padStart(2, '0')}
+        </span>
         <span
-          className="font-mono text-[9px] font-bold tracking-[0.08em] uppercase"
+          className="font-mono text-[9px] font-semibold tracking-[0.06em] uppercase"
           style={{ color: status.color }}
         >
           {status.label}
@@ -39,7 +40,6 @@ export default function MonitorCard({ slug, index, name, badge, description, tag
 
       <div className="monitor-screen">
         <div className="monitor-burnin">{name}</div>
-        {badge === 'live' && <div className="monitor-signal" />}
       </div>
 
       <div className="monitor-info">

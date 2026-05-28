@@ -29,16 +29,18 @@ Voice: direct, specific, no hedging. First-person but not self-congratulatory. W
 
 ## References
 
-**Linear.app** — the primary reference. Tight spacing, opinionated decisions, nothing wasted. Every pixel feels considered. Dark, precise, no fat.
+**tday.com** — primary aesthetic reference. Breathing room, clean typography, confident whitespace, light background. Precision without heaviness.
 
-Plus moments that surprise. Not decorative — earned. The kind of creative detail that makes someone pause and look closer, then realize it also serves a purpose. The creativity is in the system, not applied on top of it.
+**Stripe documentation pages** — restrained, technical, direct. A person, not a product launch.
+
+The work is still the proof. The design holds the case studies without getting in the way, from a light, clean foundation.
 
 ## Anti-references
 
 - **Design agency portfolio** — full-screen imagery, slow theatrical scroll reveals, typographic performances that look expensive but say nothing. Beautiful and empty.
 - **Generic dev portfolio** — pastel project cards, GitHub star counts, "I love coffee and code" bios, identical grid of tiles.
-- **SaaS landing page** — hero metrics, gradient CTAs, pricing-tier energy. This is a person, not a product launch.
-- **Hacker / terminal aesthetic** — green-on-black, monospace everything, ASCII borders. The cliché of "I'm technical."
+- **Broadcast / terminal aesthetic** — dark background, CRT scan lines, monospace everything, live-dot animations, broadcast callsigns. The old direction.
+- **Hacker aesthetic** — green-on-black, ASCII borders. The cliché of "I'm technical."
 
 ## Design Principles
 

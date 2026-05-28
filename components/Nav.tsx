@@ -24,19 +24,18 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 h-16 border-b transition-[background,border-color,backdrop-filter] duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 h-16 transition-[background,border-color,box-shadow] duration-300 border-b ${
         scrolled
-          ? "bg-bg/85 backdrop-blur-md border-border/60"
+          ? "bg-bg/92 backdrop-blur-sm border-border"
           : "bg-transparent border-transparent"
       }`}
     >
-      <div className="max-w-[1100px] mx-auto px-8 h-full flex items-center justify-between">
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 h-full flex items-center justify-between">
         <Link
           href="/"
-          className="font-mono text-[13px] font-bold tracking-[0.06em] flex items-center gap-0"
+          className="text-[14px] font-semibold tracking-[-0.02em] text-text hover:text-accent transition-colors duration-150"
         >
-          <span style={{ color: 'var(--color-muted)' }}>CH·</span>
-          <span style={{ color: 'var(--color-accent)' }}>DEX</span>
+          Sandesh
         </Link>
         <nav className="flex items-center gap-0.5">
           {links.map(({ href, label }) => {
@@ -48,7 +47,7 @@ export default function Nav() {
                 className={`px-3.5 py-1.5 text-[13px] font-medium rounded-lg transition-colors ${
                   active
                     ? "text-text"
-                    : "text-muted hover:text-text hover:bg-bg-subtle"
+                    : "text-muted hover:text-text hover:bg-bg-raised"
                 }`}
               >
                 {label}
@@ -58,12 +57,12 @@ export default function Nav() {
           <a
             href="/SandeshChapagainCV.pdf"
             download
-            className="ml-2.5 px-3.5 py-1.5 font-mono text-[10px] font-bold tracking-[0.08em] uppercase border border-border-hi rounded-md bg-bg-card text-muted hover:border-border-hi hover:text-text transition-colors flex items-center gap-1.5"
+            className="ml-3 px-3.5 py-1.5 text-[12px] font-medium tracking-[-0.01em] border border-border-hi rounded-lg bg-bg-card text-muted hover:text-text hover:bg-bg-raised transition-all flex items-center gap-1.5"
           >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
               <path d="M8 2v8M4 7l4 4 4-4M2 13h12" />
             </svg>
-            Download CV
+            CV
           </a>
         </nav>
       </div>

@@ -65,37 +65,19 @@ const stack = [
 export default function AboutPage() {
   return (
     <div className="pt-16" style={{ minHeight: '100dvh' }}>
-
-      {/* Broadcast status bar */}
-      <div className="bc-bar">
-        <div className="flex items-center gap-2">
-          <span className="bc-label">CH-00</span>
-          <span className="bc-sep mx-2" aria-hidden="true" />
-          <span className="bc-label">PROFILE</span>
-        </div>
-        <span className="bc-label hidden sm:inline">
-          ENG. SCIENCES · TOR VERGATA · 2024—
-        </span>
-        <span
-          className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase text-signal"
-        >
-          OPEN
-        </span>
-      </div>
-
-      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 py-16">
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-16 lg:gap-20 items-start">
 
-          {/* ── LEFT: Identity + Bio + CTAs ── */}
+          {/* LEFT: Identity + Bio + CTAs */}
           <div>
-            <p className="bc-label mb-4">Profile</p>
+            <p className="section-label">About</p>
             <h1
-              className="font-extrabold leading-[0.93] tracking-[-0.04em] text-text"
+              className="font-extrabold leading-[1.0] tracking-[-0.04em] text-text"
               style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
             >
-              SANDESH<br />CHAPAGAIN
+              Sandesh<br />Chapagain
             </h1>
-            <p className="font-mono text-[11px] font-semibold tracking-[0.07em] uppercase text-muted mt-4 mb-10">
+            <p className="font-mono text-[10px] font-semibold tracking-[0.07em] uppercase text-muted mt-4 mb-10">
               Backend Engineer · Rome, Italy
             </p>
 
@@ -122,24 +104,17 @@ export default function AboutPage() {
             </div>
 
             <div className="flex items-center gap-3 mt-10 flex-wrap">
-              <Link href="/contact" className="btn-primary">[ GET IN TOUCH ]</Link>
-              <a
-                href="/SandeshChapagainCV.pdf"
-                download
-                className="btn-ghost"
-              >
-                [ DOWNLOAD CV ]
-              </a>
-              <Link href="/work" className="btn-ghost">[ VIEW WORK ]</Link>
+              <Link href="/contact" className="btn-primary">Get in touch</Link>
+              <a href="/SandeshChapagainCV.pdf" download className="btn-ghost">Download CV</a>
+              <Link href="/work" className="btn-ghost">View work</Link>
             </div>
           </div>
 
-          {/* ── RIGHT: Timeline + Stack ── */}
+          {/* RIGHT: Timeline + Stack */}
           <div>
 
-            {/* Timeline */}
-            <p className="bc-label mb-0">Timeline</p>
-            <div className="flex flex-col mt-1">
+            <p className="section-label">Timeline</p>
+            <div className="flex flex-col">
               {timeline.map(({ period, role, org, detail }) => (
                 <div
                   key={org}
@@ -162,9 +137,8 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Stack */}
-            <p className="bc-label mt-8 mb-0">Stack</p>
-            <div className="flex flex-col mt-1">
+            <p className="section-label mt-8">Stack</p>
+            <div className="flex flex-col">
               {stack.map(({ label, items }) => (
                 <div
                   key={label}
