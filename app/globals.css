@@ -13,8 +13,8 @@
   --color-text:         oklch(14% 0.009 258);
   --color-muted:        oklch(50% 0.009 258);
   --color-dim:          oklch(67% 0.007 258);
-  --color-accent:       oklch(48% 0.22 24);
-  --color-accent-glow:  oklch(48% 0.22 24 / 0.12);
+  --color-accent:       #FF1DB4;
+  --color-accent-glow:  rgb(255 29 180 / 0.12);
   --color-signal:       oklch(52% 0.17 165);
   --color-amber:        oklch(60% 0.18 70);
 }
@@ -213,9 +213,9 @@ h1,h2,h3,h4 { text-wrap: balance; }
 }
 
 .btn-primary:hover {
-  background: oklch(43% 0.22 24);
+  background: #D6009A;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px oklch(48% 0.22 24 / 0.28);
+  box-shadow: 0 4px 16px rgb(255 29 180 / 0.32);
 }
 
 .btn-ghost {
@@ -405,9 +405,9 @@ h1,h2,h3,h4 { text-wrap: balance; }
 }
 
 .badge-live {
-  background: oklch(48% 0.22 24 / 0.08);
+  background: rgb(255 29 180 / 0.08);
   color: var(--color-accent);
-  border: 1px solid oklch(48% 0.22 24 / 0.18);
+  border: 1px solid rgb(255 29 180 / 0.22);
 }
 
 .badge-wip {

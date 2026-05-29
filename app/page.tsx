@@ -27,7 +27,7 @@ function CodeWindow() {
         </span>
       </div>
       <div className="cw-body font-mono text-[11px] leading-[1.72]">
-        <CwLine n={1}><span className="tok-cmt">{'// ditch · relay engine'}</span></CwLine>
+        <CwLine n={1}><span className="tok-cmt">{'// '}</span><span style={{ color: '#FF1DB4', fontStyle: 'italic' }}>{'ditch'}</span><span className="tok-cmt">{' · relay engine'}</span></CwLine>
         <CwLine n={2}><span className="tok-kw">import</span><span className="tok-txt">{' { RTMPServer } '}</span><span className="tok-kw">from</span><span className="tok-str">{" './rtmp'"}</span></CwLine>
         <CwLine n={3}><span className="tok-txt">&nbsp;</span></CwLine>
         <CwLine n={4}><span className="tok-kw">const</span><span className="tok-txt">{' KEYS = {'}</span></CwLine>
@@ -112,10 +112,25 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section
-        className="hero-grid flex flex-col pt-16"
+        className="hero-grid flex flex-col pt-16 relative overflow-hidden"
         style={{ minHeight: '100dvh' }}
         aria-label="Introduction"
       >
+        {/* DITCH brand glow — mirrors ditchlive.app hero atmosphere */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute"
+          style={{
+            top: '10%',
+            right: '-10%',
+            width: '520px',
+            height: '520px',
+            borderRadius: '50%',
+            background: '#FF1DB4',
+            opacity: 0.055,
+            filter: 'blur(110px)',
+          }}
+        />
         <div className="flex-1 flex items-center py-16 px-5 sm:px-8">
           <div className="max-w-[1100px] mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 lg:items-start">
