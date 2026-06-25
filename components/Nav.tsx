@@ -14,7 +14,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
-  if (pathname === '/cv') return null;
+  if (pathname === '/cv' || pathname === '/deck') return null;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 24);

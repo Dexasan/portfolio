@@ -31,6 +31,7 @@ export const projects: Project[] = [
     slug: 'startcup-lazio',
     name: 'Startcup Lazio 2026',
     badge: 'blue',
+    externalHref: '/deck',
     description:
       "Full competition entry for Italy's leading university startup competition, submitted via Tor Vergata. Executive summary, 12-slide pitch deck, Business Model Canvas, business plan with market sizing and financial projections.",
     tags: ['Business Plan', 'Pitch Deck', 'Market Analysis'],
