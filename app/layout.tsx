@@ -3,6 +3,8 @@ import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import UnderwaterBackground from "@/components/UnderwaterBackground";
+import TileInteractions from "@/components/TileInteractions";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -33,9 +35,13 @@ export default function RootLayout({
       className={`${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <UnderwaterBackground />
+        <TileInteractions />
+        <div className="relative z-10 flex flex-col min-h-full flex-1">
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

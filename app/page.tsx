@@ -116,21 +116,6 @@ export default function HomePage() {
         style={{ minHeight: '100dvh' }}
         aria-label="Introduction"
       >
-        {/* DITCH brand glow — mirrors ditchlive.app hero atmosphere */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute"
-          style={{
-            top: '10%',
-            right: '-10%',
-            width: '520px',
-            height: '520px',
-            borderRadius: '50%',
-            background: '#FF1DB4',
-            opacity: 0.055,
-            filter: 'blur(110px)',
-          }}
-        />
         <div className="flex-1 flex items-center py-16 px-5 sm:px-8">
           <div className="max-w-[1100px] mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 lg:items-start">
@@ -213,7 +198,8 @@ export default function HomePage() {
                 key={p.slug}
                 href={p.href}
                 {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="featured-row group flex items-start justify-between gap-6 px-7 py-6 border-b border-border last:border-b-0"
+                data-tile
+                className="tile-fx featured-row group flex items-start justify-between gap-6 px-7 py-6 border-b border-border last:border-b-0"
               >
                 <div className="flex items-start gap-5 min-w-0">
                   <span className="font-mono text-[10px] font-semibold tracking-[0.06em] text-dim flex-shrink-0 mt-0.5">

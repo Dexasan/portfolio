@@ -194,6 +194,72 @@ h1,h2,h3,h4 { text-wrap: balance; }
   background: var(--color-bg-raised);
 }
 
+/* ── INTERACTIVE TILES (cursor spotlight + tap ripple) ── */
+
+.tile-fx {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background 0.15s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Cursor-following spotlight — sits above the tile bg, below its content. */
+.tile-fx::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 29 180 / 0.10),
+    transparent 60%
+  );
+}
+
+@media (hover: hover) {
+  .tile-fx:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Press feedback — works for both click and touch. */
+.tile-fx:active {
+  transform: scale(0.986);
+}
+
+/* Ripple spawned by TileInteractions on pointerdown. */
+.tile-ripple {
+  position: absolute;
+  z-index: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgb(255 29 180 / 0.18),
+    rgb(255 29 180 / 0) 70%
+  );
+  transform: scale(0);
+  animation: tile-ripple 0.62s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tile-ripple {
+  0%   { transform: scale(0);   opacity: 0.9; }
+  100% { transform: scale(1);   opacity: 0;   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-fx,
+  .tile-fx:active {
+    transform: none;
+  }
+  .tile-ripple {
+    display: none;
+  }
+}
+
 /* ── BUTTONS ── */
 
 .btn-primary {

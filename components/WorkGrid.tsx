@@ -101,11 +101,11 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
               key={p.slug}
               ref={(el) => { itemRefs.current[i] = el; }}
               data-index={i}
+              data-tile
               onClick={() => setActive(i)}
-              className="border-b border-border last:border-b-0 cursor-pointer select-none"
+              className="tile-fx border-b border-border last:border-b-0 cursor-pointer select-none"
               style={{
                 background: isActive ? 'var(--color-bg-raised)' : 'transparent',
-                transition: 'background 0.15s ease',
               }}
             >
               <div className="flex items-center justify-between gap-4 px-7 py-5">
