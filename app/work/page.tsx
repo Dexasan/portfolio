@@ -1,56 +1,70 @@
-import WorkGrid from '@/components/WorkGrid';
-import { projects, jobs } from '@/lib/projects';
+import type { Metadata } from "next";
+import Link from "next/link";
+import ProjectVisual from "@/components/ProjectVisual";
+import { caseStudies, notebookProjects } from "@/lib/projects";
 
-export const metadata = {
-  title: 'Work — Sandesh Chapagain',
+export const metadata: Metadata = {
+  title: "Work",
   description:
-    'Projects, roles, and competitions. From RTMP relay infrastructure to growth systems to network support.',
+    "Selected engineering case studies across real-time media, browser games, capacity planning, and transactional systems.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {
   return (
-    <div className="pt-16" style={{ minHeight: '100dvh' }}>
-      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 py-20">
+    <div className="page-shell shell">
+      <header className="page-hero">
+        <p className="eyebrow">Work / 2026</p>
+        <h1>Selected systems,<br /><em>examined closely.</em></h1>
+        <p>
+          This is not every repository. It is the work that best shows how I
+          define a problem, choose boundaries, and turn implementation details
+          into a coherent product.
+        </p>
+      </header>
 
-        <header className="mb-14">
-          <p className="section-label">Work</p>
-          <h1
-            className="font-extrabold leading-[1.0] tracking-[-0.04em] text-text"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
-          >
-            What I&apos;ve<br />worked on.
-          </h1>
-          <p className="text-[15px] text-muted leading-[1.78] mt-5 max-w-[480px]">
-            Projects, roles, and competitions — from RTMP infrastructure to growth systems to network support.
-          </p>
-        </header>
-
-        <WorkGrid projects={projects} />
-
-        {/* Work Experience */}
-        <div className="mt-20">
-          <p className="section-label">Experience</p>
-          <div className="flex flex-col">
-            {jobs.map(({ slug, name, description, tags }) => (
-              <div
-                key={slug}
-                className="border-t border-border py-5 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3 items-start"
-              >
-                <div>
-                  <p className="text-[13px] font-bold text-text leading-tight mb-1">{name}</p>
-                  <p className="text-[12px] text-muted leading-[1.7] max-w-[560px]">{description}</p>
-                </div>
-                <div className="src-tags sm:justify-end">
-                  {tags.map((t) => (
-                    <span key={t} className="src-tag">{t}</span>
-                  ))}
-                </div>
+      <div className="work-catalog">
+        {caseStudies.map((project) => (
+          <article className="catalog-item" key={project.slug}>
+            <Link href={`/work/${project.slug}`} className="catalog-visual">
+              <ProjectVisual kind={project.visual} compact />
+            </Link>
+            <div className="catalog-copy">
+              <div className="project-index">
+                <span>{project.index}</span><span>{project.kicker}</span><span>{project.year}</span>
               </div>
-            ))}
-          </div>
-        </div>
-
+              <h2><Link href={`/work/${project.slug}`}>{project.title}</Link></h2>
+              <p>{project.summary}</p>
+              <div className="catalog-facts">
+                {project.facts.slice(0, 2).map((fact) => (
+                  <span key={fact.label}><strong>{fact.value}</strong>{fact.label}</span>
+                ))}
+              </div>
+              <Link className="text-link" href={`/work/${project.slug}`}>
+                Read case study <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </article>
+        ))}
       </div>
+
+      <section className="archive">
+        <div>
+          <p className="eyebrow">Repository archive</p>
+          <h2>Focused builds</h2>
+        </div>
+        <div className="archive-list">
+          {notebookProjects.map((project, index) => (
+            <a href={project.href} key={project.name}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{project.name}</strong>
+              <p>{project.description}</p>
+              <small>{project.type}</small>
+              <i aria-hidden="true">↗</i>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

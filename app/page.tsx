@@ -1,254 +1,135 @@
-import Link from 'next/link';
+import Link from "next/link";
+import ProjectVisual from "@/components/ProjectVisual";
+import SystemMap from "@/components/SystemMap";
+import { caseStudies, notebookProjects } from "@/lib/projects";
 
-export const metadata = {
-  title: 'Sandesh Chapagain — Infrastructure Engineer',
-  description:
-    'Second year engineering at Tor Vergata. I spend most of my time building real-time systems and streaming architectures. The current one is Ditch. Went live in January and it is still running.',
-};
-
-function CwLine({ n, children }: { n: number; children: React.ReactNode }) {
-  return (
-    <div className="cw-line">
-      <span className="cw-ln">{n}</span>
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function CodeWindow() {
-  return (
-    <div className="code-window" aria-hidden="true">
-      <div className="cw-header">
-        <span className="font-mono text-[9.5px] tracking-[0.04em]" style={{ color: 'oklch(52% 0.007 258)' }}>
-          relay/server.ts
-        </span>
-        <span className="font-mono text-[9.5px] tracking-[0.04em]" style={{ color: 'oklch(40% 0.007 258)' }}>
-          TypeScript
-        </span>
-      </div>
-      <div className="cw-body font-mono text-[11px] leading-[1.72]">
-        <CwLine n={1}><span className="tok-cmt">{'// '}</span><span style={{ color: '#FF1DB4', fontStyle: 'italic' }}>{'ditch'}</span><span className="tok-cmt">{' · relay engine'}</span></CwLine>
-        <CwLine n={2}><span className="tok-kw">import</span><span className="tok-txt">{' { RTMPServer } '}</span><span className="tok-kw">from</span><span className="tok-str">{" './rtmp'"}</span></CwLine>
-        <CwLine n={3}><span className="tok-txt">&nbsp;</span></CwLine>
-        <CwLine n={4}><span className="tok-kw">const</span><span className="tok-txt">{' KEYS = {'}</span></CwLine>
-        <CwLine n={5}><span className="tok-txt">{'  '}</span><span className="tok-prop">twitch</span><span className="tok-txt">{':  env.'}</span><span className="tok-fn">TWITCH_KEY</span><span className="tok-txt">{','}</span></CwLine>
-        <CwLine n={6}><span className="tok-txt">{'  '}</span><span className="tok-prop">youtube</span><span className="tok-txt">{': env.'}</span><span className="tok-fn">YT_KEY</span><span className="tok-txt">{','}</span></CwLine>
-        <CwLine n={7}><span className="tok-txt">{'  '}</span><span className="tok-prop">tiktok</span><span className="tok-txt">{':  env.'}</span><span className="tok-fn">TIKTOK_KEY</span><span className="tok-txt">{','}</span></CwLine>
-        <CwLine n={8}><span className="tok-txt">{'  '}</span><span className="tok-prop">kick</span><span className="tok-txt">{':    env.'}</span><span className="tok-fn">KICK_KEY</span><span className="tok-txt">{','}</span></CwLine>
-        <CwLine n={9}><span className="tok-txt">{'}'}</span></CwLine>
-        <CwLine n={10}><span className="tok-txt">&nbsp;</span></CwLine>
-        <CwLine n={11}><span className="tok-txt">relay.</span><span className="tok-fn">on</span><span className="tok-txt">{'('}</span><span className="tok-str">{'\'publish\''}</span><span className="tok-txt">{', (s) => {'}</span></CwLine>
-        <CwLine n={12}><span className="tok-txt">{'  s.'}</span><span className="tok-fn">fanout</span><span className="tok-txt">{'(KEYS)'}</span></CwLine>
-        <CwLine n={13}><span className="tok-txt">{'  '}</span><span className="tok-cmt">{'// → 4 platforms'}</span></CwLine>
-        <CwLine n={14}><span className="tok-txt">{'})'}</span></CwLine>
-      </div>
-    </div>
-  );
-}
-
-function SigRow({
-  label,
-  pct,
-  status,
-}: {
-  label: string;
-  pct: number;
-  status: 'active' | 'wip';
-}) {
-  const isActive = status === 'active';
-  const color = isActive ? 'var(--color-signal)' : 'var(--color-amber)';
-
-  return (
-    <div className="px-4 py-3 border-b border-border last:border-b-0">
-      <div className="flex items-center justify-between mb-2">
-        <span className="font-mono text-[9.5px] font-medium tracking-[0.05em] uppercase text-muted">
-          {label}
-        </span>
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-[9px] text-dim">{pct}%</span>
-          <span className="font-mono text-[8.5px] font-semibold" style={{ color }}>
-            {isActive ? '● Active' : '○ WIP'}
-          </span>
-        </div>
-      </div>
-      <div
-        className="h-[2px] rounded-full overflow-hidden"
-        style={{ background: 'var(--color-border)' }}
-        aria-hidden="true"
-      >
-        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color }} />
-      </div>
-    </div>
-  );
-}
-
-const featured = [
-  {
-    slug: 'ditch',
-    name: 'Ditch',
-    statusLabel: 'Live',
-    statusColor: 'var(--color-accent)',
-    href: 'https://ditch-web-drab.vercel.app',
-    external: true,
-    description:
-      'Cross-platform live streaming architecture. One RTMP ingest fans out simultaneously to Twitch, YouTube, TikTok, and Kick.',
-    tags: ['Node.js', 'RTMP', 'ffmpeg', 'WebRTC', 'Supabase'],
-  },
-  {
-    slug: 'ditch-studio',
-    name: 'Ditch Studio',
-    statusLabel: 'In progress',
-    statusColor: 'var(--color-amber)',
-    href: '/work/ditch-studio',
-    external: false,
-    description:
-      'Browser-native OBS alternative. Canvas compositor, scene switching, WebRTC capture, audio mixing. Zero install.',
-    tags: ['Canvas API', 'WebRTC', 'Next.js', 'Web Audio'],
-  },
-];
+const selected = caseStudies.slice(0, 4);
 
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ── */}
-      <section
-        className="hero-grid flex flex-col pt-16 relative overflow-hidden"
-        style={{ minHeight: '100dvh' }}
-        aria-label="Introduction"
-      >
-        {/* DITCH brand glow — mirrors ditchlive.app hero atmosphere */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute"
-          style={{
-            top: '10%',
-            right: '-10%',
-            width: '520px',
-            height: '520px',
-            borderRadius: '50%',
-            background: '#FF1DB4',
-            opacity: 0.055,
-            filter: 'blur(110px)',
-          }}
-        />
-        <div className="flex-1 flex items-center py-16 px-5 sm:px-8">
-          <div className="max-w-[1100px] mx-auto w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 lg:items-start">
-
-              {/* Left: Identity */}
-              <div className="lg:pt-6">
-                <p className="section-label anim-up" style={{ animationDelay: '0.05s' }}>
-                  Infrastructure Engineer
-                </p>
-                <h1
-                  className="font-extrabold leading-[1.0] tracking-[-0.04em] text-text anim-up"
-                  style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)', animationDelay: '0.12s' }}
-                >
-                  Sandesh<br />Chapagain
-                </h1>
-                <p
-                  className="text-[15px] text-muted leading-[1.8] mt-6 max-w-[460px] anim-up"
-                  style={{ animationDelay: '0.22s' }}
-                >
-                  Second year engineering at Tor Vergata. I spend most of my
-                  time building real-time systems and streaming architectures.
-                  The current one is Ditch. Went live in January and it is
-                  still running.
-                </p>
-                <div
-                  className="flex items-center gap-3 mt-8 flex-wrap anim-up"
-                  style={{ animationDelay: '0.32s' }}
-                >
-                  <Link href="/work" className="btn-primary">View work</Link>
-                  <Link href="/contact" className="btn-ghost">Get in touch</Link>
-                </div>
-              </div>
-
-              {/* Right: Code window + Build status */}
-              <div className="flex flex-col gap-3 anim-up" style={{ animationDelay: '0.18s' }}>
-                <CodeWindow />
-
-                <div
-                  className="border border-border rounded-2xl overflow-hidden"
-                  aria-label="Build status"
-                >
-                  <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-bg-card">
-                    <span className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase text-muted">
-                      Build status
-                    </span>
-                    <span className="font-mono text-[9px] text-dim">Ditch</span>
-                  </div>
-                  <SigRow label="RTMP fanout"       pct={88} status="active" />
-                  <SigRow label="WebRTC pipeline"   pct={92} status="active" />
-                  <SigRow label="Canvas compositor" pct={45} status="wip" />
-                  <SigRow label="Chat aggregator"   pct={22} status="wip" />
-                </div>
-              </div>
-
+      <section className="hero shell">
+        <div className="hero-meta reveal reveal-1">
+          <p>Product engineer</p>
+          <p>Rome, Italy</p>
+          <p>UTC +02</p>
+        </div>
+        <div className="hero-copy">
+          <p className="eyebrow reveal reveal-1">Browser media · Real-time infrastructure · Product</p>
+          <h1 className="reveal reveal-2">
+            I build the difficult middle between <em>interface</em> and infrastructure.
+          </h1>
+          <div className="hero-intro reveal reveal-3">
+            <p>
+              I&apos;m Sandesh Chapagain, a product engineer and Engineering
+              Sciences student. My current work spans browser media, WebRTC,
+              live-stream delivery, and the product surfaces that make those
+              systems usable.
+            </p>
+            <div className="hero-actions">
+              <Link className="button button-dark" href="/work">Explore selected work</Link>
+              <a className="button button-line" href="mailto:sendmailtodex@gmail.com">Start a conversation</a>
             </div>
+          </div>
+        </div>
+        <div className="reveal reveal-4">
+          <SystemMap />
+        </div>
+      </section>
+
+      <section className="selected-work shell section-block">
+        <header className="section-heading">
+          <div>
+            <p className="eyebrow">Selected work</p>
+            <h2>Systems with a reason to exist.</h2>
+          </div>
+          <p>
+            Four projects selected for engineering depth, product thinking,
+            and the quality of the decisions behind them.
+          </p>
+        </header>
+
+        <div className="project-list">
+          {selected.map((project) => (
+            <article className="project-row" key={project.slug}>
+              <Link
+                className="project-visual-link"
+                href={`/work/${project.slug}`}
+                aria-label={`Read the ${project.title} case study`}
+              >
+                <ProjectVisual kind={project.visual} compact />
+              </Link>
+              <div className="project-copy">
+                <div className="project-index">
+                  <span>{project.index}</span>
+                  <span>{project.kicker}</span>
+                  <span>{project.stage}</span>
+                </div>
+                <h3><Link href={`/work/${project.slug}`}>{project.title}</Link></h3>
+                <p>{project.summary}</p>
+                <div className="tag-list" aria-label={`${project.title} technologies`}>
+                  {project.stack.slice(0, 5).map((technology) => (
+                    <span key={technology}>{technology}</span>
+                  ))}
+                </div>
+                <Link className="text-link" href={`/work/${project.slug}`}>
+                  Read case study <span aria-hidden="true">↗</span>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="notebook-section">
+        <div className="shell">
+          <header className="section-heading section-heading-light">
+            <div>
+              <p className="eyebrow">Engineering notebook</p>
+              <h2>Smaller systems, specific questions.</h2>
+            </div>
+            <p>
+              These are focused explorations, not inflated startup claims.
+              Each isolates one engineering concern and makes it inspectable.
+            </p>
+          </header>
+          <div className="notebook-grid">
+            {notebookProjects.map((project, index) => (
+              <a className="notebook-card" href={project.href} key={project.name}>
+                <div><span>{String(index + 1).padStart(2, "0")}</span><span>{project.type}</span></div>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                <span className="notebook-arrow" aria-hidden="true">↗</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── WORK PREVIEW ── */}
-      <section className="border-t border-border py-24" aria-label="Selected work">
-        <div className="max-w-[1100px] mx-auto px-5 sm:px-8">
-
-          <header className="mb-10">
-            <p className="section-label">Selected work</p>
-            <h2
-              className="font-extrabold leading-tight tracking-[-0.03em] text-text mb-2"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
-            >
-              What I&apos;ve shipped.
-            </h2>
-            <p className="text-[14px] text-muted max-w-[380px] leading-[1.75]">
-              Production systems, not exercises. Each one solves a real problem the hard way.
-            </p>
-          </header>
-
-          <div className="border border-border rounded-xl overflow-hidden mb-10">
-            {featured.map((p, i) => (
-              <a
-                key={p.slug}
-                href={p.href}
-                {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="featured-row group flex items-start justify-between gap-6 px-7 py-6 border-b border-border last:border-b-0"
-              >
-                <div className="flex items-start gap-5 min-w-0">
-                  <span className="font-mono text-[10px] font-semibold tracking-[0.06em] text-dim flex-shrink-0 mt-0.5">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div className="min-w-0">
-                    <p
-                      className="font-bold tracking-[-0.02em] text-muted group-hover:text-text mb-1.5"
-                      style={{ fontSize: '15px', transition: 'color 0.15s ease' }}
-                    >
-                      {p.name}
-                    </p>
-                    <p className="text-[12.5px] text-muted leading-[1.7] max-w-[440px]">
-                      {p.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mt-2.5">
-                      {p.tags.map((t) => (
-                        <span key={t} className="src-tag">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <span
-                  className="font-mono text-[9px] font-semibold tracking-[0.06em] uppercase flex-shrink-0 mt-0.5"
-                  style={{ color: p.statusColor }}
-                >
-                  {p.statusLabel}
-                </span>
-              </a>
-            ))}
-          </div>
-
-          <Link href="/work" className="btn-ghost">View all work</Link>
-
+      <section className="about-strip shell section-block">
+        <p className="eyebrow">How I work</p>
+        <blockquote>
+          Start with the failure boundary. Make the model visible.
+          <em> Add complexity only when the system earns it.</em>
+        </blockquote>
+        <div className="principles-grid">
+          <article>
+            <span>01</span>
+            <h3>Trace the whole path</h3>
+            <p>I like work that crosses boundaries: UI to state, state to network, network to infrastructure.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Prefer evidence</h3>
+            <p>Metrics, source code, failure modes, and tests are more useful than confident adjectives.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Design the explanation</h3>
+            <p>A technically correct system still fails if its interface hides the decisions a person needs to make.</p>
+          </article>
         </div>
+        <Link className="button button-line" href="/about">More about me</Link>
       </section>
     </>
   );
