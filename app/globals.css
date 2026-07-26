@@ -4430,9 +4430,13 @@ body:has(.contact-page) .contact-channels a:hover {
   color: #4bd4ce;
 }
 
-/* ── TILE TOUCH / PRESS FEEDBACK (added by TileInteractions) ── */
+/* ── TILE TOUCH / PRESS FEEDBACK (driven by TileInteractions) ── */
+/* Selector list kept in sync with TILE_SELECTOR in TileInteractions.tsx. */
 
-.tap-fx {
+.ocean-project-card,
+.current-row,
+.catalog-item,
+.notebook-card {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -4442,7 +4446,10 @@ body:has(.contact-page) .contact-channels a:hover {
 }
 
 /* Cursor-following spotlight: above the tile background, below its content. */
-.tap-fx::before {
+.ocean-project-card::before,
+.current-row::before,
+.catalog-item::before,
+.notebook-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -4458,21 +4465,27 @@ body:has(.contact-page) .contact-channels a:hover {
 }
 
 @media (hover: hover) {
-  .tap-fx:hover::before {
+  .ocean-project-card:hover::before,
+  .current-row:hover::before,
+  .catalog-item:hover::before,
+  .notebook-card:hover::before {
     opacity: 1;
   }
-  .current-row.tap-fx:hover {
+  .current-row:hover {
     background: rgb(255 255 255 / 0.03);
   }
 }
 
 /* Press feedback — fires for both click and touch. */
-.tap-fx:active {
+.ocean-project-card:active,
+.current-row:active,
+.catalog-item:active,
+.notebook-card:active {
   transform: scale(0.985);
 }
 
 /* Keep the project card's hover lift while pressing. */
-.ocean-project-card.tap-fx:active {
+.ocean-project-card:active {
   transform: translateY(-6px) scale(0.985);
 }
 
@@ -4502,9 +4515,14 @@ body:has(.contact-page) .contact-channels a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tap-fx,
-  .tap-fx:active,
-  .ocean-project-card.tap-fx:active {
+  .ocean-project-card,
+  .current-row,
+  .catalog-item,
+  .notebook-card,
+  .ocean-project-card:active,
+  .current-row:active,
+  .catalog-item:active,
+  .notebook-card:active {
     transform: none;
     transition: none;
   }

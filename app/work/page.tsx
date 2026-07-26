@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TransmissionField from "@/components/TransmissionField";
 import { caseStudies, notebookProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <div className="page-shell shell">
+      <TransmissionField />
       <header className="page-hero">
         <p className="eyebrow">Projects / 2026</p>
         <h1>Built from curiosity,<br /><em>explained clearly.</em></h1>

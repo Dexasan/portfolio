@@ -2,29 +2,26 @@
 
 import { useEffect } from "react";
 
+// Non-focusable card tiles (overflow-clipping is safe on these — no focus ring
+// to clip). Kept in sync with the selector list in globals.css.
 const TILE_SELECTOR =
-  ".ocean-project-card, .current-row, .catalog-item, .notebook-card, .archive-list a, .contact-channels a";
+  ".ocean-project-card, .current-row, .catalog-item, .notebook-card";
 
 /**
- * Adds touch/press feedback to the card "tiles" that previously only had a
- * hover state (or none): a cursor-following spotlight via --mx/--my and a
- * ripple spawned on press, so taps register on touch devices too.
+ * Adds touch/press feedback to card "tiles": a cursor-following spotlight via
+ * --mx/--my and a ripple spawned on press, so taps register on touch devices.
  *
- * Listeners are delegated at the document level, so tiles on any route work
- * without per-page wiring. Honors prefers-reduced-motion.
+ * Handlers are delegated on the document and match tiles live via closest(),
+ * so they work on every route (including client-side navigations) without
+ * depending on when the layout mounted. Honors prefers-reduced-motion.
  */
 export default function TileInteractions() {
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const tiles = Array.from(
-      document.querySelectorAll<HTMLElement>(TILE_SELECTOR),
-    );
-    tiles.forEach((tile) => tile.classList.add("tap-fx"));
-    if (reduced) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     function onPointerMove(event: PointerEvent) {
       const target = event.target as Element | null;
-      const tile = target?.closest<HTMLElement>(".tap-fx");
+      const tile = target?.closest<HTMLElement>(TILE_SELECTOR);
       if (!tile) return;
       const rect = tile.getBoundingClientRect();
       tile.style.setProperty("--mx", `${((event.clientX - rect.left) / rect.width) * 100}%`);
@@ -33,7 +30,7 @@ export default function TileInteractions() {
 
     function onPointerDown(event: PointerEvent) {
       const target = event.target as Element | null;
-      const tile = target?.closest<HTMLElement>(".tap-fx");
+      const tile = target?.closest<HTMLElement>(TILE_SELECTOR);
       if (!tile) return;
       const rect = tile.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height) * 1.15;
