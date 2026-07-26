@@ -32,7 +32,7 @@ export default function HomePage() {
             complete path from interface to network to runtime.
           </p>
           <div className="hero-actions">
-            <Link className="button button-dark" href="/work">Explore selected work</Link>
+            <Link className="button button-dark" href="/work">Explore selected projects</Link>
             <a className="button button-line" href="mailto:sendmailtodex@gmail.com">Start a conversation</a>
           </div>
         </div>
@@ -41,28 +41,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="selected-work shell section-block">
-        <header className="section-heading">
+      <section className="selected-work section-block">
+        <header className="section-heading shell">
           <div>
-            <p className="eyebrow">Selected work</p>
-            <h2>Systems with a reason to exist.</h2>
+            <p className="eyebrow">Selected projects</p>
+            <h2>Built to be used,<br />not just viewed.</h2>
           </div>
-          <p>
-            Four projects selected for engineering depth, product thinking,
-            and the quality of the decisions behind them.
-          </p>
+          <div className="section-heading-note">
+            <p>
+              A horizontal field of four projects—each one framed by the
+              problem it solves, the system behind it, and the decisions that
+              made it real.
+            </p>
+            <Link className="text-link" href="/work">
+              View every project <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </header>
 
-        <div className="project-list">
+        <div className="project-shelf-meta shell" aria-hidden="true">
+          <span>01 — 04</span>
+          <span>Scroll to explore</span>
+          <span className="project-shelf-line"><i /></span>
+        </div>
+
+        <div className="project-list" aria-label="Selected projects">
           {selected.map((project) => (
             <article className="project-row" key={project.slug}>
-              <Link
-                className="project-visual-link"
-                href={`/work/${project.slug}`}
-                aria-label={`Read the ${project.title} case study`}
-              >
-                <ProjectVisual kind={project.visual} compact />
-              </Link>
               <div className="project-copy">
                 <div className="project-index">
                   <span>{project.index}</span>
@@ -71,15 +76,26 @@ export default function HomePage() {
                 </div>
                 <h3><Link href={`/work/${project.slug}`}>{project.title}</Link></h3>
                 <p>{project.summary}</p>
-                <div className="tag-list" aria-label={`${project.title} technologies`}>
-                  {project.stack.slice(0, 5).map((technology) => (
-                    <span key={technology}>{technology}</span>
-                  ))}
+                <div className="project-card-footer">
+                  <div className="tag-list" aria-label={`${project.title} technologies`}>
+                    {project.stack.slice(0, 4).map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                  <Link className="project-open" href={`/work/${project.slug}`}>
+                    <span>Open case study</span>
+                    <i aria-hidden="true">↗</i>
+                  </Link>
                 </div>
-                <Link className="text-link" href={`/work/${project.slug}`}>
-                  Read case study <span aria-hidden="true">↗</span>
-                </Link>
               </div>
+              <Link
+                className="project-visual-link"
+                href={`/work/${project.slug}`}
+                aria-label={`Read the ${project.title} case study`}
+              >
+                <ProjectVisual kind={project.visual} compact />
+              </Link>
+              <span className="project-watermark" aria-hidden="true">{project.index}</span>
             </article>
           ))}
         </div>
