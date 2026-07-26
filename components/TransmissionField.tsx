@@ -10,6 +10,7 @@ type Bubble = {
   phase: number;
   radius: number;
   drift: number;
+  speed: number;
 };
 
 type Ripple = {
@@ -39,10 +40,12 @@ export default function TransmissionField() {
     let bubbles: Bubble[] = [];
     let ripples: Ripple[] = [];
     let lastRipple = 0;
+    let lastTime = 0;
+    let spacing = 108;
     const pointer = { x: width / 2, y: height / 2, active: false };
 
     function buildField() {
-      const spacing = width < 700 ? 122 : 108;
+      spacing = width < 700 ? 108 : 96;
       bubbles = [];
 
       for (let y = -spacing; y <= height + spacing; y += spacing) {
@@ -56,8 +59,11 @@ export default function TransmissionField() {
             baseX: x + offsetX,
             baseY: y + offsetY,
             phase: (x * 0.003 + y * 0.005) % (Math.PI * 2),
-            radius: 7 + seed * 15,
+            // Smaller bubbles than before — reads as water, not blobs.
+            radius: 2.5 + seed * 8,
             drift: 0.55 + seed * 0.8,
+            // Per-bubble rise speed (px/sec) for a real upward current.
+            speed: 9 + seed * 20,
           });
         }
       }
@@ -97,11 +103,24 @@ export default function TransmissionField() {
     }
 
     function draw(time = 0) {
+      const dt = lastTime ? Math.min((time - lastTime) / 1000, 0.05) : 0;
+      lastTime = time;
+      const wrapSpan = height + spacing * 2;
+
       context.clearRect(0, 0, width, height);
       context.save();
       context.globalCompositeOperation = "screen";
 
       bubbles.forEach((bubble) => {
+        // Rise upward on a loop so the field feels like a live current.
+        if (!reducedMotion) {
+          bubble.baseY -= bubble.speed * dt;
+          if (bubble.baseY < -spacing) {
+            bubble.baseY += wrapSpan;
+            bubble.y += wrapSpan; // snap so it doesn't streak across screen
+          }
+        }
+
         const horizontalDrift = reducedMotion
           ? 0
           : Math.sin(time * 0.00028 * bubble.drift + bubble.phase) * 9;

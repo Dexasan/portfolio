@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionController from "@/components/MotionController";
+import TileInteractions from "@/components/TileInteractions";
 
 const manrope = Manrope({
   variable: "--font-sans",
@@ -103,6 +104,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <MotionController />
+        <TileInteractions />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

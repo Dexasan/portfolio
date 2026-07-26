@@ -4429,3 +4429,86 @@ body:has(.contact-page) .contact-note strong {
 body:has(.contact-page) .contact-channels a:hover {
   color: #4bd4ce;
 }
+
+/* ── TILE TOUCH / PRESS FEEDBACK (added by TileInteractions) ── */
+
+.tap-fx {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 180ms ease;
+}
+
+/* Cursor-following spotlight: above the tile background, below its content. */
+.tap-fx::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(75 212 206 / 0.16),
+    transparent 60%
+  );
+}
+
+@media (hover: hover) {
+  .tap-fx:hover::before {
+    opacity: 1;
+  }
+  .current-row.tap-fx:hover {
+    background: rgb(255 255 255 / 0.03);
+  }
+}
+
+/* Press feedback — fires for both click and touch. */
+.tap-fx:active {
+  transform: scale(0.985);
+}
+
+/* Keep the project card's hover lift while pressing. */
+.ocean-project-card.tap-fx:active {
+  transform: translateY(-6px) scale(0.985);
+}
+
+.tap-ripple {
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: scale(0);
+  background: radial-gradient(
+    circle,
+    rgb(75 212 206 / 0.28),
+    rgb(75 212 206 / 0) 70%
+  );
+  animation: tap-ripple 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tap-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tap-fx,
+  .tap-fx:active,
+  .ocean-project-card.tap-fx:active {
+    transform: none;
+    transition: none;
+  }
+  .tap-ripple {
+    display: none;
+  }
+}
