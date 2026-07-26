@@ -43,7 +43,7 @@ export default function Nav() {
           aria-label="Email Sandesh"
         >
           <span aria-hidden="true" />
-          Available for the right role
+          Open to internships &amp; junior roles
         </a>
       </div>
     </header>

@@ -3,6 +3,7 @@ import { JetBrains_Mono, Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MotionController from "@/components/MotionController";
 
 const manrope = Manrope({
   variable: "--font-sans",
@@ -30,17 +31,17 @@ export const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Sandesh Chapagain — Product Engineer",
+    default: "Sandesh Chapagain — Engineering Student",
     template: "%s — Sandesh Chapagain",
   },
   description:
-    "Product engineer in Rome building real-time systems, browser media tools, and technically ambitious products.",
+    "Engineering Sciences student in Rome interested in real-time systems, browser media, backend infrastructure, and ambitious software.",
   applicationName: "Sandesh Chapagain",
   authors: [{ name: "Sandesh Chapagain", url: "https://github.com/Dexasan" }],
   creator: "Sandesh Chapagain",
   keywords: [
     "Sandesh Chapagain",
-    "product engineer",
+    "engineering student",
     "real-time systems",
     "WebRTC",
     "WebCodecs",
@@ -52,24 +53,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "Sandesh Chapagain — Product Engineer",
+    title: "Sandesh Chapagain — Engineering Student",
     description:
-      "I build the difficult middle between browser interfaces and real-time infrastructure.",
+      "Engineering Sciences student interested in real-time systems, browser media, and backend infrastructure.",
     siteName: "Sandesh Chapagain",
-    images: [{ url: "/og.png", width: 1730, height: 909, alt: "Sandesh Chapagain portfolio" }],
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Sandesh Chapagain portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sandesh Chapagain — Product Engineer",
+    title: "Sandesh Chapagain — Engineering Student",
     description:
-      "Real-time systems, browser media, and technically ambitious products.",
+      "Real-time systems, browser media, backend infrastructure, and ambitious software.",
     images: ["/og.png"],
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3efe5",
+  themeColor: "#f1f4f1",
   colorScheme: "light",
 };
 
@@ -80,7 +81,7 @@ const personJsonLd = {
   url: siteUrl,
   email: "mailto:sendmailtodex@gmail.com",
   sameAs: ["https://github.com/Dexasan"],
-  jobTitle: "Product Engineer",
+  jobTitle: "Engineering Sciences Student",
   knowsAbout: [
     "Real-time systems",
     "Browser media",
@@ -104,6 +105,7 @@ export default function RootLayout({
         <Nav />
         <main id="main-content">{children}</main>
         <Footer />
+        <MotionController />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

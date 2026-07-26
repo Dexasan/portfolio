@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProjectVisual from "@/components/ProjectVisual";
 import SystemMap from "@/components/SystemMap";
+import InterestGraphic from "@/components/InterestGraphic";
 import { caseStudies, notebookProjects } from "@/lib/projects";
 
 const selected = caseStudies.slice(0, 4);
@@ -10,26 +11,29 @@ export default function HomePage() {
     <>
       <section className="hero shell">
         <div className="hero-meta reveal reveal-1">
-          <p>Product engineer</p>
+          <p>Engineering Sciences student</p>
           <p>Rome, Italy</p>
           <p>UTC +02</p>
         </div>
-        <div className="hero-copy">
-          <p className="eyebrow reveal reveal-1">Browser media · Real-time infrastructure · Product</p>
-          <h1 className="reveal reveal-2">
-            I build the difficult middle between <em>interface</em> and infrastructure.
-          </h1>
-          <div className="hero-intro reveal reveal-3">
-            <p>
-              I&apos;m Sandesh Chapagain, a product engineer and Engineering
-              Sciences student. My current work spans browser media, WebRTC,
-              live-stream delivery, and the product surfaces that make those
-              systems usable.
-            </p>
-            <div className="hero-actions">
-              <Link className="button button-dark" href="/work">Explore selected work</Link>
-              <a className="button button-line" href="mailto:sendmailtodex@gmail.com">Start a conversation</a>
-            </div>
+        <div className="hero-stage">
+          <div className="hero-copy">
+            <p className="eyebrow reveal reveal-1">Student · Builder · Interested in systems</p>
+            <h1 className="reveal reveal-2">
+              I&apos;m learning by building things that have to work <em>in real time.</em>
+            </h1>
+          </div>
+          <InterestGraphic />
+        </div>
+        <div className="hero-intro reveal reveal-3">
+          <p>
+            I&apos;m Sandesh Chapagain, an Engineering Sciences student in
+            Rome interested in real-time systems, browser media, backend
+            infrastructure, and ambitious software. I learn by tracing the
+            complete path from interface to network to runtime.
+          </p>
+          <div className="hero-actions">
+            <Link className="button button-dark" href="/work">Explore selected work</Link>
+            <a className="button button-line" href="mailto:sendmailtodex@gmail.com">Start a conversation</a>
           </div>
         </div>
         <div className="reveal reveal-4">
@@ -107,7 +111,7 @@ export default function HomePage() {
       </section>
 
       <section className="about-strip shell section-block">
-        <p className="eyebrow">How I work</p>
+        <p className="eyebrow">How I learn and build</p>
         <blockquote>
           Start with the failure boundary. Make the model visible.
           <em> Add complexity only when the system earns it.</em>

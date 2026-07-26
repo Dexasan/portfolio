@@ -1,6 +1,8 @@
 # Sandesh Chapagain — Portfolio
 
-A case-study-led engineering portfolio built with Next.js 16 and TypeScript.
+A case-study-led portfolio for an Engineering Sciences student interested in
+real-time systems, browser media, backend infrastructure, and ambitious
+software. Built with Next.js 16 and TypeScript.
 
 The site is intentionally selective. Ditch, Roadrash, ArchScale, and
 VerityLedger are presented as full case studies because they best demonstrate

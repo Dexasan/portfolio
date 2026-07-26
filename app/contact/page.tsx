@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Sandesh Chapagain about product engineering, real-time systems, browser media, or startup work.",
+    "Contact Sandesh Chapagain about internships, junior engineering roles, real-time systems, browser media, or collaborations.",
   alternates: { canonical: "/contact" },
 };
 
@@ -27,15 +27,15 @@ export default function ContactPage() {
         <p className="eyebrow">Contact / Rome, Italy</p>
         <h1>Bring me the problem that does not fit neatly in one layer.</h1>
         <p>
-          I&apos;m open to product engineering, real-time media,
-          infrastructure work, and thoughtful early-stage teams.
+          I&apos;m open to internships, junior engineering roles, real-time
+          media work, and thoughtful collaborations.
         </p>
       </header>
       <div className="contact-layout">
         <div className="contact-note">
           <span className="availability-dot" aria-hidden="true" />
           <div>
-            <strong>Available for the right role</strong>
+            <strong>Open to learning with a strong team</strong>
             <p>Remote, Rome, or relocation. I usually reply within one working day.</p>
           </div>
         </div>

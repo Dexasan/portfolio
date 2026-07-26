@@ -48,7 +48,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <ProjectVisual kind={project.visual} />
         <div className="case-meta">
           <div><span>Status</span><strong>{project.stage}</strong></div>
-          <div><span>My role</span><strong>Product + engineering</strong></div>
+          <div><span>My role</span><strong>Design + engineering</strong></div>
           <div><span>Focus</span><strong>{project.kicker}</strong></div>
           <div className="case-links">
             {project.links.map((link) => (

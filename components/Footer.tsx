@@ -12,7 +12,7 @@ export default function Footer() {
       </div>
       <div className="footer-meta">
         <p>Sandesh Chapagain</p>
-        <p>Product engineer for real-time systems</p>
+        <p>Engineering Sciences student · Rome</p>
         <nav aria-label="Footer navigation">
           <Link href="/work">Work</Link>
           <Link href="/about">About</Link>

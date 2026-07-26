@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Sandesh Chapagain: product engineer, Engineering Sciences student, and builder of real-time media systems.",
+    "About Sandesh Chapagain: Engineering Sciences student interested in real-time systems, browser media, and backend infrastructure.",
   alternates: { canonical: "/about" },
 };
 
@@ -36,7 +36,7 @@ const timeline = [
 ];
 
 const capabilities = [
-  ["Product engineering", "Turn ambiguous problems into a shippable slice, then refine the system from real constraints."],
+  ["Complete systems", "Follow an idea across interface, state, network, and infrastructure instead of learning each layer in isolation."],
   ["Browser media", "Canvas composition, WebRTC, WebCodecs, Web Audio, capture APIs, and the failure modes around them."],
   ["Backend systems", "Typed Node.js services, authorization boundaries, real-time state, PostgreSQL, and media relays."],
   ["Technical communication", "Architecture notes, explicit tradeoffs, testable models, and interfaces that explain their own behavior."],
@@ -50,8 +50,8 @@ export default function AboutPage() {
         <h1>Curious enough to cross the boundary.</h1>
         <div>
           <p>
-            I&apos;m a product engineer studying Engineering Sciences at
-            Università degli Studi di Roma Tor Vergata. I&apos;m drawn to
+            I&apos;m an Engineering Sciences student at Università degli Studi
+            di Roma Tor Vergata. I&apos;m drawn to
             systems where the interface and infrastructure cannot be designed
             separately.
           </p>
@@ -86,7 +86,7 @@ export default function AboutPage() {
           </div>
         </div>
         <aside>
-          <p className="eyebrow">Working range</p>
+          <p className="eyebrow">What I&apos;m exploring</p>
           <div className="capability-list">
             {capabilities.map(([title, detail], index) => (
               <article key={title}>
@@ -105,9 +105,10 @@ export default function AboutPage() {
           <h2>Building, studying, and looking for a team with difficult problems.</h2>
         </div>
         <p>
-          I&apos;m based in Rome and open to product engineering,
-          infrastructure, and real-time media roles. I work best with teams
-          that care about both the system and the person using it.
+          I&apos;m based in Rome and open to internships, junior engineering
+          roles, and collaborations around infrastructure or real-time media.
+          I want to learn with teams that care about both the system and the
+          person using it.
         </p>
         <div>
           <Link className="button button-dark" href="/contact">Get in touch</Link>
