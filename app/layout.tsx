@@ -30,10 +30,7 @@ export const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "Sandesh Chapagain — Engineering Student",
-    template: "%s — Sandesh Chapagain",
-  },
+  title: "Sandesh Chapagain",
   description:
     "Engineering Sciences student in Rome interested in real-time systems, browser media, backend infrastructure, and ambitious software.",
   applicationName: "Sandesh Chapagain",

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TransmissionField from "@/components/TransmissionField";
 import { caseStudies } from "@/lib/projects";
 
 const selected = caseStudies.slice(0, 4);
@@ -29,6 +30,7 @@ const skillGroups = [
 export default function HomePage() {
   return (
     <div className="portfolio-home">
+      <TransmissionField />
       <section className="world-hero" id="top">
         <div className="world-sheen" aria-hidden="true" />
         <div className="world-constellation constellation-one" aria-hidden="true"><i /><i /><i /><i /></div>
@@ -64,14 +66,15 @@ export default function HomePage() {
             <h2>I like software you can <em>feel</em> working.</h2>
             <div>
               <p>
-                I&apos;m Sandesh, an Engineering Sciences student in Rome. I
-                learn by following a system end to end—from the interface,
-                through state and networks, down to the runtime underneath.
+                I&apos;m Sandesh, from Chitwan, Nepal, and now an international
+                Engineering Sciences student in Rome. I learn by following a
+                system end to end—from the interface, through state and
+                networks, down to the runtime underneath.
               </p>
               <p>
-                That curiosity has taken me from a browser-native live studio
-                to a Canvas racing engine, a capacity-planning workbench, and a
-                transaction-safe ledger.
+                Most of that curiosity is going into Ditch: a browser-native
+                live studio for composing a show, bringing viewers on screen,
+                and sending one broadcast to multiple platforms.
               </p>
               <Link href="/about">More of my story <span aria-hidden="true">→</span></Link>
             </div>
@@ -134,7 +137,6 @@ export default function HomePage() {
                 {project.stack.slice(0, 7).map((item) => <span key={item}>{item}</span>)}
               </div>
               <footer>
-                <Link href={`/work/${project.slug}`}>Case study <span aria-hidden="true">↗</span></Link>
                 {project.links[0] && (
                   <a
                     href={project.links[0].href}
@@ -150,7 +152,11 @@ export default function HomePage() {
         </div>
 
         <div className="shell project-archive-link">
-          <Link href="/work">Open the full project archive <span aria-hidden="true">→</span></Link>
+          <Link href="/work">
+            <span>Open the full</span>
+            <strong>project archive</strong>
+            <span className="archive-arrow" aria-hidden="true">↗</span>
+          </Link>
         </div>
       </section>
     </div>

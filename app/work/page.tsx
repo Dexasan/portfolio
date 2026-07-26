@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { caseStudies, notebookProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: { absolute: "Sandesh Chapagain" },
   description:
-    "Selected engineering case studies across real-time media, browser games, capacity planning, and transactional systems.",
+    "Selected engineering projects across real-time media, browser games, capacity planning, and transactional systems.",
   alternates: { canonical: "/work" },
 };
 
@@ -28,7 +27,7 @@ export default function WorkPage() {
               <div className="project-index">
                 <span>{project.index}</span><span>{project.kicker}</span><span>{project.year}</span>
               </div>
-              <h2><Link href={`/work/${project.slug}`}>{project.title}</Link></h2>
+              <h2>{project.title}</h2>
               <p>{project.summary}</p>
               <p className="catalog-explanation">{project.solution}</p>
               <div className="catalog-facts">
@@ -39,9 +38,11 @@ export default function WorkPage() {
               <div className="catalog-stack" aria-label={`${project.title} technologies`}>
                 {project.stack.slice(0, 6).map((item) => <span key={item}>{item}</span>)}
               </div>
-              <Link className="text-link" href={`/work/${project.slug}`}>
-                Read case study <span aria-hidden="true">-&gt;</span>
-              </Link>
+              {project.links[0] && (
+                <a className="text-link" href={project.links[0].href}>
+                  {project.links[0].label} <span aria-hidden="true">-&gt;</span>
+                </a>
+              )}
             </div>
           </article>
         ))}
