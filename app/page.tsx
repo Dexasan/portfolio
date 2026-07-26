@@ -1,94 +1,103 @@
 import Link from "next/link";
-import InterestGraphic from "@/components/InterestGraphic";
 import { caseStudies } from "@/lib/projects";
 
 const selected = caseStudies.slice(0, 4);
 
 const skillGroups = [
   {
-    index: "01",
     title: "Interfaces",
-    description:
-      "Responsive product interfaces where complex system state stays understandable.",
+    note: "Making complex systems feel simple to use.",
     skills: ["React", "Next.js", "TypeScript", "Canvas 2D", "Web APIs"],
   },
   {
-    index: "02",
-    title: "Real-time media",
-    description:
-      "Live browser experiences that move video, audio, events, and control state reliably.",
+    title: "Live media",
+    note: "Moving video, audio, and state through the browser.",
     skills: ["WebRTC", "WebCodecs", "Socket.io", "WebSockets", "ffmpeg"],
   },
   {
-    index: "03",
     title: "Backend & data",
-    description:
-      "Service boundaries, APIs, persistence, and transaction rules built to survive failure.",
+    note: "Services and rules that hold up when things fail.",
     skills: ["Fastify", "Node.js", "Python", "SQLite", "Supabase"],
   },
   {
-    index: "04",
-    title: "Engineering practice",
-    description:
-      "Making assumptions explicit through models, tests, documentation, and deployment.",
-    skills: ["System design", "API design", "Testing", "Git", "Vercel & Railway"],
+    title: "Engineering",
+    note: "Turning assumptions into models, tests, and deployable work.",
+    skills: ["System design", "API design", "Testing", "Git", "Vercel", "Railway"],
   },
 ];
 
 export default function HomePage() {
   return (
-    <>
-      <section className="hero shell">
-        <div className="hero-meta reveal reveal-1">
-          <p>Engineering Sciences student</p>
-          <p>Rome, Italy</p>
-          <p>UTC +02</p>
-        </div>
-        <div className="hero-stage">
-          <div className="hero-copy">
-            <p className="eyebrow reveal reveal-1">Student · Builder · Interested in systems</p>
-            <h1 className="reveal reveal-2">
-              I&apos;m learning by building things that have to work <em>in real time.</em>
-            </h1>
-          </div>
-          <InterestGraphic />
-        </div>
-        <div className="hero-intro reveal reveal-3">
-          <p>
-            I&apos;m Sandesh Chapagain, an Engineering Sciences student in
-            Rome interested in real-time systems, browser media, backend
-            infrastructure, and ambitious software. I learn by tracing the
-            complete path from interface to network to runtime.
+    <div className="portfolio-home">
+      <section className="world-hero" id="top">
+        <div className="world-sheen" aria-hidden="true" />
+        <div className="world-constellation constellation-one" aria-hidden="true"><i /><i /><i /><i /></div>
+        <div className="world-constellation constellation-two" aria-hidden="true"><i /><i /><i /></div>
+        <div className="shell world-copy">
+          <p className="world-greeting reveal reveal-1">Hi there! I&apos;m—</p>
+          <h1 className="reveal reveal-2">Sandesh<br /><span>Chapagain.</span></h1>
+          <p className="world-role reveal reveal-3">
+            Engineering Sciences student building playful interfaces,
+            real-time media, and reliable systems.
           </p>
-          <div className="hero-actions">
-            <Link className="button button-dark" href="/work">Explore selected projects</Link>
-            <a className="button button-line" href="mailto:sendmailtodex@gmail.com">Start a conversation</a>
+          <div className="world-actions reveal reveal-4">
+            <a href="#projects">Dive into projects</a>
+            <a href="mailto:sendmailtodex@gmail.com">Say hello</a>
+          </div>
+        </div>
+        <a className="dive-cue" href="#about">
+          <span>Scroll to dive</span>
+          <i aria-hidden="true">↓</i>
+        </a>
+      </section>
+
+      <section className="ocean-about" id="about">
+        <div className="ocean-ridge ridge-top" aria-hidden="true" />
+        <div className="jelly-field" aria-hidden="true">
+          <span className="moon-jelly jelly-one"><i /><i /><i /><i /></span>
+          <span className="moon-jelly jelly-two"><i /><i /><i /><i /></span>
+          <span className="moon-jelly jelly-three"><i /><i /><i /><i /></span>
+        </div>
+        <div className="shell about-current">
+          <p className="world-kicker">01 / About me</p>
+          <div className="about-current-copy">
+            <h2>I like software you can <em>feel</em> working.</h2>
+            <div>
+              <p>
+                I&apos;m Sandesh, an Engineering Sciences student in Rome. I
+                learn by following a system end to end—from the interface,
+                through state and networks, down to the runtime underneath.
+              </p>
+              <p>
+                That curiosity has taken me from a browser-native live studio
+                to a Canvas racing engine, a capacity-planning workbench, and a
+                transaction-safe ledger.
+              </p>
+              <Link href="/about">More of my story <span aria-hidden="true">→</span></Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="skills-section">
-        <div className="skills-orb skills-orb-one" aria-hidden="true" />
-        <div className="skills-orb skills-orb-two" aria-hidden="true" />
-        <div className="shell skills-layout">
-          <header className="skills-heading">
-            <p className="eyebrow">Skills &amp; tools</p>
-            <h2>I build across the whole path.</h2>
-            <p>
-              From the interface a person touches to the services, media paths,
-              and data rules underneath it.
-            </p>
+      <section className="ocean-skills" id="skills">
+        <div className="fish-school" aria-hidden="true">
+          <i /><i /><i /><i /><i />
+        </div>
+        <div className="shell">
+          <header className="ocean-section-heading">
+            <p className="world-kicker">02 / Skills &amp; tools</p>
+            <h2>The parts of the ocean<br />I know how to navigate.</h2>
           </header>
-          <div className="skills-list">
-            {skillGroups.map((group) => (
-              <article className="skill-row" key={group.title}>
-                <span className="skill-index">{group.index}</span>
-                <div className="skill-copy">
+          <div className="current-list">
+            {skillGroups.map((group, index) => (
+              <article className="current-row" key={group.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
                   <h3>{group.title}</h3>
-                  <p>{group.description}</p>
+                  <p>{group.note}</p>
                 </div>
-                <div className="skill-tags" aria-label={`${group.title} skills`}>
-                  {group.skills.map((skill) => <span key={skill}>{skill}</span>)}
+                <div className="current-tags">
+                  {group.skills.map((skill) => <i key={skill}>{skill}</i>)}
                 </div>
               </article>
             ))}
@@ -96,55 +105,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="selected-work">
-        <div className="project-atmosphere project-atmosphere-one" aria-hidden="true" />
-        <div className="project-atmosphere project-atmosphere-two" aria-hidden="true" />
-        <header className="projects-heading shell">
+      <section className="ocean-projects" id="projects">
+        <div className="project-ridge" aria-hidden="true" />
+        <div className="shell ocean-section-heading projects-intro">
           <div>
-            <p className="eyebrow">Selected projects</p>
-            <h2>Things I built because I wanted them to exist.</h2>
+            <p className="world-kicker">03 / Projects</p>
+            <h2>Things I built<br />out of curiosity.</h2>
           </div>
           <p>
-            Personal, academic, and product work. No mock screenshots—just what
-            each project does, why it matters, and what it took to build.
+            Personal experiments and serious systems, described by what they
+            actually do. Scroll sideways to explore.
           </p>
-        </header>
-
-        <div className="project-shelf-meta shell">
-          <span>01 / 04</span>
-          <span>Scroll to explore</span>
-          <span className="project-shelf-line"><i /></span>
         </div>
 
-        <div className="project-list" aria-label="Selected projects">
+        <div className="ocean-project-track" aria-label="Selected projects">
           {selected.map((project) => (
-            <article className="project-card" key={project.slug}>
-              <header className="project-card-head">
+            <article className="ocean-project-card" key={project.slug}>
+              <header>
                 <div>
+                  <h3>{project.title} <small>{project.year}</small></h3>
                   <p>{project.kicker}</p>
-                  <h3>
-                    {project.title}
-                    <small>{project.year}</small>
-                  </h3>
                 </div>
-                <span className="project-stage">{project.stage}</span>
+                <span>{project.stage}</span>
               </header>
-              <p className="project-description">{project.summary}</p>
-              <p className="project-explanation">{project.solution}</p>
-              <div className="project-tech-list" aria-label={`${project.title} technologies`}>
-                {project.stack.slice(0, 6).map((technology) => (
-                  <span key={technology}>{technology}</span>
-                ))}
+              <p className="ocean-project-summary">{project.summary}</p>
+              <p className="ocean-project-detail">{project.solution}</p>
+              <div className="ocean-tech">
+                {project.stack.slice(0, 7).map((item) => <span key={item}>{item}</span>)}
               </div>
-              <footer className="project-card-links">
-                <Link href={`/work/${project.slug}`}>Read case study <span aria-hidden="true">-&gt;</span></Link>
+              <footer>
+                <Link href={`/work/${project.slug}`}>Case study <span aria-hidden="true">↗</span></Link>
                 {project.links[0] && (
                   <a
                     href={project.links[0].href}
                     target={project.links[0].href.startsWith("http") ? "_blank" : undefined}
                     rel={project.links[0].href.startsWith("http") ? "noreferrer" : undefined}
                   >
-                    {project.links[0].label} <span aria-hidden="true">-&gt;</span>
+                    {project.links[0].label} <span aria-hidden="true">↗</span>
                   </a>
                 )}
               </footer>
@@ -152,36 +149,10 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="projects-all shell">
-          <Link href="/work">View the complete project archive <span aria-hidden="true">-&gt;</span></Link>
+        <div className="shell project-archive-link">
+          <Link href="/work">Open the full project archive <span aria-hidden="true">→</span></Link>
         </div>
       </section>
-
-      <section className="about-strip shell section-block">
-        <p className="eyebrow">How I learn and build</p>
-        <blockquote>
-          Start with the failure boundary. Make the model visible.
-          <em> Add complexity only when the system earns it.</em>
-        </blockquote>
-        <div className="principles-grid">
-          <article>
-            <span>01</span>
-            <h3>Trace the whole path</h3>
-            <p>I like work that crosses boundaries: UI to state, state to network, network to infrastructure.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Prefer evidence</h3>
-            <p>Metrics, source code, failure modes, and tests are more useful than confident adjectives.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Design the explanation</h3>
-            <p>A technically correct system still fails if its interface hides the decisions a person needs to make.</p>
-          </article>
-        </div>
-        <Link className="button button-line" href="/about">More about me</Link>
-      </section>
-    </>
+    </div>
   );
 }

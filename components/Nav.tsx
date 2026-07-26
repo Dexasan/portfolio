@@ -4,9 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/work", label: "Projects" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#top", label: "Home", icon: "⌂" },
+  { href: "/#about", label: "About", icon: "◎" },
+  { href: "/#skills", label: "Skills", icon: "✦" },
+  { href: "/#projects", label: "Projects", icon: "⌘" },
+  { href: "/#contact", label: "Contact", icon: "✉" },
 ];
 
 export default function Nav() {
@@ -15,37 +17,26 @@ export default function Nav() {
   if (pathname === "/cv") return null;
 
   return (
-    <header className="site-header">
-      <div className="nav-shell">
-        <Link href="/" className="wordmark" aria-label="Sandesh Chapagain, home">
-          <span className="wordmark-mark" aria-hidden="true">SC</span>
-          <span className="wordmark-name">Sandesh Chapagain</span>
-        </Link>
+    <>
+      <Link href="/" className="floating-wordmark" aria-label="Sandesh Chapagain, home">
+        <span>SC</span>
+        <strong>Sandesh Chapagain</strong>
+      </Link>
+      <header className="site-header">
         <nav className="nav-links" aria-label="Primary navigation">
-          {links.map(({ href, label }) => {
-            const active =
-              pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
-            return (
-              <Link
-                key={href}
-                href={href}
-                aria-current={active ? "page" : undefined}
-                className={active ? "is-active" : undefined}
-              >
-                {label}
-              </Link>
-            );
-          })}
+          {links.map(({ href, label, icon }) => (
+            <Link
+              key={href}
+              href={href}
+              aria-label={label}
+              data-label={label}
+              className={pathname !== "/" && href === "/#projects" ? "is-active" : undefined}
+            >
+              <span aria-hidden="true">{icon}</span>
+            </Link>
+          ))}
         </nav>
-        <a
-          className="nav-status"
-          href="mailto:sendmailtodex@gmail.com"
-          aria-label="Email Sandesh"
-        >
-          <span aria-hidden="true" />
-          Open to internships &amp; junior roles
-        </a>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

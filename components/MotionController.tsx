@@ -6,7 +6,7 @@ export default function MotionController() {
   useEffect(() => {
     const targets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        ".section-heading, .project-row, .notebook-card, .principles-grid article, .catalog-item, .archive-list a, .case-section, .timeline article, .capability-list article, .contact-channels a",
+        ".about-current-copy, .ocean-section-heading, .current-row, .ocean-project-card, .section-heading, .notebook-card, .principles-grid article, .catalog-item, .archive-list a, .case-section, .timeline article, .capability-list article, .contact-channels a",
       ),
     );
 

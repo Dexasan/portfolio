@@ -57,21 +57,21 @@ export const metadata: Metadata = {
     description:
       "Engineering Sciences student interested in real-time systems, browser media, and backend infrastructure.",
     siteName: "Sandesh Chapagain",
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Sandesh Chapagain portfolio" }],
+    images: [{ url: "/portfolio-world.png", width: 1717, height: 916, alt: "Sandesh Chapagain portfolio world" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sandesh Chapagain — Engineering Student",
     description:
       "Real-time systems, browser media, backend infrastructure, and ambitious software.",
-    images: ["/og.png"],
+    images: ["/portfolio-world.png"],
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f1f4f1",
-  colorScheme: "light",
+  themeColor: "#050816",
+  colorScheme: "dark light",
 };
 
 const personJsonLd = {

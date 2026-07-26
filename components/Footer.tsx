@@ -2,22 +2,24 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="footer-lead">
-        <p className="eyebrow">Have a hard problem?</p>
-        <h2>Let&apos;s make it tractable.</h2>
-        <a className="text-link" href="mailto:sendmailtodex@gmail.com">
+    <footer className="site-footer" id="contact">
+      <div className="footer-wave" aria-hidden="true">
+        <span className="footer-creature"><i /><i /><i /></span>
+      </div>
+      <div className="shell footer-content">
+        <p className="world-kicker">04 / Get in touch</p>
+        <h2>Want to build something<br />a little unusual?</h2>
+        <a className="footer-email" href="mailto:sendmailtodex@gmail.com">
           sendmailtodex@gmail.com <span aria-hidden="true">↗</span>
         </a>
-      </div>
-      <div className="footer-meta">
-        <p>Sandesh Chapagain</p>
-        <p>Engineering Sciences student · Rome</p>
-        <nav aria-label="Footer navigation">
-          <Link href="/work">Work</Link>
-          <Link href="/about">About</Link>
-          <a href="https://github.com/Dexasan">GitHub</a>
-        </nav>
+        <div className="footer-bottom">
+          <p>Sandesh Chapagain · Rome, Italy</p>
+          <nav aria-label="Footer navigation">
+            <a href="https://github.com/Dexasan">GitHub</a>
+            <Link href="/work">Projects</Link>
+            <Link href="/about">About</Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );
