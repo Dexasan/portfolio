@@ -1,10 +1,39 @@
 import Link from "next/link";
-import ProjectVisual from "@/components/ProjectVisual";
-import SystemMap from "@/components/SystemMap";
 import InterestGraphic from "@/components/InterestGraphic";
-import { caseStudies, notebookProjects } from "@/lib/projects";
+import { caseStudies } from "@/lib/projects";
 
 const selected = caseStudies.slice(0, 4);
+
+const skillGroups = [
+  {
+    index: "01",
+    title: "Interfaces",
+    description:
+      "Responsive product interfaces where complex system state stays understandable.",
+    skills: ["React", "Next.js", "TypeScript", "Canvas 2D", "Web APIs"],
+  },
+  {
+    index: "02",
+    title: "Real-time media",
+    description:
+      "Live browser experiences that move video, audio, events, and control state reliably.",
+    skills: ["WebRTC", "WebCodecs", "Socket.io", "WebSockets", "ffmpeg"],
+  },
+  {
+    index: "03",
+    title: "Backend & data",
+    description:
+      "Service boundaries, APIs, persistence, and transaction rules built to survive failure.",
+    skills: ["Fastify", "Node.js", "Python", "SQLite", "Supabase"],
+  },
+  {
+    index: "04",
+    title: "Engineering practice",
+    description:
+      "Making assumptions explicit through models, tests, documentation, and deployment.",
+    skills: ["System design", "API design", "Testing", "Git", "Vercel & Railway"],
+  },
+];
 
 export default function HomePage() {
   return (
@@ -36,93 +65,95 @@ export default function HomePage() {
             <a className="button button-line" href="mailto:sendmailtodex@gmail.com">Start a conversation</a>
           </div>
         </div>
-        <div className="reveal reveal-4">
-          <SystemMap />
+      </section>
+
+      <section className="skills-section">
+        <div className="skills-orb skills-orb-one" aria-hidden="true" />
+        <div className="skills-orb skills-orb-two" aria-hidden="true" />
+        <div className="shell skills-layout">
+          <header className="skills-heading">
+            <p className="eyebrow">Skills &amp; tools</p>
+            <h2>I build across the whole path.</h2>
+            <p>
+              From the interface a person touches to the services, media paths,
+              and data rules underneath it.
+            </p>
+          </header>
+          <div className="skills-list">
+            {skillGroups.map((group) => (
+              <article className="skill-row" key={group.title}>
+                <span className="skill-index">{group.index}</span>
+                <div className="skill-copy">
+                  <h3>{group.title}</h3>
+                  <p>{group.description}</p>
+                </div>
+                <div className="skill-tags" aria-label={`${group.title} skills`}>
+                  {group.skills.map((skill) => <span key={skill}>{skill}</span>)}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="selected-work section-block">
-        <header className="section-heading shell">
+      <section className="selected-work">
+        <div className="project-atmosphere project-atmosphere-one" aria-hidden="true" />
+        <div className="project-atmosphere project-atmosphere-two" aria-hidden="true" />
+        <header className="projects-heading shell">
           <div>
             <p className="eyebrow">Selected projects</p>
-            <h2>Built to be used,<br />not just viewed.</h2>
+            <h2>Things I built because I wanted them to exist.</h2>
           </div>
-          <div className="section-heading-note">
-            <p>
-              A horizontal field of four projects—each one framed by the
-              problem it solves, the system behind it, and the decisions that
-              made it real.
-            </p>
-            <Link className="text-link" href="/work">
-              View every project <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
+          <p>
+            Personal, academic, and product work. No mock screenshots—just what
+            each project does, why it matters, and what it took to build.
+          </p>
         </header>
 
-        <div className="project-shelf-meta shell" aria-hidden="true">
-          <span>01 — 04</span>
+        <div className="project-shelf-meta shell">
+          <span>01 / 04</span>
           <span>Scroll to explore</span>
           <span className="project-shelf-line"><i /></span>
         </div>
 
         <div className="project-list" aria-label="Selected projects">
           {selected.map((project) => (
-            <article className="project-row" key={project.slug}>
-              <div className="project-copy">
-                <div className="project-index">
-                  <span>{project.index}</span>
-                  <span>{project.kicker}</span>
-                  <span>{project.stage}</span>
+            <article className="project-card" key={project.slug}>
+              <header className="project-card-head">
+                <div>
+                  <p>{project.kicker}</p>
+                  <h3>
+                    {project.title}
+                    <small>{project.year}</small>
+                  </h3>
                 </div>
-                <h3><Link href={`/work/${project.slug}`}>{project.title}</Link></h3>
-                <p>{project.summary}</p>
-                <div className="project-card-footer">
-                  <div className="tag-list" aria-label={`${project.title} technologies`}>
-                    {project.stack.slice(0, 4).map((technology) => (
-                      <span key={technology}>{technology}</span>
-                    ))}
-                  </div>
-                  <Link className="project-open" href={`/work/${project.slug}`}>
-                    <span>Open case study</span>
-                    <i aria-hidden="true">↗</i>
-                  </Link>
-                </div>
+                <span className="project-stage">{project.stage}</span>
+              </header>
+              <p className="project-description">{project.summary}</p>
+              <p className="project-explanation">{project.solution}</p>
+              <div className="project-tech-list" aria-label={`${project.title} technologies`}>
+                {project.stack.slice(0, 6).map((technology) => (
+                  <span key={technology}>{technology}</span>
+                ))}
               </div>
-              <Link
-                className="project-visual-link"
-                href={`/work/${project.slug}`}
-                aria-label={`Read the ${project.title} case study`}
-              >
-                <ProjectVisual kind={project.visual} compact />
-              </Link>
-              <span className="project-watermark" aria-hidden="true">{project.index}</span>
+              <footer className="project-card-links">
+                <Link href={`/work/${project.slug}`}>Read case study <span aria-hidden="true">-&gt;</span></Link>
+                {project.links[0] && (
+                  <a
+                    href={project.links[0].href}
+                    target={project.links[0].href.startsWith("http") ? "_blank" : undefined}
+                    rel={project.links[0].href.startsWith("http") ? "noreferrer" : undefined}
+                  >
+                    {project.links[0].label} <span aria-hidden="true">-&gt;</span>
+                  </a>
+                )}
+              </footer>
             </article>
           ))}
         </div>
-      </section>
 
-      <section className="notebook-section">
-        <div className="shell">
-          <header className="section-heading section-heading-light">
-            <div>
-              <p className="eyebrow">Engineering notebook</p>
-              <h2>Smaller systems, specific questions.</h2>
-            </div>
-            <p>
-              These are focused explorations, not inflated startup claims.
-              Each isolates one engineering concern and makes it inspectable.
-            </p>
-          </header>
-          <div className="notebook-grid">
-            {notebookProjects.map((project, index) => (
-              <a className="notebook-card" href={project.href} key={project.name}>
-                <div><span>{String(index + 1).padStart(2, "0")}</span><span>{project.type}</span></div>
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-                <span className="notebook-arrow" aria-hidden="true">↗</span>
-              </a>
-            ))}
-          </div>
+        <div className="projects-all shell">
+          <Link href="/work">View the complete project archive <span aria-hidden="true">-&gt;</span></Link>
         </div>
       </section>
 

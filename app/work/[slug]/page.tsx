@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ProjectVisual from "@/components/ProjectVisual";
 import { caseStudies, getCaseStudy } from "@/lib/projects";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -37,7 +36,7 @@ export default async function CaseStudyPage({ params }: Props) {
   return (
     <article className="case-study">
       <header className="case-hero shell">
-        <Link className="back-link" href="/work">← All work</Link>
+        <Link className="back-link" href="/work">← All projects</Link>
         <div className="case-heading">
           <div>
             <p className="eyebrow">{project.kicker} / {project.year}</p>
@@ -45,7 +44,6 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
           <p>{project.summary}</p>
         </div>
-        <ProjectVisual kind={project.visual} />
         <div className="case-meta">
           <div><span>Status</span><strong>{project.stage}</strong></div>
           <div><span>My role</span><strong>Design + engineering</strong></div>
