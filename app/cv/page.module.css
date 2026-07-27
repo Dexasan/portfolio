@@ -1,0 +1,201 @@
+/* CV — mirrors public/SandeshChapagain_Resume_2026.html so screen, print and PDF agree */
+
+.root {
+  --accent: #a4232c;
+  --ink: #16171a;
+  --body: #33353b;
+  --muted: #6b6d75;
+  --faint: #989aa2;
+  --serif: var(--cv-serif), Georgia, "Times New Roman", serif;
+  --sans: var(--cv-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: var(--cv-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  background: #f3f3f0;
+  min-height: 100vh;
+  padding: 40px 0 64px;
+}
+
+.doc {
+  width: 210mm;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 13mm 15mm;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 14px 44px rgba(0, 0, 0, .07);
+  font-family: var(--sans);
+  font-size: 9.6pt;
+  line-height: 1.35;
+  color: var(--body);
+}
+
+.doc p { margin: 0; }
+
+/* ── header ── */
+
+.name {
+  font-family: var(--serif);
+  font-size: 25pt;
+  font-weight: 700;
+  letter-spacing: -.008em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-size: 10.6pt;
+  font-style: italic;
+  color: var(--muted);
+  margin: 4pt 0 4pt;
+}
+
+.contact {
+  font-family: var(--mono);
+  font-size: 7.8pt;
+  color: var(--muted);
+  letter-spacing: -.015em;
+}
+
+.contact a { color: inherit; text-decoration: none; }
+.contactLinks { margin-top: 2pt; }
+.contactLinks a { color: var(--accent); }
+.sep { color: #cfcfd4; margin: 0 5pt; }
+
+.ruleTop { height: 1px; background: #e6e6e2; margin-top: 7pt; clear: both; }
+
+/* ── portrait ── */
+
+.photo {
+  float: right;
+  width: 24mm;
+  height: 30mm;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border-radius: 2.5pt;
+  border: .75pt solid #e3e3df;
+  margin: 1pt 0 5pt 8mm;
+}
+
+/* ── links ── */
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(164, 35, 44, .38);
+  text-decoration-thickness: .5pt;
+  text-underline-offset: 2px;
+}
+
+/* ── section label ── */
+
+.section {
+  font-family: var(--mono);
+  font-size: 7.2pt;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 9.5pt 0 4.5pt;
+}
+
+/* ── entry heads ── */
+
+.head { display: block; overflow: hidden; }
+
+.title {
+  font-family: var(--serif);
+  font-size: 10.8pt;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -.004em;
+}
+
+.at { font-weight: 400; font-style: italic; color: var(--muted); }
+
+.date {
+  float: right;
+  margin-left: 12pt;
+  font-family: var(--mono);
+  font-size: 7.8pt;
+  color: var(--faint);
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+.org { font-size: 9.2pt; color: var(--muted); margin-bottom: 3.5pt; }
+
+/* ── lists ── */
+
+.list { list-style: none; padding: 0; margin: 0; }
+
+.list li {
+  position: relative;
+  padding-left: 10pt;
+  margin-bottom: 2.2pt;
+}
+
+.list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #c8c8cd;
+}
+
+.list li:last-child { margin-bottom: 0; }
+
+.doc strong { font-weight: 600; color: var(--ink); }
+
+.stack { font-family: var(--mono); font-size: 7.2pt; color: var(--faint); }
+
+.entry { margin-bottom: 7pt; break-inside: avoid; }
+.job { margin-bottom: 5pt; break-inside: avoid; }
+.job:last-child, .entry:last-child { margin-bottom: 0; }
+
+/* ── skills ── */
+
+.row {
+  display: grid;
+  grid-template-columns: 70pt 1fr;
+  gap: 8pt;
+  padding: 2.2pt 0;
+  border-bottom: 1px solid #f2f2ef;
+}
+
+.row:last-child { border-bottom: none; }
+
+.key {
+  font-family: var(--mono);
+  font-size: 7.2pt;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-top: 1.4pt;
+}
+
+/* ── responsive ── */
+
+@media (max-width: 760px) {
+  .root { padding: 0; background: #fff; }
+
+  .doc {
+    width: 100%;
+    padding: 22px 18px;
+    box-shadow: none;
+    font-size: 11.5pt;
+    line-height: 1.5;
+  }
+
+  .row { grid-template-columns: 1fr; gap: 1pt; }
+}
+
+/* ── print ── */
+
+@media print {
+  @page { size: A4; margin: 12mm 15mm; }
+
+  .root { padding: 0; background: #fff; }
+  .doc { width: auto; padding: 0; box-shadow: none; }
+
+  :global(.no-print) { display: none !important; }
+}

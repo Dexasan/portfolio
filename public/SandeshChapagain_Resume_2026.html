@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sandesh Chapagain — Resume</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #a4232c;
+    --ink: #16171a;
+    --body: #33353b;
+    --muted: #6b6d75;
+    --faint: #989aa2;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  body { background: #f3f3f0; padding: 40px 0 64px; }
+
+  .doc {
+    width: 210mm;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 13mm 15mm;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 14px 44px rgba(0,0,0,.07);
+    font-family: var(--sans);
+    font-size: 9.6pt;
+    line-height: 1.35;
+    color: var(--body);
+    font-feature-settings: "kern", "liga";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* header */
+  .name {
+    font-family: var(--serif); font-size: 25pt; font-weight: 700;
+    letter-spacing: -.008em; color: var(--ink); line-height: 1;
+  }
+  .tagline { font-family: var(--serif); font-size: 10.6pt; font-style: italic; color: var(--muted); margin: 4pt 0 4pt; }
+  .contact { font-family: var(--mono); font-size: 7.8pt; color: var(--muted); letter-spacing: -.015em; }
+  .contact.links { margin-top: 2pt; }
+  .contact.links a { color: var(--accent); }
+  .contact .sep { color: #cfcfd4; margin: 0 5pt; }
+  .rule-top { height: 1px; background: #e6e6e2; margin-top: 7pt; clear: both; }
+
+  /* portrait */
+  .photo {
+    float: right;
+    width: 24mm;
+    height: 30mm;
+    object-fit: cover;
+    object-position: 50% 22%;
+    border-radius: 2.5pt;
+    border: .75pt solid #e3e3df;
+    margin: 1pt 0 5pt 8mm;
+  }
+
+  /* links */
+  a { color: inherit; text-decoration: none; }
+  a.link {
+    text-decoration: underline;
+    text-decoration-color: rgba(164, 35, 44, .38);
+    text-decoration-thickness: .5pt;
+    text-underline-offset: 2px;
+  }
+
+  /* section label */
+  .section {
+    font-family: var(--mono); font-size: 7.2pt; font-weight: 500; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent); margin: 9.5pt 0 4.5pt;
+  }
+
+  /* entry heads */
+  .head { display: block; overflow: hidden; }
+  .date { float: right; margin-left: 12pt; }
+  .title { font-family: var(--serif); font-size: 10.8pt; font-weight: 600; color: var(--ink); letter-spacing: -.004em; }
+  .title .at { font-weight: 400; font-style: italic; color: var(--muted); }
+  .date { font-family: var(--mono); font-size: 7.8pt; color: var(--faint); white-space: nowrap; line-height: 1.6; }
+  .org { font-size: 9.2pt; color: var(--muted); margin-bottom: 3.5pt; }
+
+  /* lists */
+  ul { list-style: none; }
+  li { position: relative; padding-left: 10pt; margin-bottom: 2.2pt; }
+  li::before { content: "•"; position: absolute; left: 0; color: #c8c8cd; }
+  li:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; color: var(--ink); }
+  .stack { font-family: var(--mono); font-size: 7.2pt; color: var(--faint); }
+
+  .entry { margin-bottom: 7pt; break-inside: avoid; }
+  .job { margin-bottom: 5pt; break-inside: avoid; }
+  .job:last-child, .entry:last-child { margin-bottom: 0; }
+
+  /* skills */
+  .row { display: grid; grid-template-columns: 70pt 1fr; gap: 8pt; padding: 2.2pt 0; border-bottom: 1px solid #f2f2ef; }
+  .row:last-child { border-bottom: none; }
+  .key {
+    font-family: var(--mono); font-size: 7.2pt; font-weight: 500; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--faint); padding-top: 1.4pt;
+  }
+
+  @media (max-width: 760px) {
+    body { padding: 0; background: #fff; }
+    .doc { width: 100%; padding: 22px 18px; box-shadow: none; font-size: 11.5pt; line-height: 1.5; }
+    .row { grid-template-columns: 1fr; gap: 1pt; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 12mm 15mm; }
+    body { background: #fff; padding: 0; }
+    .doc { width: auto; padding: 0; box-shadow: none; }
+    .contact.links a { color: var(--accent); }
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+
+  <img class="photo" src="sandesh.jpg" alt="Sandesh Chapagain">
+  <h1 class="name">SANDESH CHAPAGAIN</h1>
+  <p class="tagline">Backend &amp; Infrastructure Engineer &nbsp;·&nbsp; Real-time media and distributed systems</p>
+  <p class="contact">
+    <a href="mailto:sendmailtodex@gmail.com">sendmailtodex@gmail.com</a><span class="sep">·</span><a href="tel:+393445946149">(+39) 344 594 6149</a><span class="sep">·</span>Rome, Italy<span class="sep">·</span>Open to relocation
+  </p>
+  <p class="contact links">
+    <a class="link" href="https://iamdex.xyz">iamdex.xyz</a><span class="sep">·</span><a class="link" href="https://github.com/Dexasan">github.com/Dexasan</a>
+  </p>
+  <div class="rule-top"></div>
+
+  <p class="section">Profile</p>
+  <p>
+    Backend and infrastructure engineer working on real-time media. Founder and sole engineer of
+    <strong>Ditch</strong>, a browser-based streaming studio in production that composes, encodes and
+    goes live to YouTube, Twitch, TikTok and Kick from a single tab. I also build small, inspectable
+    systems tools in the open. Second-year Engineering Sciences at Tor Vergata, looking for
+    infrastructure and product engineering roles.
+  </p>
+
+  <p class="section">Selected Work</p>
+  <div class="entry">
+    <div class="head">
+      <span class="date">Jan 2026 – Present</span>
+      <span class="title"><a class="link" href="https://ditchlive.app">Ditch</a> <span class="at">— Browser-Based Live Streaming Studio</span></span>
+    </div>
+    <p class="org">Founder &amp; Sole Engineer · Startcup Lazio 2026 · Live in production</p>
+    <ul>
+      <li><strong>Studio in the browser:</strong> canvas compositor with scenes, layers and a live
+        preview, holding 30fps even with the tab backgrounded — no install, no hardware encoder.</li>
+      <li><strong>Encode once, push everywhere:</strong> WebCodecs H.264/Opus encoding streamed to a
+        custom relay that fans out to four platforms through ffmpeg; one destination failing never
+        drops the others.</li>
+      <li><strong>Platform:</strong> Fastify API, Socket.io realtime layer, Supabase Postgres with RLS —
+        a TypeScript monorepo of four services on Vercel and Railway.</li>
+      <li><strong>Reliability:</strong> bounded upload buffer with ffmpeg backpressure, single-flight
+        auto-reconnect, and local JWT verification that kept traffic serving through an auth outage.</li>
+    </ul>
+  </div>
+
+  <p class="section">Open Source</p>
+  <ul>
+    <li><strong><a class="link" href="https://github.com/Dexasan/PulseForge">PulseForge</a></strong> — durable job orchestration with retries, idempotency and dead letters. <span class="stack">TypeScript</span></li>
+    <li><strong><a class="link" href="https://github.com/Dexasan/SignalScope">SignalScope</a></strong> — WebRTC observability: quality scoring and anomaly diagnosis. <span class="stack">TypeScript</span></li>
+    <li><strong><a class="link" href="https://github.com/Dexasan/DriftSafe">DriftSafe</a></strong> — static risk analysis for PostgreSQL migrations, SARIF output for CI. <span class="stack">Python</span></li>
+    <li><strong><a class="link" href="https://github.com/Dexasan/CanaryKit">CanaryKit</a></strong> — feature flags with deterministic bucketing and explainable decisions. <span class="stack">TypeScript</span></li>
+    <li><strong><a class="link" href="https://github.com/Dexasan/LocalLens">LocalLens</a></strong> — citation-first local retrieval, hybrid ranking, no cloud calls. <span class="stack">TypeScript</span></li>
+    <li><strong><a class="link" href="https://github.com/Dexasan/VerityLedger">VerityLedger</a></strong> — double-entry ledger: integer money, hash-chained audit log. <span class="stack">Python</span></li>
+    <li><strong><a class="link" href="https://arch-scale-lac.vercel.app">ArchScale</a></strong> — capacity planning for throughput, storage, topology and cost. <span class="stack">TypeScript</span></li>
+    <li><strong><a class="link" href="https://roadrash-rho.vercel.app">Roadrash</a></strong> — pseudo-3D browser racer on Canvas 2D, no game engine. <span class="stack">TypeScript</span></li>
+  </ul>
+
+  <p class="section">Experience</p>
+
+  <div class="job">
+    <div class="head">
+      <span class="date">Jun – Nov 2024</span>
+      <span class="title">Network Support Intern <span class="at">· Intrasoft Networking Solutions, Nepal</span></span>
+    </div>
+    <p>Diagnosed client network faults, monitored with Wireshark and Nagios, configured routers and switches.</p>
+  </div>
+
+  <div class="job">
+    <div class="head">
+      <span class="date">Jul 2023 – Jun 2024</span>
+      <span class="title">Marketing &amp; Growth Manager <span class="at">· Pathik Gyan Niketan, Nepal</span></span>
+    </div>
+    <p>Digital presence across three platforms; Meta and Google Ads campaigns with ROI tracking.</p>
+  </div>
+
+  <div class="job">
+    <div class="head">
+      <span class="date">Aug 2022 – Jun 2023</span>
+      <span class="title">Co-creator &amp; Growth Lead <span class="at">· BarcaBuzz</span></span>
+    </div>
+    <p>Grew a football community to 100K+ followers organically on a tracked, A/B tested content pipeline.</p>
+  </div>
+
+  <p class="section">Education</p>
+  <div class="head">
+      <span class="date">Dec 2024 – Present</span>
+      <span class="title">B.Sc. Engineering Sciences <span class="at">· Università di Roma Tor Vergata</span></span>
+    </div>
+  <p class="org">Year 2 of 3 · Mathematics, Physics, Electronics, Computing, Control Systems</p>
+
+  <p class="section">Technical Skills</p>
+  <div class="row"><span class="key">Languages</span><span>TypeScript · JavaScript · Python · SQL · Go and C (foundational)</span></div>
+  <div class="row"><span class="key">Real-time</span><span>WebRTC · WebCodecs · RTMP · ffmpeg · Canvas API · Web Workers · WebSockets</span></div>
+  <div class="row"><span class="key">Backend</span><span>Node.js · Fastify · Socket.io · PostgreSQL · Supabase (Auth, RLS) · REST · JWT</span></div>
+  <div class="row"><span class="key">Frontend</span><span>Next.js (App Router) · React · Zustand · Tailwind CSS</span></div>
+  <div class="row"><span class="key">Infra</span><span>Docker · Railway · Vercel · Turborepo · GitHub Actions · Git · Linux</span></div>
+  <div class="row"><span class="key">Spoken</span><span>Nepali (native) · English (C2) · Hindi (C2) · Italian (B1)</span></div>
+
+</main>
+</body>
+</html>

@@ -1,164 +1,255 @@
-import Link from "next/link";
-import TransmissionField from "@/components/TransmissionField";
-import { caseStudies } from "@/lib/projects";
+import Link from 'next/link';
 
-const selected = caseStudies.slice(0, 4);
+export const metadata = {
+  title: 'Sandesh Chapagain — Infrastructure Engineer',
+  description:
+    'Second year engineering at Tor Vergata. I spend most of my time building real-time systems and streaming architectures. The current one is Ditch. Went live in January and it is still running.',
+};
 
-const skillGroups = [
+function CwLine({ n, children }: { n: number; children: React.ReactNode }) {
+  return (
+    <div className="cw-line">
+      <span className="cw-ln">{n}</span>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function CodeWindow() {
+  return (
+    <div className="code-window" aria-hidden="true">
+      <div className="cw-header">
+        <span className="font-mono text-[9.5px] tracking-[0.04em]" style={{ color: 'oklch(52% 0.007 258)' }}>
+          relay/server.ts
+        </span>
+        <span className="font-mono text-[9.5px] tracking-[0.04em]" style={{ color: 'oklch(40% 0.007 258)' }}>
+          TypeScript
+        </span>
+      </div>
+      <div className="cw-body font-mono text-[11px] leading-[1.72]">
+        <CwLine n={1}><span className="tok-cmt">{'// '}</span><span style={{ color: '#FF1DB4', fontStyle: 'italic' }}>{'ditch'}</span><span className="tok-cmt">{' · relay engine'}</span></CwLine>
+        <CwLine n={2}><span className="tok-kw">import</span><span className="tok-txt">{' { RTMPServer } '}</span><span className="tok-kw">from</span><span className="tok-str">{" './rtmp'"}</span></CwLine>
+        <CwLine n={3}><span className="tok-txt">&nbsp;</span></CwLine>
+        <CwLine n={4}><span className="tok-kw">const</span><span className="tok-txt">{' KEYS = {'}</span></CwLine>
+        <CwLine n={5}><span className="tok-txt">{'  '}</span><span className="tok-prop">twitch</span><span className="tok-txt">{':  env.'}</span><span className="tok-fn">TWITCH_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={6}><span className="tok-txt">{'  '}</span><span className="tok-prop">youtube</span><span className="tok-txt">{': env.'}</span><span className="tok-fn">YT_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={7}><span className="tok-txt">{'  '}</span><span className="tok-prop">tiktok</span><span className="tok-txt">{':  env.'}</span><span className="tok-fn">TIKTOK_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={8}><span className="tok-txt">{'  '}</span><span className="tok-prop">kick</span><span className="tok-txt">{':    env.'}</span><span className="tok-fn">KICK_KEY</span><span className="tok-txt">{','}</span></CwLine>
+        <CwLine n={9}><span className="tok-txt">{'}'}</span></CwLine>
+        <CwLine n={10}><span className="tok-txt">&nbsp;</span></CwLine>
+        <CwLine n={11}><span className="tok-txt">relay.</span><span className="tok-fn">on</span><span className="tok-txt">{'('}</span><span className="tok-str">{'\'publish\''}</span><span className="tok-txt">{', (s) => {'}</span></CwLine>
+        <CwLine n={12}><span className="tok-txt">{'  s.'}</span><span className="tok-fn">fanout</span><span className="tok-txt">{'(KEYS)'}</span></CwLine>
+        <CwLine n={13}><span className="tok-txt">{'  '}</span><span className="tok-cmt">{'// → 4 platforms'}</span></CwLine>
+        <CwLine n={14}><span className="tok-txt">{'})'}</span></CwLine>
+      </div>
+    </div>
+  );
+}
+
+function SigRow({
+  label,
+  pct,
+  status,
+}: {
+  label: string;
+  pct: number;
+  status: 'active' | 'wip';
+}) {
+  const isActive = status === 'active';
+  const color = isActive ? 'var(--color-signal)' : 'var(--color-amber)';
+
+  return (
+    <div className="px-4 py-3 border-b border-border last:border-b-0">
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-mono text-[9.5px] font-medium tracking-[0.05em] uppercase text-muted">
+          {label}
+        </span>
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-[9px] text-dim">{pct}%</span>
+          <span className="font-mono text-[8.5px] font-semibold" style={{ color }}>
+            {isActive ? '● Active' : '○ WIP'}
+          </span>
+        </div>
+      </div>
+      <div
+        className="h-[2px] rounded-full overflow-hidden"
+        style={{ background: 'var(--color-border)' }}
+        aria-hidden="true"
+      >
+        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color }} />
+      </div>
+    </div>
+  );
+}
+
+const featured = [
   {
-    title: "Interfaces",
-    note: "Making complex systems feel simple to use.",
-    skills: ["React", "Next.js", "TypeScript", "Canvas 2D", "Web APIs"],
+    slug: 'ditch',
+    name: 'Ditch',
+    statusLabel: 'Live',
+    statusColor: 'var(--color-accent)',
+    href: 'https://ditch-web-drab.vercel.app',
+    external: true,
+    description:
+      'Cross-platform live streaming architecture. One RTMP ingest fans out simultaneously to Twitch, YouTube, TikTok, and Kick.',
+    tags: ['Node.js', 'RTMP', 'ffmpeg', 'WebRTC', 'Supabase'],
   },
   {
-    title: "Live media",
-    note: "Moving video, audio, and state through the browser.",
-    skills: ["WebRTC", "WebCodecs", "Socket.io", "WebSockets", "ffmpeg"],
-  },
-  {
-    title: "Backend & data",
-    note: "Services and rules that hold up when things fail.",
-    skills: ["Fastify", "Node.js", "Python", "SQLite", "Supabase"],
-  },
-  {
-    title: "Engineering",
-    note: "Turning assumptions into models, tests, and deployable work.",
-    skills: ["System design", "API design", "Testing", "Git", "Vercel", "Railway"],
+    slug: 'ditch-studio',
+    name: 'Ditch Studio',
+    statusLabel: 'In progress',
+    statusColor: 'var(--color-amber)',
+    href: '/work/ditch-studio',
+    external: false,
+    description:
+      'Browser-native OBS alternative. Canvas compositor, scene switching, WebRTC capture, audio mixing. Zero install.',
+    tags: ['Canvas API', 'WebRTC', 'Next.js', 'Web Audio'],
   },
 ];
 
 export default function HomePage() {
   return (
-    <div className="portfolio-home">
-      <TransmissionField />
-      <section className="world-hero" id="top">
-        <div className="world-sheen" aria-hidden="true" />
-        <div className="world-constellation constellation-one" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="world-constellation constellation-two" aria-hidden="true"><i /><i /><i /></div>
-        <div className="shell world-copy">
-          <p className="world-greeting reveal reveal-1">Hi there! I&apos;m—</p>
-          <h1 className="reveal reveal-2">Sandesh<br /><span>Chapagain.</span></h1>
-          <p className="world-role reveal reveal-3">
-            Engineering Sciences student building playful interfaces,
-            real-time media, and reliable systems.
-          </p>
-          <div className="world-actions reveal reveal-4">
-            <a href="#projects">Dive into projects</a>
-            <a href="mailto:sendmailtodex@gmail.com">Say hello</a>
-          </div>
-        </div>
-        <a className="dive-cue" href="#about">
-          <span>Scroll to dive</span>
-          <i aria-hidden="true">↓</i>
-        </a>
-      </section>
+    <>
+      {/* ── HERO ── */}
+      <section
+        className="hero-grid flex flex-col pt-16 relative overflow-hidden"
+        style={{ minHeight: '100dvh' }}
+        aria-label="Introduction"
+      >
+        {/* DITCH brand glow — mirrors ditchlive.app hero atmosphere */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute"
+          style={{
+            top: '10%',
+            right: '-10%',
+            width: '520px',
+            height: '520px',
+            borderRadius: '50%',
+            background: '#FF1DB4',
+            opacity: 0.055,
+            filter: 'blur(110px)',
+          }}
+        />
+        <div className="flex-1 flex items-center py-16 px-5 sm:px-8">
+          <div className="max-w-[1100px] mx-auto w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 lg:items-start">
 
-      <section className="ocean-about" id="about">
-        <div className="ocean-ridge ridge-top" aria-hidden="true" />
-        <div className="jelly-field" aria-hidden="true">
-          <span className="moon-jelly jelly-one"><i /><i /><i /><i /></span>
-          <span className="moon-jelly jelly-two"><i /><i /><i /><i /></span>
-          <span className="moon-jelly jelly-three"><i /><i /><i /><i /></span>
-        </div>
-        <div className="shell about-current">
-          <p className="world-kicker">01 / About me</p>
-          <div className="about-current-copy">
-            <h2>I like software you can <em>feel</em> working.</h2>
-            <div>
-              <p>
-                I&apos;m Sandesh, from Chitwan, Nepal, and now an international
-                Engineering Sciences student in Rome. I learn by following a
-                system end to end—from the interface, through state and
-                networks, down to the runtime underneath.
-              </p>
-              <p>
-                Most of that curiosity is going into Ditch: a browser-native
-                live studio for composing a show, bringing viewers on screen,
-                and sending one broadcast to multiple platforms.
-              </p>
-              <Link href="/about">More of my story <span aria-hidden="true">→</span></Link>
+              {/* Left: Identity */}
+              <div className="lg:pt-6">
+                <p className="section-label anim-up" style={{ animationDelay: '0.05s' }}>
+                  Infrastructure Engineer
+                </p>
+                <h1
+                  className="font-extrabold leading-[1.0] tracking-[-0.04em] text-text anim-up"
+                  style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)', animationDelay: '0.12s' }}
+                >
+                  Sandesh<br />Chapagain
+                </h1>
+                <p
+                  className="text-[15px] text-muted leading-[1.8] mt-6 max-w-[460px] anim-up"
+                  style={{ animationDelay: '0.22s' }}
+                >
+                  Second year engineering at Tor Vergata. I spend most of my
+                  time building real-time systems and streaming architectures.
+                  The current one is Ditch. Went live in January and it is
+                  still running.
+                </p>
+                <div
+                  className="flex items-center gap-3 mt-8 flex-wrap anim-up"
+                  style={{ animationDelay: '0.32s' }}
+                >
+                  <Link href="/work" className="btn-primary">View work</Link>
+                  <Link href="/contact" className="btn-ghost">Get in touch</Link>
+                </div>
+              </div>
+
+              {/* Right: Code window + Build status */}
+              <div className="flex flex-col gap-3 anim-up" style={{ animationDelay: '0.18s' }}>
+                <CodeWindow />
+
+                <div
+                  className="border border-border rounded-2xl overflow-hidden"
+                  aria-label="Build status"
+                >
+                  <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-bg-card">
+                    <span className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase text-muted">
+                      Build status
+                    </span>
+                    <span className="font-mono text-[9px] text-dim">Ditch</span>
+                  </div>
+                  <SigRow label="RTMP fanout"       pct={88} status="active" />
+                  <SigRow label="WebRTC pipeline"   pct={92} status="active" />
+                  <SigRow label="Canvas compositor" pct={45} status="wip" />
+                  <SigRow label="Chat aggregator"   pct={22} status="wip" />
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      <section className="ocean-skills" id="skills">
-        <div className="fish-school" aria-hidden="true">
-          <i /><i /><i /><i /><i />
-        </div>
-        <div className="shell">
-          <header className="ocean-section-heading">
-            <p className="world-kicker">02 / Skills &amp; tools</p>
-            <h2>The parts of the ocean<br />I know how to navigate.</h2>
+      {/* ── WORK PREVIEW ── */}
+      <section className="border-t border-border py-24" aria-label="Selected work">
+        <div className="max-w-[1100px] mx-auto px-5 sm:px-8">
+
+          <header className="mb-10">
+            <p className="section-label">Selected work</p>
+            <h2
+              className="font-extrabold leading-tight tracking-[-0.03em] text-text mb-2"
+              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+            >
+              What I&apos;ve shipped.
+            </h2>
+            <p className="text-[14px] text-muted max-w-[380px] leading-[1.75]">
+              Production systems, not exercises. Each one solves a real problem the hard way.
+            </p>
           </header>
-          <div className="current-list">
-            {skillGroups.map((group, index) => (
-              <article className="current-row" key={group.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{group.title}</h3>
-                  <p>{group.note}</p>
+
+          <div className="border border-border rounded-xl overflow-hidden mb-10">
+            {featured.map((p, i) => (
+              <a
+                key={p.slug}
+                href={p.href}
+                {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="featured-row group flex items-start justify-between gap-6 px-7 py-6 border-b border-border last:border-b-0"
+              >
+                <div className="flex items-start gap-5 min-w-0">
+                  <span className="font-mono text-[10px] font-semibold tracking-[0.06em] text-dim flex-shrink-0 mt-0.5">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="min-w-0">
+                    <p
+                      className="font-bold tracking-[-0.02em] text-muted group-hover:text-text mb-1.5"
+                      style={{ fontSize: '15px', transition: 'color 0.15s ease' }}
+                    >
+                      {p.name}
+                    </p>
+                    <p className="text-[12.5px] text-muted leading-[1.7] max-w-[440px]">
+                      {p.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-2.5">
+                      {p.tags.map((t) => (
+                        <span key={t} className="src-tag">{t}</span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="current-tags">
-                  {group.skills.map((skill) => <i key={skill}>{skill}</i>)}
-                </div>
-              </article>
+                <span
+                  className="font-mono text-[9px] font-semibold tracking-[0.06em] uppercase flex-shrink-0 mt-0.5"
+                  style={{ color: p.statusColor }}
+                >
+                  {p.statusLabel}
+                </span>
+              </a>
             ))}
           </div>
+
+          <Link href="/work" className="btn-ghost">View all work</Link>
+
         </div>
       </section>
-
-      <section className="ocean-projects" id="projects">
-        <div className="project-ridge" aria-hidden="true" />
-        <div className="shell ocean-section-heading projects-intro">
-          <div>
-            <p className="world-kicker">03 / Projects</p>
-            <h2>Things I built<br />out of curiosity.</h2>
-          </div>
-          <p>
-            Personal experiments and serious systems, described by what they
-            actually do. Scroll sideways to explore.
-          </p>
-        </div>
-
-        <div className="ocean-project-track" aria-label="Selected projects">
-          {selected.map((project) => (
-            <article className="ocean-project-card" key={project.slug}>
-              <header>
-                <div>
-                  <h3>{project.title} <small>{project.year}</small></h3>
-                  <p>{project.kicker}</p>
-                </div>
-                <span>{project.stage}</span>
-              </header>
-              <p className="ocean-project-summary">{project.summary}</p>
-              <p className="ocean-project-detail">{project.solution}</p>
-              <div className="ocean-tech">
-                {project.stack.slice(0, 7).map((item) => <span key={item}>{item}</span>)}
-              </div>
-              <footer>
-                {project.links[0] && (
-                  <a
-                    href={project.links[0].href}
-                    target={project.links[0].href.startsWith("http") ? "_blank" : undefined}
-                    rel={project.links[0].href.startsWith("http") ? "noreferrer" : undefined}
-                  >
-                    {project.links[0].label} <span aria-hidden="true">↗</span>
-                  </a>
-                )}
-              </footer>
-            </article>
-          ))}
-        </div>
-
-        <div className="shell project-archive-link">
-          <Link href="/work">
-            <span>Open the full</span>
-            <strong>project archive</strong>
-            <span className="archive-arrow" aria-hidden="true">↗</span>
-          </Link>
-        </div>
-      </section>
-    </div>
+    </>
   );
 }

@@ -1,120 +1,162 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: { absolute: "Sandesh Chapagain" },
+export const metadata = {
+  title: 'About — Sandesh Chapagain',
   description:
-    "About Sandesh Chapagain: Engineering Sciences student interested in real-time systems, browser media, and backend infrastructure.",
-  alternates: { canonical: "/about" },
+    'Second-year Engineering Sciences at Tor Vergata. Building real-time systems and streaming architectures. Ditch is the current one, live since January.',
 };
 
 const timeline = [
   {
-    period: "Apr 2026 — now",
-    title: "Building Ditch",
+    period: 'Jan 2025 — Now',
+    role: 'Founder & Engineer',
+    org: 'Ditch',
     detail:
-      "Designing a browser-native live production system across four deployable services: web, API, real-time, and relay.",
+      'Designed and built the complete technical stack alone: RTMP relay engine, WebRTC pipeline, canvas compositor, real-time server, REST API, and browser studio. Monorepo with four apps and two shared packages.',
   },
   {
-    period: "2024 — now",
-    title: "Engineering Sciences, Tor Vergata",
+    period: 'May 2026',
+    role: 'Competition Entry',
+    org: 'Startcup Lazio 2026',
     detail:
-      "Studying the mathematical and physical foundations while building production software independently in Rome.",
+      'Full business submission via Tor Vergata. Executive summary, 12-slide pitch deck with speaker script, Business Model Canvas, market sizing, competitive analysis, revenue model, financial projections.',
   },
   {
-    period: "Jun — Nov 2024",
-    title: "Network Support Intern",
+    period: 'Dec 2024 — Now',
+    role: 'B.Sc Engineering Sciences',
+    org: 'Tor Vergata, Rome',
     detail:
-      "Diagnosed connectivity issues, monitored networks with Wireshark and Nagios, and configured routers, switches, and VoIP systems.",
+      'Calculus, linear algebra, algorithms and data structures, C systems programming (process management, file I/O, memory, BSD sockets). Year 1 of 3.',
   },
   {
-    period: "2022 — 2024",
-    title: "Growth and content systems",
+    period: 'Jun – Nov 2024',
+    role: 'Network Support Intern',
+    org: 'Intrasoft Networking Solutions, Nepal',
     detail:
-      "Worked on repeatable content operations, analytics, and acquisition. BarcaBuzz grew to more than 100,000 followers without paid acquisition.",
+      'Diagnosed and resolved connectivity issues across client systems. Monitored with Wireshark and Nagios, configured routers, switches, and VoIP across multiple sites.',
+  },
+  {
+    period: 'Jul 2023 – Jun 2024',
+    role: 'Marketing & Growth Manager',
+    org: 'Pathik Gyan Niketan, Nepal',
+    detail:
+      'Managed digital presence across Facebook, Instagram, and TikTok. Ran Meta Ads and Google Ads campaigns with ROI tracking via Google Analytics. Produced newsletters and website copy.',
+  },
+  {
+    period: 'Aug 2022 – Jun 2023',
+    role: 'Growth Systems Lead',
+    org: 'BarcaBuzz',
+    detail:
+      '100K+ followers, zero paid spend, approximately 12 months from zero. Structured content pipeline, per-post tracking, A/B testing across format variables, engagement feedback loops.',
   },
 ];
 
-const capabilities = [
-  ["Complete systems", "Follow an idea across interface, state, network, and infrastructure instead of learning each layer in isolation."],
-  ["Browser media", "Canvas composition, WebRTC, WebCodecs, Web Audio, capture APIs, and the failure modes around them."],
-  ["Backend systems", "Typed Node.js services, authorization boundaries, real-time state, PostgreSQL, and media relays."],
-  ["Technical communication", "Architecture notes, explicit tradeoffs, testable models, and interfaces that explain their own behavior."],
+const stack = [
+  { label: 'LANGUAGE',   items: 'TypeScript · JavaScript · C' },
+  { label: 'RUNTIME',    items: 'Node.js · Browser APIs' },
+  { label: 'FRAMEWORK',  items: 'Next.js · Fastify · Socket.io' },
+  { label: 'REALTIME',   items: 'WebRTC · RTMP · ffmpeg · Agora SDK' },
+  { label: 'DATA',       items: 'Supabase · PostgreSQL' },
+  { label: 'INFRA',      items: 'Railway · Vercel · Docker · Turborepo' },
+  { label: 'NETWORKING', items: 'TCP/IP · Wireshark · Nagios · Windows Server' },
+  { label: 'ANALYTICS',  items: 'Google Analytics · Meta Ads · Google Ads' },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="page-shell shell">
-      <header className="about-hero">
-        <p className="eyebrow">About / Sandesh Chapagain</p>
-        <h1>Curious enough to cross the boundary.</h1>
-        <div>
-          <p>
-            I&apos;m an Engineering Sciences student at Università degli Studi
-            di Roma Tor Vergata. I&apos;m drawn to
-            systems where the interface and infrastructure cannot be designed
-            separately.
-          </p>
-          <p>
-            That has led me into browser media, real-time communication,
-            streaming infrastructure, and tools that make technical decisions
-            easier to understand. Ditch is the largest expression of that work:
-            one product spanning media capture, composition, signaling,
-            authorization, and delivery.
-          </p>
-        </div>
-      </header>
+    <div className="pt-16" style={{ minHeight: '100dvh' }}>
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-16 lg:gap-20 items-start">
 
-      <section className="about-statement">
-        <span aria-hidden="true">“</span>
-        <blockquote>
-          The part I enjoy most is finding the boundary that makes a hard
-          system understandable, then building the path through it.
-        </blockquote>
-      </section>
+          {/* LEFT: Identity + Bio + CTAs */}
+          <div>
+            <p className="section-label">About</p>
+            <h1
+              className="font-extrabold leading-[1.0] tracking-[-0.04em] text-text"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
+            >
+              Sandesh<br />Chapagain
+            </h1>
+            <p className="font-mono text-[10px] font-semibold tracking-[0.07em] uppercase text-muted mt-4 mb-10">
+              Backend Engineer · Rome, Italy
+            </p>
 
-      <section className="about-grid">
-        <div>
-          <p className="eyebrow">Timeline</p>
-          <div className="timeline">
-            {timeline.map((item) => (
-              <article key={item.period}>
-                <span>{item.period}</span>
-                <div><h2>{item.title}</h2><p>{item.detail}</p></div>
-              </article>
-            ))}
+            <div className="flex flex-col gap-5 max-w-[520px]">
+              <p className="text-[15px] text-muted leading-[1.78]">
+                Second-year Engineering Sciences at Tor Vergata. I spend most of
+                my time building real-time systems and streaming architectures.
+                Ditch is the current one — I started it and built the whole stack
+                myself: RTMP relay engine, WebRTC pipeline, canvas compositor,
+                real-time server, REST API, browser studio. Live since January.
+              </p>
+              <p className="text-[15px] text-muted leading-[1.78]">
+                Before writing production code I ran growth systems for BarcaBuzz — a
+                football community I took from zero to 100K+ followers without paid
+                spend. The key insight: save rate predicts long-tail reach better than
+                immediate engagement. Optimizing for the right metric changes what you
+                build. That principle now drives every architectural decision in Ditch.
+              </p>
+              <p className="text-[15px] text-muted leading-[1.78]">
+                Looking for early-stage infrastructure and product engineering roles
+                where the problems are genuinely hard and the systems actually need
+                to work.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 mt-10 flex-wrap">
+              <Link href="/contact" className="btn-primary">Get in touch</Link>
+              <a href="/SandeshChapagain_Resume_2026.pdf" download className="btn-ghost">Download CV</a>
+              <Link href="/work" className="btn-ghost">View work</Link>
+            </div>
+          </div>
+
+          {/* RIGHT: Timeline + Stack */}
+          <div>
+
+            <p className="section-label">Timeline</p>
+            <div className="flex flex-col">
+              {timeline.map(({ period, role, org, detail }) => (
+                <div
+                  key={org}
+                  className="border-t border-border pt-4 pb-5"
+                >
+                  <p className="font-mono text-[9.5px] font-semibold tracking-[0.08em] uppercase text-muted mb-1">
+                    {period}
+                  </p>
+                  <p className="text-[13px] font-bold text-text leading-tight mb-0.5">
+                    {role}
+                  </p>
+                  <p
+                    className="font-mono text-[10px] font-semibold tracking-[0.05em] mb-2.5"
+                    style={{ color: 'var(--color-accent)' }}
+                  >
+                    {org}
+                  </p>
+                  <p className="text-[12px] text-muted leading-[1.7]">{detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="section-label mt-8">Stack</p>
+            <div className="flex flex-col">
+              {stack.map(({ label, items }) => (
+                <div
+                  key={label}
+                  className="grid grid-cols-[88px_1fr] gap-3 border-t border-border py-2.5"
+                >
+                  <span className="font-mono text-[9px] font-bold tracking-[0.08em] uppercase text-muted pt-px">
+                    {label}
+                  </span>
+                  <span className="font-mono text-[11px] text-muted leading-[1.6]">
+                    {items}
+                  </span>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
-        <aside>
-          <p className="eyebrow">What I&apos;m exploring</p>
-          <div className="capability-list">
-            {capabilities.map(([title, detail], index) => (
-              <article key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h2>{title}</h2>
-                <p>{detail}</p>
-              </article>
-            ))}
-          </div>
-        </aside>
-      </section>
-
-      <section className="now-section">
-        <div>
-          <p className="eyebrow">Now</p>
-          <h2>Building, studying, and looking for a team with difficult problems.</h2>
-        </div>
-        <p>
-          I&apos;m based in Rome and open to internships, junior engineering
-          roles, and collaborations around infrastructure or real-time media.
-          I want to learn with teams that care about both the system and the
-          person using it.
-        </p>
-        <div>
-          <Link className="button button-dark" href="/contact">Get in touch</Link>
-          <Link className="button button-line" href="/work">Review the work</Link>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
