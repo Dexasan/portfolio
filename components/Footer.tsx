@@ -1,30 +1,32 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 export default function Footer() {
-  const pathname = usePathname();
-  if (pathname === "/cv" || pathname === "/deck") return null;
-
+  const path = usePathname();
+  if (path === "/cv" || path === "/deck") return null;
   return (
     <footer className="site-footer" id="contact">
-      <div className="footer-wave" aria-hidden="true">
-        <span className="footer-creature"><i /><i /><i /></span>
-      </div>
-      <div className="shell footer-content">
-        <p className="world-kicker">04 / Get in touch</p>
-        <h2>Want to build something<br />a little unusual?</h2>
-        <a className="footer-email" href="mailto:sendmailtodex@gmail.com">
-          sendmailtodex@gmail.com <span aria-hidden="true">↗</span>
+      <div className="shell">
+        <div className="footer-top">
+          <p className="eyebrow">An open invitation</p>
+          <span>ROME, ITALY / OPEN TO COLLABORATION</span>
+        </div>
+        <a className="footer-invitation" href="mailto:sendmailtodex@gmail.com">
+          MAKE SOMETHING
+          <br />
+          <em>worth making.</em>
+          <span aria-hidden="true">↗</span>
         </a>
         <div className="footer-bottom">
-          <p>Sandesh Chapagain · Rome, Italy</p>
+          <a href="mailto:sendmailtodex@gmail.com">
+            sendmailtodex@gmail.com ↗
+          </a>
           <nav aria-label="Footer navigation">
-            <a href="https://github.com/Dexasan">GitHub</a>
-            <Link href="/work">Projects</Link>
-            <Link href="/about">About</Link>
+            <a href="https://github.com/Dexasan">GitHub ↗</a>
+            <Link href="/cv">Résumé ↗</Link>
+            <Link href="/about">About me ↗</Link>
           </nav>
+          <p>© 2026 SANDESH CHAPAGAIN</p>
         </div>
       </div>
     </footer>

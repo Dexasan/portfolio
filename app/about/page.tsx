@@ -1,118 +1,106 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-
 export const metadata: Metadata = {
-  title: { absolute: "Sandesh Chapagain" },
+  title: "The person",
   description:
-    "About Sandesh Chapagain: Engineering Sciences student interested in real-time systems, browser media, and backend infrastructure.",
+    "From Chitwan to Rome. Sandesh Chapagain is an Engineering Sciences student building Yappie, DITCH, and independent software.",
   alternates: { canonical: "/about" },
 };
-
 const timeline = [
   {
-    period: "Apr 2026 — now",
-    title: "Building Ditch",
+    when: "2026 — NOW",
+    title: "Building Yappie & DITCH",
     detail:
-      "Designing a browser-native live production system across four deployable services: web, API, real-time, and relay.",
+      "A mobile social app and a browser production studio. Two ongoing projects about bringing people into the same conversation.",
   },
   {
-    period: "2024 — now",
+    when: "2024 — NOW",
     title: "Engineering Sciences, Tor Vergata",
     detail:
-      "Studying the mathematical and physical foundations while building production software independently in Rome.",
+      "Studying in Rome while learning through independent software projects.",
   },
   {
-    period: "Jun — Nov 2024",
-    title: "Network Support Intern",
+    when: "JUN — NOV 2024",
+    title: "Network support internship",
     detail:
-      "Diagnosed connectivity issues, monitored networks with Wireshark and Nagios, and configured routers, switches, and VoIP systems.",
+      "Connectivity troubleshooting, network monitoring, and work with routers, switches, and VoIP systems.",
   },
   {
-    period: "2022 — 2024",
-    title: "Growth and content systems",
+    when: "2022 — 2024",
+    title: "Content & community",
     detail:
-      "Worked on repeatable content operations, analytics, and acquisition. BarcaBuzz grew to more than 100,000 followers without paid acquisition.",
+      "Working on content operations and growth at BarcaBuzz, before software became the main focus.",
   },
 ];
-
-const capabilities = [
-  ["Complete systems", "Follow an idea across interface, state, network, and infrastructure instead of learning each layer in isolation."],
-  ["Browser media", "Canvas composition, WebRTC, WebCodecs, Web Audio, capture APIs, and the failure modes around them."],
-  ["Backend systems", "Typed Node.js services, authorization boundaries, real-time state, PostgreSQL, and media relays."],
-  ["Technical communication", "Architecture notes, explicit tradeoffs, testable models, and interfaces that explain their own behavior."],
-];
-
 export default function AboutPage() {
   return (
-    <div className="page-shell shell">
-      <header className="about-hero">
-        <p className="eyebrow">About / Sandesh Chapagain</p>
-        <h1>Curious enough to cross the boundary.</h1>
-        <div>
-          <p>
-            I&apos;m an Engineering Sciences student at Università degli Studi
-            di Roma Tor Vergata. I&apos;m drawn to
-            systems where the interface and infrastructure cannot be designed
-            separately.
-          </p>
-          <p>
-            That has led me into browser media, real-time communication,
-            streaming infrastructure, and tools that make technical decisions
-            easier to understand. Ditch is the largest expression of that work:
-            one product spanning media capture, composition, signaling,
-            authorization, and delivery.
-          </p>
-        </div>
-      </header>
-
-      <section className="about-statement">
-        <span aria-hidden="true">“</span>
-        <blockquote>
-          The part I enjoy most is finding the boundary that makes a hard
-          system understandable, then building the path through it.
-        </blockquote>
-      </section>
-
-      <section className="about-grid">
-        <div>
-          <p className="eyebrow">Timeline</p>
-          <div className="timeline">
-            {timeline.map((item) => (
-              <article key={item.period}>
-                <span>{item.period}</span>
-                <div><h2>{item.title}</h2><p>{item.detail}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-        <aside>
-          <p className="eyebrow">What I&apos;m exploring</p>
-          <div className="capability-list">
-            {capabilities.map(([title, detail], index) => (
-              <article key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h2>{title}</h2>
-                <p>{detail}</p>
-              </article>
-            ))}
-          </div>
-        </aside>
-      </section>
-
-      <section className="now-section">
-        <div>
-          <p className="eyebrow">Now</p>
-          <h2>Building, studying, and looking for a team with difficult problems.</h2>
-        </div>
+    <div className="inner-page shell">
+      <header className="inner-hero">
+        <p className="eyebrow">The person / Beyond the repository</p>
+        <h1>
+          HI. I’M
+          <br />
+          <em>Sandesh.</em>
+        </h1>
         <p>
-          I&apos;m based in Rome and open to internships, junior engineering
-          roles, and collaborations around infrastructure or real-time media.
-          I want to learn with teams that care about both the system and the
-          person using it.
+          From Chitwan, Nepal. Now in Rome, studying Engineering Sciences at
+          Università degli Studi di Roma Tor Vergata and building software along
+          the way.
         </p>
-        <div>
-          <Link className="button button-dark" href="/contact">Get in touch</Link>
-          <Link className="button button-line" href="/work">Review the work</Link>
+      </header>
+      <div className="about-opening">
+        <div className="portrait-print">
+          <Image
+            src="/sandesh.jpg"
+            alt="Sandesh Chapagain"
+            width={700}
+            height={790}
+          />
+          <span>SANDESH CHAPAGAIN / ROME, ITALY</span>
+        </div>
+        <div className="about-prose">
+          <h2>
+            I learn best when there’s
+            <br />
+            something I want to make.
+          </h2>
+          <p>
+            That has taken me from a browser motorcycle game to{" "}
+            <Link href="/work/ditch">DITCH</Link>, a live studio where viewers
+            can become part of the show. More recently,{" "}
+            <Link href="/work/yappie">Yappie</Link> has become another place to
+            explore the same question: how can software make it easier for
+            people to connect?
+          </p>
+          <p>
+            I like working across the whole experience: what someone sees, what
+            happens when they press a button, and the services that make the
+            result possible. I’m still learning those parts, and building gives
+            me a reason to keep going.
+          </p>
+          <p>
+            The smaller projects matter too. A local search tool. A migration
+            checker. An Android app to get out of short-video feeds. They’re
+            ways to follow a question far enough to make something concrete.
+          </p>
+          <Link className="ink-button" href="/cv">
+            Read my résumé <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </div>
+      <section className="timeline-section">
+        <p className="eyebrow">A few points along the way</p>
+        <div className="timeline">
+          {timeline.map((item) => (
+            <article key={item.when}>
+              <span>{item.when}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
     </div>

@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sandesh Chapagain — Portfolio
 
-## Getting Started
+An illustrated editorial portfolio at [iamdex.xyz](https://iamdex.xyz), built with Next.js 16, React 19, and TypeScript.
 
-First, run the development server:
+The visual direction combines Yappie’s original print artwork with DITCH’s participatory studio: warm paper, charcoal, vermilion, locally hosted display/serif/body fonts, and custom SVG illustration.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Development
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install with `pnpm install`, then use `pnpm dev`. Build with `pnpm build`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The homepage features two explicitly labelled local demos. The Yappie exhibit cycles conversation prompts; the DITCH exhibit changes layout and admits a sample guest. Neither captures personal data or connects to a live session.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`lib/collection.ts` holds the twelve-project archive. `lib/project-notes.ts` holds detail-page copy and implementation limits. Project detail routes are statically generated. The About, Contact, résumé (`/cv`), and pitch deck (`/deck`) routes are retained.
 
-## Learn More
+## Publishing
 
-To learn more about Next.js, take a look at the following resources:
+The existing GitHub/Vercel integration deploys the production branch to the custom domain. Preserve this setup. Font licenses are included in `public/fonts/`; Yappie and DITCH artwork is reused from the owner’s projects.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `DESIGN.md` and `PRODUCT.md` for the current presentation and content rules.

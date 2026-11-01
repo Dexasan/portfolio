@@ -1,53 +1,51 @@
 import type { Metadata } from "next";
-
 export const metadata: Metadata = {
-  title: { absolute: "Sandesh Chapagain" },
+  title: "Let’s talk",
   description:
-    "Contact Sandesh Chapagain about internships, junior engineering roles, real-time systems, browser media, or collaborations.",
+    "Contact Sandesh Chapagain about software projects, internships, junior engineering roles, and collaborations.",
   alternates: { canonical: "/contact" },
 };
-
-const channels = [
-  {
-    label: "Email",
-    value: "sendmailtodex@gmail.com",
-    href: "mailto:sendmailtodex@gmail.com",
-  },
-  {
-    label: "GitHub",
-    value: "github.com/Dexasan",
-    href: "https://github.com/Dexasan",
-  },
-];
-
 export default function ContactPage() {
   return (
-    <div className="contact-page shell">
-      <header>
+    <div className="inner-page shell">
+      <header className="inner-hero">
         <p className="eyebrow">Contact / Rome, Italy</p>
-        <h1>Bring me the problem that does not fit neatly in one layer.</h1>
+        <h1>
+          LET’S MAKE
+          <br />
+          <em>something.</em>
+        </h1>
         <p>
-          I&apos;m open to internships, junior engineering roles, real-time
-          media work, and thoughtful collaborations.
+          A project you’re thinking about. A team I could learn with. A question
+          about something I’ve built. I’d like to hear it.
         </p>
       </header>
       <div className="contact-layout">
         <div className="contact-note">
-          <span className="availability-dot" aria-hidden="true" />
-          <div>
-            <strong>Open to learning with a strong team</strong>
-            <p>Remote, Rome, or relocation. I usually reply within one working day.</p>
-          </div>
+          A good conversation
+          <br />
+          is a good place to start.
+          <p>
+            I’m open to internships, junior engineering roles, and
+            collaborations.
+          </p>
         </div>
         <div className="contact-channels">
-          {channels.map((channel, index) => (
-            <a href={channel.href} key={channel.label}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <small>{channel.label}</small>
-              <strong>{channel.value}</strong>
-              <i aria-hidden="true">↗</i>
-            </a>
-          ))}
+          <a href="mailto:sendmailtodex@gmail.com">
+            <small>EMAIL</small>
+            <strong>sendmailtodex@gmail.com</strong>
+            <i aria-hidden="true">↗</i>
+          </a>
+          <a href="https://github.com/Dexasan">
+            <small>GITHUB</small>
+            <strong>github.com/Dexasan</strong>
+            <i aria-hidden="true">↗</i>
+          </a>
+          <a href="/cv">
+            <small>RÉSUMÉ</small>
+            <strong>Background & experience</strong>
+            <i aria-hidden="true">↗</i>
+          </a>
         </div>
       </div>
     </div>

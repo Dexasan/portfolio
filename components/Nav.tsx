@@ -1,42 +1,43 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const links = [
-  { href: "/#top", label: "Home", icon: "⌂" },
-  { href: "/#about", label: "About", icon: "◎" },
-  { href: "/#skills", label: "Skills", icon: "✦" },
-  { href: "/#projects", label: "Projects", icon: "⌘" },
-  { href: "/#contact", label: "Contact", icon: "✉" },
-];
-
 export default function Nav() {
-  const pathname = usePathname();
-
-  if (pathname === "/cv") return null;
-
+  const path = usePathname();
+  if (path === "/cv" || path === "/deck") return null;
   return (
-    <>
-      <Link href="/" className="floating-wordmark" aria-label="Sandesh Chapagain, home">
-        <span>SC</span>
-        <strong>Sandesh Chapagain</strong>
+    <header className="masthead shell">
+      <Link href="/" className="wordmark" aria-label="Sandesh Chapagain, home">
+        <span className="asterisk" aria-hidden="true">
+          ✳
+        </span>
+        <span>
+          SANDESH
+          <br />
+          CHAPAGAIN<span className="wordmark-dot">.</span>
+        </span>
       </Link>
-      <header className="site-header">
-        <nav className="nav-links" aria-label="Primary navigation">
-          {links.map(({ href, label, icon }) => (
-            <Link
-              key={href}
-              href={href}
-              aria-label={label}
-              data-label={label}
-              className={pathname !== "/" && href === "/#projects" ? "is-active" : undefined}
-            >
-              <span aria-hidden="true">{icon}</span>
-            </Link>
-          ))}
-        </nav>
-      </header>
-    </>
+      <p className="masthead-note">
+        Independent builder.
+        <br />
+        Chitwan → Rome.
+      </p>
+      <nav aria-label="Primary navigation">
+        <Link
+          href="/work"
+          aria-current={path.startsWith("/work") ? "page" : undefined}
+        >
+          The work <sup>12</sup>
+        </Link>
+        <Link
+          href="/about"
+          aria-current={path === "/about" ? "page" : undefined}
+        >
+          The person
+        </Link>
+        <a href="mailto:sendmailtodex@gmail.com" className="nav-contact">
+          Let’s talk <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </header>
   );
 }

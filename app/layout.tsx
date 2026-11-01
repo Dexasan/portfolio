@@ -1,112 +1,86 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Manrope, Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import MotionController from "@/components/MotionController";
-import TileInteractions from "@/components/TileInteractions";
-
-const manrope = Manrope({
+const display = localFont({
+  src: "../public/fonts/BarlowCondensed-Bold.ttf",
+  variable: "--font-display",
+  display: "swap",
+});
+const body = localFont({
+  src: "../public/fonts/DMSans-Regular.ttf",
   variable: "--font-sans",
-  subsets: ["latin"],
   display: "swap",
 });
-
-const newsreader = Newsreader({
+const serif = localFont({
+  src: [
+    { path: "../public/fonts/InstrumentSerif-Regular.ttf", style: "normal" },
+    { path: "../public/fonts/InstrumentSerif-Italic.ttf", style: "italic" },
+  ],
   variable: "--font-serif",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
   display: "swap",
 });
-
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://iamdex.xyz";
-
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://iamdex.xyz";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Sandesh Chapagain",
+  title: {
+    default: "Sandesh Chapagain — Independent builder",
+    template: "%s — Sandesh Chapagain",
+  },
   description:
-    "Engineering Sciences student in Rome interested in real-time systems, browser media, backend infrastructure, and ambitious software.",
-  applicationName: "Sandesh Chapagain",
+    "The independent work of Sandesh Chapagain. Engineering Sciences student in Rome, building Yappie, DITCH, and software that brings people together.",
   authors: [{ name: "Sandesh Chapagain", url: "https://github.com/Dexasan" }],
   creator: "Sandesh Chapagain",
-  keywords: [
-    "Sandesh Chapagain",
-    "engineering student",
-    "real-time systems",
-    "WebRTC",
-    "WebCodecs",
-    "RTMP",
-    "TypeScript",
-    "Next.js",
-  ],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    title: "Sandesh Chapagain — Engineering Student",
+    title: "Sandesh Chapagain — Things that bring us together",
     description:
-      "Engineering Sciences student interested in real-time systems, browser media, and backend infrastructure.",
+      "Yappie. DITCH. Independent software with someone on the other side.",
     siteName: "Sandesh Chapagain",
-    images: [{ url: "/portfolio-world.png", width: 1717, height: 916, alt: "Sandesh Chapagain portfolio world" }],
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Sandesh Chapagain — Independent builder",
+      },
+    ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sandesh Chapagain — Engineering Student",
-    description:
-      "Real-time systems, browser media, backend infrastructure, and ambitious software.",
-    images: ["/portfolio-world.png"],
-  },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"] },
   robots: { index: true, follow: true },
 };
-
 export const viewport: Viewport = {
-  themeColor: "#050816",
-  colorScheme: "dark light",
+  themeColor: "#f1ebdd",
+  colorScheme: "light",
 };
-
-const personJsonLd = {
+const person = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Sandesh Chapagain",
   url: siteUrl,
-  email: "mailto:sendmailtodex@gmail.com",
   sameAs: ["https://github.com/Dexasan"],
   jobTitle: "Engineering Sciences Student",
-  knowsAbout: [
-    "Real-time systems",
-    "Browser media",
-    "WebRTC",
-    "RTMP",
-    "TypeScript",
-    "Node.js",
-  ],
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
+      className={`${display.variable} ${body.variable} ${serif.variable}`}
     >
       <body>
-        <a className="skip-link" href="#main-content">Skip to content</a>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <Nav />
         <main id="main-content">{children}</main>
         <Footer />
-        <MotionController />
-        <TileInteractions />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
         />
       </body>
     </html>

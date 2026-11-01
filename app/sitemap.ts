@@ -1,12 +1,17 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "./layout";
-
+import { projects } from "@/lib/collection";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/work", "/about", "/contact"];
-  return routes.map((route) => ({
+  return [
+    "",
+    "/work",
+    "/about",
+    "/contact",
+    ...projects.map((project) => `/work/${project.slug}`),
+  ].map((route) => ({
     url: `${siteUrl}${route}`,
-    lastModified: new Date("2026-07-26"),
+    lastModified: new Date("2026-11-01"),
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "" ? 1 : route === "/work" ? 0.9 : 0.7,
   }));
 }

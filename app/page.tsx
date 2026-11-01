@@ -1,163 +1,217 @@
 import Link from "next/link";
-import TransmissionField from "@/components/TransmissionField";
-import { caseStudies } from "@/lib/projects";
-
-const selected = caseStudies.slice(0, 4);
-
-const skillGroups = [
-  {
-    title: "Interfaces",
-    note: "Making complex systems feel simple to use.",
-    skills: ["React", "Next.js", "TypeScript", "Canvas 2D", "Web APIs"],
-  },
-  {
-    title: "Live media",
-    note: "Moving video, audio, and state through the browser.",
-    skills: ["WebRTC", "WebCodecs", "Socket.io", "WebSockets", "ffmpeg"],
-  },
-  {
-    title: "Backend & data",
-    note: "Services and rules that hold up when things fail.",
-    skills: ["Fastify", "Node.js", "Python", "SQLite", "Supabase"],
-  },
-  {
-    title: "Engineering",
-    note: "Turning assumptions into models, tests, and deployable work.",
-    skills: ["System design", "API design", "Testing", "Git", "Vercel", "Railway"],
-  },
-];
+import ConnectionArtwork from "@/components/ConnectionArtwork";
+import { YappieExhibit, DitchExhibit } from "@/components/ProductExhibits";
+import ProjectArchive from "@/components/ProjectArchive";
 
 export default function HomePage() {
   return (
-    <div className="portfolio-home">
-      <TransmissionField />
-      <section className="world-hero" id="top">
-        <div className="world-sheen" aria-hidden="true" />
-        <div className="world-constellation constellation-one" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="world-constellation constellation-two" aria-hidden="true"><i /><i /><i /></div>
-        <div className="shell world-copy">
-          <p className="world-greeting reveal reveal-1">Hi there! I&apos;m—</p>
-          <h1 className="reveal reveal-2">Sandesh<br /><span>Chapagain.</span></h1>
-          <p className="world-role reveal reveal-3">
-            Engineering Sciences student building playful interfaces,
-            real-time media, and reliable systems.
-          </p>
-          <div className="world-actions reveal reveal-4">
-            <a href="#projects">Dive into projects</a>
-            <a href="mailto:sendmailtodex@gmail.com">Say hello</a>
+    <div className="print-home" id="top">
+      <section className="hero shell" aria-labelledby="hero-heading">
+        <div className="hero-eyebrow">
+          <span>THE INDEPENDENT WORK OF SANDESH CHAPAGAIN</span>
+          <span>ENGINEERING SCIENCES / TOR VERGATA</span>
+        </div>
+        <div className="hero-layout">
+          <div className="hero-copy">
+            <h1 id="hero-heading">
+              I BUILD
+              <br />
+              THINGS THAT
+              <br />
+              <em>
+                bring us
+                <br />
+                together.
+              </em>
+            </h1>
+            <div className="hero-intro">
+              <span className="mini-cross" aria-hidden="true">
+                ✳
+              </span>
+              <p>
+                Apps for meeting strangers. Studios for sharing a stage.
+                <br className="desktop-break" /> Software with someone on the
+                other side.
+              </p>
+            </div>
+            <a href="#projects" className="ink-button">
+              Explore the work <span aria-hidden="true">↓</span>
+            </a>
           </div>
-        </div>
-        <a className="dive-cue" href="#about">
-          <span>Scroll to dive</span>
-          <i aria-hidden="true">↓</i>
-        </a>
-      </section>
-
-      <section className="ocean-about" id="about">
-        <div className="ocean-ridge ridge-top" aria-hidden="true" />
-        <div className="jelly-field" aria-hidden="true">
-          <span className="moon-jelly jelly-one"><i /><i /><i /><i /></span>
-          <span className="moon-jelly jelly-two"><i /><i /><i /><i /></span>
-          <span className="moon-jelly jelly-three"><i /><i /><i /><i /></span>
-        </div>
-        <div className="shell about-current">
-          <p className="world-kicker">01 / About me</p>
-          <div className="about-current-copy">
-            <h2>I like software you can <em>feel</em> working.</h2>
-            <div>
-              <p>
-                I&apos;m Sandesh, from Chitwan, Nepal, and now an international
-                Engineering Sciences student in Rome. I learn by following a
-                system end to end—from the interface, through state and
-                networks, down to the runtime underneath.
-              </p>
-              <p>
-                Most of that curiosity is going into Ditch: a browser-native
-                live studio for composing a show, bringing viewers on screen,
-                and sending one broadcast to multiple platforms.
-              </p>
-              <Link href="/about">More of my story <span aria-hidden="true">→</span></Link>
+          <div className="hero-art">
+            <span className="art-edition">
+              A WORK IN PROGRESS.
+              <br />
+              SO AM I.
+            </span>
+            <ConnectionArtwork />
+            <div className="hero-stamp">
+              BUILT WITH
+              <br />
+              <strong>curiosity</strong>
+              <span>AND A HUMAN IN MIND</span>
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="ocean-skills" id="skills">
-        <div className="fish-school" aria-hidden="true">
-          <i /><i /><i /><i /><i />
-        </div>
-        <div className="shell">
-          <header className="ocean-section-heading">
-            <p className="world-kicker">02 / Skills &amp; tools</p>
-            <h2>The parts of the ocean<br />I know how to navigate.</h2>
-          </header>
-          <div className="current-list">
-            {skillGroups.map((group, index) => (
-              <article className="current-row" key={group.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{group.title}</h3>
-                  <p>{group.note}</p>
-                </div>
-                <div className="current-tags">
-                  {group.skills.map((skill) => <i key={skill}>{skill}</i>)}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="ocean-projects" id="projects">
-        <div className="project-ridge" aria-hidden="true" />
-        <div className="shell ocean-section-heading projects-intro">
-          <div>
-            <p className="world-kicker">03 / Projects</p>
-            <h2>Things I built<br />out of curiosity.</h2>
-          </div>
+        <div className="hero-footnote">
           <p>
-            Personal experiments and serious systems, described by what they
-            actually do. Scroll sideways to explore.
+            <span className="availability-dot" /> Building independently.
+            Learning by doing.
           </p>
+          <span>SCROLL TO MEET THE WORK ↓</span>
         </div>
-
-        <div className="ocean-project-track" aria-label="Selected projects">
-          {selected.map((project) => (
-            <article className="ocean-project-card" key={project.slug}>
-              <header>
-                <div>
-                  <h3>{project.title} <small>{project.year}</small></h3>
-                  <p>{project.kicker}</p>
-                </div>
-                <span>{project.stage}</span>
-              </header>
-              <p className="ocean-project-summary">{project.summary}</p>
-              <p className="ocean-project-detail">{project.solution}</p>
-              <div className="ocean-tech">
-                {project.stack.slice(0, 7).map((item) => <span key={item}>{item}</span>)}
-              </div>
-              <footer>
-                {project.links[0] && (
-                  <a
-                    href={project.links[0].href}
-                    target={project.links[0].href.startsWith("http") ? "_blank" : undefined}
-                    rel={project.links[0].href.startsWith("http") ? "noreferrer" : undefined}
-                  >
-                    {project.links[0].label} <span aria-hidden="true">↗</span>
-                  </a>
-                )}
-              </footer>
-            </article>
-          ))}
+      </section>
+      <div className="manifesto-strip" aria-hidden="true">
+        <span>PEOPLE FIRST.</span>
+        <i>✳</i>
+        <span>CODE FOLLOWS.</span>
+        <i>✳</i>
+        <span>MAKE IT MATTER.</span>
+        <i>✳</i>
+        <span>PEOPLE FIRST.</span>
+        <i>✳</i>
+      </div>
+      <section className="selected-work shell" id="projects">
+        <header className="section-heading">
+          <p className="eyebrow">01 / Selected work</p>
+          <h2>
+            TWO WAYS TO
+            <br />
+            <em>close the distance.</em>
+          </h2>
+          <p>
+            A conversation between strangers.
+            <br />A stage shared with an audience.
+            <br />
+            These are the two I keep coming back to.
+          </p>
+        </header>
+        <article className="featured-project yappie-project">
+          <div className="project-heading">
+            <div>
+              <span className="project-no">01 / MOBILE APP</span>
+              <h3>
+                YAPPIE<span>✳</span>
+              </h3>
+            </div>
+            <p>
+              A little less stranger.
+              <br />
+              <em>A little more human.</em>
+            </p>
+            <span className="project-tag">PRIVATE BETA</span>
+          </div>
+          <YappieExhibit />
+          <div className="project-caption">
+            <p>
+              Matching is the beginning. Posts, DMs, and live Clubs give the
+              conversation somewhere to go.
+            </p>
+            <div>
+              <span>EXPO / SUPABASE / REALTIME AUDIO</span>
+              <Link href="/work/yappie">
+                Inside Yappie <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+        </article>
+        <article className="featured-project ditch-project">
+          <div className="project-heading">
+            <div>
+              <span className="project-no">02 / LIVE PRODUCTION</span>
+              <h3>
+                DITCH<span>↗</span>
+              </h3>
+            </div>
+            <p>
+              From watching the show
+              <br />
+              <em>to being in it.</em>
+            </p>
+            <span className="project-tag">ACTIVE BUILD</span>
+          </div>
+          <DitchExhibit />
+          <div className="project-caption">
+            <p>
+              Compose a show in the browser. Bring a viewer on screen. Send the
+              same broadcast to multiple platforms.
+            </p>
+            <div>
+              <span>WEBRTC / CANVAS / FFMPEG</span>
+              <Link href="/work/ditch">
+                Inside DITCH <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section className="person-interlude" id="about">
+        <div className="shell person-layout">
+          <div className="person-margin">
+            <span className="eyebrow">02 / The person behind it</span>
+            <span className="drawn-star" aria-hidden="true">
+              ✳
+            </span>
+            <span>
+              CHITWAN, NEPAL
+              <br />↓<br />
+              ROME, ITALY
+            </span>
+          </div>
+          <div>
+            <h2>
+              STILL A STUDENT.
+              <br />
+              <em>Already a builder.</em>
+            </h2>
+            <p>
+              I’m Sandesh. I study Engineering Sciences at Tor Vergata in Rome,
+              and spend a lot of my time making things I want to exist.
+            </p>
+            <p>
+              Sometimes that’s a way to meet someone new. Sometimes it’s a
+              browser studio. Sometimes it’s a motorcycle game, because the
+              first game I played never really left me.
+            </p>
+            <Link className="underlined-link" href="/about">
+              More about the person <span>↗</span>
+            </Link>
+          </div>
+          <div className="margin-note">
+            <span>NOTE TO SELF</span>
+            <p>
+              Make it work.
+              <br />
+              Make it feel
+              <br />
+              <em>like something.</em>
+            </p>
+            <svg viewBox="0 0 140 75" aria-hidden="true">
+              <path
+                d="M5 10c100-40 160 75 40 45m0 0 25-13M45 55l27 11"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
         </div>
-
-        <div className="shell project-archive-link">
-          <Link href="/work">
-            <span>Open the full</span>
-            <strong>project archive</strong>
-            <span className="archive-arrow" aria-hidden="true">↗</span>
-          </Link>
-        </div>
+      </section>
+      <section className="more-work shell">
+        <header className="section-heading">
+          <p className="eyebrow">03 / More from the desk</p>
+          <h2>
+            OTHER THINGS
+            <br />
+            <em>I couldn’t leave alone.</em>
+          </h2>
+          <p>
+            Small tools. Playable experiments.
+            <br />
+            Useful problems worth following.
+          </p>
+        </header>
+        <ProjectArchive compact />
       </section>
     </div>
   );
