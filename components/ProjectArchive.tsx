@@ -37,9 +37,6 @@ export default function ProjectArchive({
       <div className="archive-rows">
         {listed.map((project) => (
           <article className="archive-row" key={project.slug}>
-            <span className="archive-number">
-              {String(projects.indexOf(project) + 1).padStart(2, "0")}
-            </span>
             <div className="archive-name">
               <span>{project.kind}</span>
               <h3>
