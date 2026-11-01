@@ -7,26 +7,27 @@ export default function Footer() {
   return (
     <footer className="site-footer" id="contact">
       <div className="shell">
-        <div className="footer-top">
-          <p className="eyebrow">An open invitation</p>
-          <span>ROME, ITALY / OPEN TO COLLABORATION</span>
+        <div className="footer-contact">
+          <div>
+            <p className="eyebrow">GOT SOMETHING IN MIND?</p>
+            <a href="mailto:sendmailtodex@gmail.com">
+              Let’s talk<span>↗</span>
+            </a>
+          </div>
+          <p>
+            Open to internships, junior engineering
+            <br />
+            roles, and projects with good people.
+          </p>
         </div>
-        <a className="footer-invitation" href="mailto:sendmailtodex@gmail.com">
-          MAKE SOMETHING
-          <br />
-          <em>worth making.</em>
-          <span aria-hidden="true">↗</span>
-        </a>
         <div className="footer-bottom">
-          <a href="mailto:sendmailtodex@gmail.com">
-            sendmailtodex@gmail.com ↗
-          </a>
+          <span>SANDESH CHAPAGAIN / ROME, ITALY</span>
           <nav aria-label="Footer navigation">
             <a href="https://github.com/Dexasan">GitHub ↗</a>
             <Link href="/cv">Résumé ↗</Link>
-            <Link href="/about">About me ↗</Link>
+            <a href="mailto:sendmailtodex@gmail.com">Email ↗</a>
           </nav>
-          <p>© 2026 SANDESH CHAPAGAIN</p>
+          <span>© 2026</span>
         </div>
       </div>
     </footer>

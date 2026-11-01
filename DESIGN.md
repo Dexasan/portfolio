@@ -1,14 +1,9 @@
-# Portfolio design — November 2026
+# Portfolio — dark desktop direction
 
-The current direction is an illustrated editorial portfolio inspired by Yappie and DITCH, replacing the previous ocean theme.
+The portfolio uses Yappie’s charcoal (#111110), warm chalk (#f1ebdd), and vermilion (#ff775d) with locally hosted Barlow Condensed, Instrument Serif, and DM Sans.
 
-- Warm paper (#f1ebdd), charcoal (#24231f), vermilion (#c33c25).
-- Locally hosted Barlow Condensed display, Instrument Serif editorial, DM Sans body.
-- Original SVG connection illustration; approved Yappie talking-mouth artwork and conversation print reused from the app.
-- Full-width product exhibits with small, explicitly labelled local interactions.
-- Yappie and DITCH lead. The archive includes twelve distinct projects with individual detail pages.
-- State the implemented behavior and current limitations. Do not invent usage figures, testimonials, or personal implementation claims.
-- Keep ordinary document scrolling, semantic links and buttons, keyboard focus, reduced-motion support, and 320px layouts.
-- Résumé and pitch-deck routes remain available.
+The homepage is a personal computer/workspace: name-led introduction, an interactive monitor, clear project directory, Yappie visitor matching, and a persistent DITCH visitor wall. Keep the approved Yappie talking-mouth artwork and conversation print. Avoid the superseded paper/newsletter composition and ocean theme.
 
-The project stays on its existing Next.js/Vercel hosting path and custom domain. Do not register a replacement hosted Site or change DNS for routine portfolio updates.
+Use functional labels, visible focus, real interaction states, 44px controls, ordinary scrolling, and reduced-motion support. Keep the twelve-project archive, project detail routes, About, Contact, résumé, and pitch deck consistent with the dark theme.
+
+Live features must use real visitor state. Never simulate another visitor or an AI stranger without clearly saying so. Public posts are persistent; private chats have scoped authorization and a one-hour room lifetime. Empty queues and service failures must remain understandable.

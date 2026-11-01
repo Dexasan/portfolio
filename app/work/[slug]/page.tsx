@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/collection";
 import { notes } from "@/lib/project-notes";
-import { YappieExhibit, DitchExhibit } from "@/components/ProductExhibits";
+import { YappieMatch, DitchWall } from "@/components/LiveConnections";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -65,9 +65,9 @@ export default async function ProjectPage({
         </div>
       </header>
       {slug === "yappie" ? (
-        <YappieExhibit />
+        <YappieMatch />
       ) : slug === "ditch" ? (
-        <DitchExhibit />
+        <DitchWall />
       ) : (
         <div className={`case-graphic graphic-${slug}`}>
           <span className="eyebrow">{project.kind}</span>

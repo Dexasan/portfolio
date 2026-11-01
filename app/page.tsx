@@ -1,217 +1,171 @@
 import Link from "next/link";
-import ConnectionArtwork from "@/components/ConnectionArtwork";
-import { YappieExhibit, DitchExhibit } from "@/components/ProductExhibits";
-import ProjectArchive from "@/components/ProjectArchive";
-
+import DesktopComputer from "@/components/DesktopComputer";
+import { YappieMatch, DitchWall } from "@/components/LiveConnections";
+import { projects } from "@/lib/collection";
 export default function HomePage() {
   return (
-    <div className="print-home" id="top">
-      <section className="hero shell" aria-labelledby="hero-heading">
-        <div className="hero-eyebrow">
-          <span>THE INDEPENDENT WORK OF SANDESH CHAPAGAIN</span>
-          <span>ENGINEERING SCIENCES / TOR VERGATA</span>
+    <div className="desktop-home" id="top">
+      <section className="desktop-hero shell">
+        <div className="hero-path">
+          <span>⌘ / HOME / SANDESH</span>
+          <span>ENGINEERING SCIENCES · ROME, ITALY</span>
         </div>
-        <div className="hero-layout">
-          <div className="hero-copy">
-            <h1 id="hero-heading">
-              I BUILD
+        <div className="desktop-hero-grid">
+          <div className="desktop-identity">
+            <p className="eyebrow">
+              <span className="status-light" /> INDEPENDENT BUILDER / STUDENT
+            </p>
+            <h1>
+              SANDESH
               <br />
-              THINGS THAT
-              <br />
-              <em>
-                bring us
-                <br />
-                together.
-              </em>
-            </h1>
-            <div className="hero-intro">
-              <span className="mini-cross" aria-hidden="true">
-                ✳
+              <span>
+                CHAPAGAIN<span className="name-period">.</span>
               </span>
-              <p>
-                Apps for meeting strangers. Studios for sharing a stage.
-                <br className="desktop-break" /> Software with someone on the
-                other side.
-              </p>
-            </div>
-            <a href="#projects" className="ink-button">
-              Explore the work <span aria-hidden="true">↓</span>
+            </h1>
+            <p className="identity-line">
+              A computer. Some curiosity.
+              <br />
+              <em>Things worth building.</em>
+            </p>
+            <p className="identity-description">
+              I build social apps, live studios, and small experiments.
+              Currently putting most of that curiosity into Yappie and DITCH.
+            </p>
+            <a className="red-button hero-open" href="#projects">
+              Open the projects <span>↓</span>
             </a>
-          </div>
-          <div className="hero-art">
-            <span className="art-edition">
-              A WORK IN PROGRESS.
-              <br />
-              SO AM I.
-            </span>
-            <ConnectionArtwork />
-            <div className="hero-stamp">
-              BUILT WITH
-              <br />
-              <strong>curiosity</strong>
-              <span>AND A HUMAN IN MIND</span>
+            <div className="identity-links">
+              <a href="https://github.com/Dexasan">GitHub ↗</a>
+              <Link href="/about">About me ↗</Link>
+              <Link href="/cv">Résumé ↗</Link>
             </div>
           </div>
+          <DesktopComputer />
         </div>
-        <div className="hero-footnote">
-          <p>
-            <span className="availability-dot" /> Building independently.
-            Learning by doing.
-          </p>
-          <span>SCROLL TO MEET THE WORK ↓</span>
+        <div className="desktop-bottom">
+          <span>BUILT BY A PERSON. FOR OTHER PEOPLE.</span>
+          <span>SCROLL TO EXPLORE ↓</span>
         </div>
       </section>
-      <div className="manifesto-strip" aria-hidden="true">
-        <span>PEOPLE FIRST.</span>
-        <i>✳</i>
-        <span>CODE FOLLOWS.</span>
-        <i>✳</i>
-        <span>MAKE IT MATTER.</span>
-        <i>✳</i>
-        <span>PEOPLE FIRST.</span>
-        <i>✳</i>
+      <div className="project-directory shell" id="projects">
+        <span>~/PROJECTS</span>
+        <a href="#yappie">
+          <span>01</span> YAPPIE <i>↘</i>
+        </a>
+        <a href="#ditch">
+          <span>02</span> DITCH <i>↘</i>
+        </a>
+        <Link href="/work">
+          <span>03—12</span> EVERYTHING ELSE <i>↗</i>
+        </Link>
       </div>
-      <section className="selected-work shell" id="projects">
-        <header className="section-heading">
-          <p className="eyebrow">01 / Selected work</p>
+      <section className="product-section shell" id="yappie">
+        <div className="product-copy">
+          <div className="product-title-row">
+            <p className="eyebrow">01 / YAPPIE</p>
+            <span className="product-state">MOBILE APP · PRIVATE BETA</span>
+          </div>
           <h2>
-            TWO WAYS TO
+            LESS FEED.
             <br />
-            <em>close the distance.</em>
+            MORE <em>hello.</em>
           </h2>
+          <img
+            className="yappie-feature-mouth"
+            src="/art/yappie-mouth.png"
+            alt="Yappie’s vermilion talking-mouth artwork"
+          />
           <p>
-            A conversation between strangers.
-            <br />A stage shared with an audience.
-            <br />
-            These are the two I keep coming back to.
+            Yappie is my social discovery app. Matching comes first.
+            Conversations, posts, and live Clubs give you a reason to stay.
           </p>
-        </header>
-        <article className="featured-project yappie-project">
-          <div className="project-heading">
-            <div>
-              <span className="project-no">01 / MOBILE APP</span>
-              <h3>
-                YAPPIE<span>✳</span>
-              </h3>
-            </div>
+          <div className="try-note">
+            <span>↗</span>
             <p>
-              A little less stranger.
+              Try a little of the idea, right here.
               <br />
-              <em>A little more human.</em>
+              <strong>Meet another visitor on this page.</strong>
             </p>
-            <span className="project-tag">PRIVATE BETA</span>
           </div>
-          <YappieExhibit />
-          <div className="project-caption">
-            <p>
-              Matching is the beginning. Posts, DMs, and live Clubs give the
-              conversation somewhere to go.
-            </p>
-            <div>
-              <span>EXPO / SUPABASE / REALTIME AUDIO</span>
-              <Link href="/work/yappie">
-                Inside Yappie <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </div>
-        </article>
-        <article className="featured-project ditch-project">
-          <div className="project-heading">
-            <div>
-              <span className="project-no">02 / LIVE PRODUCTION</span>
-              <h3>
-                DITCH<span>↗</span>
-              </h3>
-            </div>
-            <p>
-              From watching the show
-              <br />
-              <em>to being in it.</em>
-            </p>
-            <span className="project-tag">ACTIVE BUILD</span>
-          </div>
-          <DitchExhibit />
-          <div className="project-caption">
-            <p>
-              Compose a show in the browser. Bring a viewer on screen. Send the
-              same broadcast to multiple platforms.
-            </p>
-            <div>
-              <span>WEBRTC / CANVAS / FFMPEG</span>
-              <Link href="/work/ditch">
-                Inside DITCH <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </div>
-        </article>
+          <Link className="text-link" href="/work/yappie">
+            Explore Yappie <span>↗</span>
+          </Link>
+          <span className="product-stack">REACT NATIVE / EXPO / SUPABASE</span>
+        </div>
+        <YappieMatch />
       </section>
-      <section className="person-interlude" id="about">
-        <div className="shell person-layout">
-          <div className="person-margin">
-            <span className="eyebrow">02 / The person behind it</span>
-            <span className="drawn-star" aria-hidden="true">
-              ✳
-            </span>
-            <span>
-              CHITWAN, NEPAL
-              <br />↓<br />
-              ROME, ITALY
-            </span>
-          </div>
-          <div>
+      <section className="ditch-section" id="ditch">
+        <div className="product-section shell">
+          <div className="product-copy">
+            <div className="product-title-row">
+              <p className="eyebrow">02 / DITCH</p>
+              <span className="product-state">
+                LIVE PRODUCTION · ACTIVE BUILD
+              </span>
+            </div>
             <h2>
-              STILL A STUDENT.
+              DON’T JUST
               <br />
-              <em>Already a builder.</em>
+              WATCH.
+              <br />
+              <em>Join in.</em>
             </h2>
             <p>
-              I’m Sandesh. I study Engineering Sciences at Tor Vergata in Rome,
-              and spend a lot of my time making things I want to exist.
+              DITCH is my browser-based live studio. Compose a show, invite
+              viewers on screen, and send one broadcast to multiple platforms.
             </p>
-            <p>
-              Sometimes that’s a way to meet someone new. Sometimes it’s a
-              browser studio. Sometimes it’s a motorcycle game, because the
-              first game I played never really left me.
-            </p>
-            <Link className="underlined-link" href="/about">
-              More about the person <span>↗</span>
+            <div className="try-note">
+              <span>↗</span>
+              <p>
+                This corner belongs to everyone.
+                <br />
+                <strong>Leave a message. It stays on the wall.</strong>
+              </p>
+            </div>
+            <Link className="text-link" href="/work/ditch">
+              Explore DITCH <span>↗</span>
             </Link>
+            <span className="product-stack">
+              WEBRTC / CANVAS / SOCKET.IO / FFMPEG
+            </span>
           </div>
-          <div className="margin-note">
-            <span>NOTE TO SELF</span>
-            <p>
-              Make it work.
-              <br />
-              Make it feel
-              <br />
-              <em>like something.</em>
-            </p>
-            <svg viewBox="0 0 140 75" aria-hidden="true">
-              <path
-                d="M5 10c100-40 160 75 40 45m0 0 25-13M45 55l27 11"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-            </svg>
-          </div>
+          <DitchWall />
         </div>
       </section>
-      <section className="more-work shell">
-        <header className="section-heading">
-          <p className="eyebrow">03 / More from the desk</p>
-          <h2>
-            OTHER THINGS
-            <br />
-            <em>I couldn’t leave alone.</em>
-          </h2>
-          <p>
-            Small tools. Playable experiments.
-            <br />
-            Useful problems worth following.
-          </p>
+      <section className="other-projects shell">
+        <header>
+          <div>
+            <p className="eyebrow">03 / THE OTHER OPEN TABS</p>
+            <h2>
+              A FEW MORE
+              <br />
+              <em>things I’ve made.</em>
+            </h2>
+          </div>
+          <Link className="text-link" href="/work">
+            All 12 projects <span>↗</span>
+          </Link>
         </header>
-        <ProjectArchive compact />
+        <div className="project-file-grid">
+          {projects.slice(2, 6).map((project, i) => (
+            <Link
+              href={`/work/${project.slug}`}
+              className={`project-file file-${project.slug}`}
+              key={project.slug}
+            >
+              <div className="file-top">
+                <span className="file-icon" aria-hidden="true">
+                  {["@", "↗", "⌘", "Ⅱ"][i]}
+                </span>
+                <span>{project.kind.split(" / ")[0]}</span>
+                <span>↗</span>
+              </div>
+              <h3>{project.name}</h3>
+              <p>{project.description}</p>
+              <span className="file-status">{project.status}</span>
+            </Link>
+          ))}
+        </div>
       </section>
     </div>
   );

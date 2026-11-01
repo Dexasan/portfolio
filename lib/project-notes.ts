@@ -24,7 +24,7 @@ export const notes: Record<
       "A WebSocket/ffmpeg relay for sending composed media to multiple RTMP destinations.",
     ],
     boundary:
-      "DITCH is an active build. The exhibit above demonstrates layout changes locally; it does not capture media or test a live multi-platform broadcast.",
+      "DITCH is an active build. The public visitor wall above is a separate portfolio feature; it does not start a broadcast or capture your camera or microphone.",
   },
   writmail: {
     question: "Can outreach start with better research?",

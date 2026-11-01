@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./dark.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 const display = localFont({
@@ -52,8 +53,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 export const viewport: Viewport = {
-  themeColor: "#f1ebdd",
-  colorScheme: "light",
+  themeColor: "#111110",
+  colorScheme: "dark",
 };
 const person = {
   "@context": "https://schema.org",
@@ -68,6 +69,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
+      data-scroll-behavior="smooth"
       lang="en"
       className={`${display.variable} ${body.variable} ${serif.variable}`}
     >

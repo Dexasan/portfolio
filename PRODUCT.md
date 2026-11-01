@@ -1,11 +1,9 @@
-# Portfolio
+# Portfolio product
 
-An illustrated editorial portfolio for Sandesh Chapagain, inspired by Yappie’s print artwork and DITCH’s participatory live studio.
+A portfolio for Sandesh Chapagain: student, independent builder, and maker of Yappie and DITCH. Lead with the person and the actual products, then offer smaller projects, technical detail, background, and contact.
 
-Visitors can explore twelve projects, try two small local product exhibits, read the background story, and get in touch. Yappie and DITCH lead; the archive retains engineering tools and smaller experiments.
+The current direction is a dark personal-computer workspace in Yappie’s visual language. The Yappie section connects real website visitors in anonymous text chat. The DITCH section has a public, persistent visitor stream. Both are distinct from the production Yappie and DITCH applications.
 
-Write concrete, factual descriptions of implemented behavior. Label demos and prototypes. Avoid fabricated traction, mastery claims, and unverified production guarantees.
+Do not invent traction, experience, testimonials, online counts, or chat partners. State project status and implementation limits. Keep the experience usable with keyboard navigation, reduced motion, and narrow screens.
 
-The visual system uses warm paper, charcoal, vermilion, condensed display typography, editorial serif, and original ink artwork. See DESIGN.md for the current direction.
-
-Keep ordinary scrolling, keyboard controls, clear focus, reduced-motion behavior, and narrow mobile layouts. Preserve the résumé and pitch-deck routes and the existing Vercel/custom-domain hosting.
+Retain Vercel/custom-domain hosting for the frontend and the separate Sites/D1 live service. Do not change DNS or reuse Yappie’s production user data for visitor features.

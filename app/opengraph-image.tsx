@@ -1,8 +1,14 @@
 import { ImageResponse } from "next/og";
-export const alt = "Sandesh Chapagain — Independent builder";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+export const alt =
+  "Sandesh Chapagain — Apps, live media, and independent experiments";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export default function OpenGraph() {
+export default async function OpenGraph() {
+  const font = await readFile(
+    join(process.cwd(), "public/fonts/BarlowCondensed-Bold.ttf"),
+  );
   return new ImageResponse(
     (
       <div
@@ -11,47 +17,37 @@ export default function OpenGraph() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "#f1ebdd",
-          color: "#24231f",
-          padding: "45px 55px",
-          fontFamily: "sans-serif",
+          background: "#111110",
+          color: "#f1ebdd",
+          padding: "42px 55px",
+          fontFamily: "Barlow",
         }}
       >
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            borderBottom: "2px solid #24231f",
-            paddingBottom: 25,
-            fontSize: 19,
+            borderBottom: "1px solid #454238",
+            paddingBottom: 22,
+            fontSize: 23,
           }}
         >
-          <span>SANDESH CHAPAGAIN</span>
+          <span style={{ color: "#ff775d" }}>✳ sandesh.exe</span>
           <span>INDEPENDENT BUILDER / ROME</span>
         </div>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            fontSize: 85,
-            fontWeight: 800,
-            letterSpacing: -4,
-            lineHeight: 1.02,
-            marginTop: 42,
+            fontSize: 150,
+            letterSpacing: -3,
+            lineHeight: 0.88,
+            marginTop: 40,
           }}
         >
-          <span>I BUILD THINGS</span>
-          <span>THAT BRING US</span>
-          <span
-            style={{
-              color: "#c33c25",
-              fontFamily: "serif",
-              fontStyle: "italic",
-              fontWeight: 400,
-              fontSize: 112,
-            }}
-          >
-            together.
+          <span>SANDESH</span>
+          <span>
+            CHAPAGAIN<span style={{ color: "#ff775d" }}>.</span>
           </span>
         </div>
         <div
@@ -59,14 +55,16 @@ export default function OpenGraph() {
             display: "flex",
             justifyContent: "space-between",
             marginTop: "auto",
-            fontSize: 17,
+            paddingTop: 22,
+            borderTop: "1px solid #454238",
+            fontSize: 25,
           }}
         >
           <span>YAPPIE / DITCH / SELECTED WORK</span>
-          <span>iamdex.xyz ↗</span>
+          <span style={{ color: "#ff775d" }}>iamdex.xyz ↗</span>
         </div>
       </div>
     ),
-    size,
+    { ...size, fonts: [{ name: "Barlow", data: font, weight: 700 }] },
   );
 }
