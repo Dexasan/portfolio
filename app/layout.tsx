@@ -3,8 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./dark.css";
 import "./portrait.css";
+import "./motion.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import PageMotion from "@/components/PageMotion";
 import { siteUrl } from "@/lib/site";
 const display = localFont({
   src: "../public/fonts/BarlowCondensed-Bold.ttf",
@@ -81,6 +83,7 @@ export default function RootLayout({
         <Nav />
         <main id="main-content">{children}</main>
         <Footer />
+        <PageMotion />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}

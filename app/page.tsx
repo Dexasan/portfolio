@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Portrait from "@/components/Portrait";
+import RoadRider from "@/components/RoadRider";
 export default function HomePage() {
     return <div className="personal-home">
     <p className="home-location">chitwan, nepal <span aria-hidden="true">↝</span> rome, italy</p>
@@ -10,6 +11,7 @@ export default function HomePage() {
       <p className="home-small">i'm from chitwan, now in rome doing engineering sciences at tor vergata.</p>
       <p className="home-connection">i love apps where strangers can just talk and feel connected. that's what i like about <Link href="/work/yappie">yappie</Link> and <Link href="/work/ditch">ditch</Link>.</p>
     </div>
+    <RoadRider />
     <nav className="home-paths" aria-label="Explore my portfolio">
       <Link href="/work"><span>things i've made<small>yappie, ditch & the other experiments</small></span><span className="path-arrow" aria-hidden="true">↗</span></Link>
       <Link href="/about"><span>how i got here<small>it started with road rash</small></span><span className="path-arrow" aria-hidden="true">↗</span></Link>
