@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./dark.css";
+import "./portrait.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { siteUrl } from "@/lib/site";
 const display = localFont({
   src: "../public/fonts/BarlowCondensed-Bold.ttf",
   variable: "--font-display",
@@ -22,30 +24,29 @@ const serif = localFont({
   variable: "--font-serif",
   display: "swap",
 });
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://iamdex.xyz";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Sandesh Chapagain — Independent builder",
-    template: "%s — Sandesh Chapagain",
+    default: "Sandesh Chapagain | apps, art & computers",
+    template: "%s | Sandesh Chapagain",
   },
   description:
-    "The independent work of Sandesh Chapagain. Engineering Sciences student in Rome, building Yappie, DITCH, and software that brings people together.",
+    "hey, i'm sandesh. i make apps, i love good art, and i'm a little obsessed with computers. from chitwan, currently in rome.",
   authors: [{ name: "Sandesh Chapagain", url: "https://github.com/Dexasan" }],
   creator: "Sandesh Chapagain",
   openGraph: {
     type: "website",
     url: "/",
-    title: "Sandesh Chapagain — Things that bring us together",
+    title: "Sandesh Chapagain | apps, art & computers",
     description:
-      "Yappie. DITCH. Independent software with someone on the other side.",
+      "hey, i'm sandesh. i make apps. i love good art. and i'm a little obsessed with computers.",
     siteName: "Sandesh Chapagain",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Sandesh Chapagain — Independent builder",
+        alt: "Sandesh Chapagain | apps, art & computers",
       },
     ],
   },

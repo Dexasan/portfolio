@@ -198,10 +198,10 @@ export function YappieMatch() {
             </span>
             <h3>
               {state === "waiting"
-                ? "FINDING YOUR PERSON."
+                ? "LOOKING FOR A VISITOR."
                 : state === "ended"
-                  ? "UNTIL THE NEXT HELLO."
-                  : "SOMEONE NEW.\nSOMETHING REAL."}
+                  ? "THEY LEFT. GO AGAIN?"
+                  : "SAY HELLO TO SOMEONE NEW."}
             </h3>
             <p>
               {state === "waiting"
@@ -341,7 +341,7 @@ export function DitchWall() {
       />
       <div className="wall-heading">
         <span className={connected ? "status-light" : "status-light dim"} />
-        <strong>THE INTERNET WAS HERE.</strong>
+        <strong>who's been here?</strong>
         <span>PUBLIC CHAT</span>
       </div>
       <div
@@ -372,7 +372,7 @@ export function DitchWall() {
         ) : !messages.length ? (
           <div className="wall-empty">
             <span aria-hidden="true">↗</span>
-            <h3>THE MIC IS OPEN.</h3>
+            <h3>nothing here yet.</h3>
             <p>
               Leave the first message.
               <br />

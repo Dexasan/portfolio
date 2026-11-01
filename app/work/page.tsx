@@ -1,31 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ProjectArchive from "@/components/ProjectArchive";
-export const metadata: Metadata = {
-  title: "The work",
-  description:
-    "Twelve apps, experiences, and engineering tools by Sandesh Chapagain. Yappie, DITCH, Writmail, Roadrash, and more.",
-  alternates: { canonical: "/work" },
-};
-export default function WorkPage() {
-  return (
-    <div className="inner-page shell">
-      <header className="inner-hero">
-        <p className="eyebrow">The collected work / 2026</p>
-        <h1>
-          FOLLOWING
-          <br />
-          <em>the curiosity.</em>
-        </h1>
-        <p>
-          Social apps, a live studio, a racing game, and tools for the less
-          visible parts of software. Some are experiments. Some keep getting
-          bigger. Each started with something I wanted to try.
-        </p>
-      </header>
-      <ProjectArchive />
-      <p className="archive-colophon">
-        Twelve projects. Plenty still to learn.
-      </p>
-    </div>
-  );
-}
+export const metadata: Metadata = { title: "things i've made", description: "Yappie, DITCH, Roadrash and the other apps and experiments I've built.", alternates: { canonical: "/work" } };
+export default function WorkPage() { return <div className="work-page"><Link className="back-link" href="/">↖ back to me</Link><p className="page-overline">some ideas got out of my head</p><h1>things<br /><em>i've made.</em></h1><div className="selected-work"><Link href="/work/yappie" className="selected-yappie"><img src="/art/yappie-mouth.png" alt="Yappie's illustrated talking mouth" width="160" height="160"/><div><span>01 / mobile app</span><h2>yappie</h2><p>meet someone. see where it goes.</p></div><b aria-hidden="true">↗</b></Link><Link href="/work/ditch" className="selected-ditch"><span className="ditch-ink" aria-hidden="true">D<span>✳</span></span><div><span>02 / browser studio</span><h2>ditch</h2><p>i wanted the audience in the show.</p></div><b aria-hidden="true">↗</b></Link></div><p className="work-intro">the two i've spent the most time on. below is everything else too, from a motorcycle game to smaller engineering experiments.</p><ProjectArchive /></div>; }

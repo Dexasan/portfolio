@@ -4,108 +4,50 @@ import { notFound } from "next/navigation";
 import { projects } from "@/lib/collection";
 import { notes } from "@/lib/project-notes";
 import { YappieMatch, DitchWall } from "@/components/LiveConnections";
-
 export const dynamicParams = false;
-export function generateStaticParams() {
-  return projects.map(({ slug }) => ({ slug }));
-}
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  return {
-    title: project?.name ?? "Project",
-    description: project?.description,
-    alternates: { canonical: `/work/${slug}` },
-  };
-}
-export default async function ProjectPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
+export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
+export async function generateMetadata({ params }: {
+    params: Promise<{
+        slug: string;
+    }>;
+}): Promise<Metadata> { const { slug } = await params; const p = projects.find(p => p.slug === slug); return { title: p?.name ?? "project", description: p?.description, alternates: { canonical: `/work/${slug}` } }; }
+const stories: Record<string, {
+    intro: string;
+    why: string;
+    art?: string;
+    alt?: string;
+}> = {
+    yappie: { intro: "meet someone. see where it goes.", why: "i wanted to make a place where talking to someone new is the first thing you do. matching comes first in yappie. then there are conversations, posts and live clubs if you want to stick around.", art: "/art/yappie-mouth.png", alt: "Yappie's textured vermilion and chalk talking mouth" },
+    ditch: { intro: "i wanted the audience in the show.", why: "watching a stream is fun. but i kept coming back to the idea of letting someone watching actually join in. ditch is the browser studio i've been building around that.", art: "/art/studio-host.webp", alt: "The DITCH browser production studio" },
+    roadrash: { intro: "the game that started all of this.", why: "the first time i played road rash, everything else took a back seat. i just wanted to be around computers and play games. years later, i wanted to make a little piece of that feeling myself. so here's my browser tribute." }
+};
+export default async function ProjectPage({ params }: {
+    params: Promise<{
+        slug: string;
+    }>;
 }) {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) notFound();
-  const note = notes[slug];
-  const next = projects[(projects.indexOf(project) + 1) % projects.length];
-  return (
-    <div className="inner-page shell">
-      <header className="case-header">
-        <div className="case-breadcrumb">
-          <Link href="/work">← ALL THE WORK</Link>
-          <span>{project.kind.toUpperCase()} / 2026</span>
-        </div>
-        <div className="case-heading">
-          <h1>{project.name}</h1>
-          <div>
-            <p className="eyebrow">{project.status}</p>
-            <p>{project.description}</p>
-            <div className="case-links">
-              {project.href && (
-                <a href={project.href}>
-                  Open {project.name} <span aria-hidden="true">↗</span>
-                </a>
-              )}
-              {project.source && (
-                <a href={project.source}>
-                  View source <span aria-hidden="true">↗</span>
-                </a>
-              )}
-              {slug === "ditch" && (
-                <Link href="/deck">
-                  Pitch deck <span aria-hidden="true">↗</span>
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
-      {slug === "yappie" ? (
-        <YappieMatch />
-      ) : slug === "ditch" ? (
-        <DitchWall />
-      ) : (
-        <div className={`case-graphic graphic-${slug}`}>
-          <span className="eyebrow">{project.kind}</span>
-          <span className="graphic-title">{project.name}</span>
-          <span className="graphic-subtitle">{note.question}</span>
-        </div>
-      )}
-      <div className="case-body">
-        <aside className="case-sidebar">
-          <div>
-            <h2>BUILT WITH</h2>
-            <p>{project.stack}</p>
-          </div>
-          <div>
-            <h2>STATUS</h2>
-            <p>{project.status}</p>
-          </div>
-        </aside>
-        <div className="case-prose">
-          <h2>{note.question}</h2>
-          <p>{note.approach}</p>
-          <h2>What’s in the build</h2>
-          <ul>
-            {note.details.map((detail) => (
-              <li key={detail}>{detail}</li>
-            ))}
-          </ul>
-          <h2>Where it stands</h2>
-          <p>{note.boundary}</p>
-        </div>
-      </div>
-      <div className="case-next">
-        <p className="eyebrow">Keep exploring</p>
-        <Link href={`/work/${next.slug}`}>
-          {next.name}
-          <span aria-hidden="true">↗</span>
-        </Link>
-      </div>
-    </div>
-  );
+    const { slug } = await params;
+    const project = projects.find(p => p.slug === slug);
+    if (!project)
+        notFound();
+    const note = notes[slug];
+    const story = stories[slug];
+    const next = projects[(projects.indexOf(project) + 1) % projects.length];
+    return <article className="project-page">
+  <Link className="back-link" href="/work">↖ all the things</Link>
+  <p className="page-overline">{project.kind.toLowerCase()}</p>
+  <h1>{project.name}</h1>
+  <p className="project-description">{story?.intro ?? project.description}</p>
+  <p className="project-meta">{project.status.toLowerCase()} · {project.stack}</p>
+  <div className="project-links">{project.href && <a href={project.href}>open {project.name.toLowerCase()} ↗</a>}{project.source && <a href={project.source}>source ↗</a>}{slug === "ditch" && <Link href="/deck">pitch deck ↗</Link>}</div>
+  {story?.art && <div className={`project-art ${slug === "ditch" ? "studio-art" : ""}`}><img src={story.art} alt={story.alt ?? ""} width={slug === "ditch" ? 1200 : 300} height={slug === "ditch" ? 750 : 300}/></div>}
+  <div className="reading-prose">
+   <h2>{story ? "why i made it." : note.question}</h2><p>{story?.why ?? note.approach}</p>
+   {slug === "yappie" && <><h2>i wanted it to look like this, too.</h2><p>the ink drawings, the mouth, the type, the charcoal and red. i care about those things. i want the app to have some character when you open it.</p></>}
+   <h2>what's in it.</h2><ul>{note.details.map(detail => <li key={detail}>{detail}</li>)}</ul>
+   <h2>where it's at.</h2><p>{note.boundary}</p>
+  </div>
+  {(slug === "yappie" || slug === "ditch") && <section className="project-experiment" aria-labelledby="experiment-title"><h2 id="experiment-title">{slug === "yappie" ? "try saying hello." : "leave something here."}</h2><p>{slug === "yappie" ? "a little version of the idea. this matches you with another person visiting my portfolio. someone else needs to be here too." : "a public chat for whoever drops by. write something and it stays here for the next person. messages refresh as people post."}</p>{slug === "yappie" ? <YappieMatch /> : <DitchWall />}</section>}
+  <Link className="next-reading" href={`/work/${next.slug}`}>{next.name}<span aria-hidden="true">↗</span></Link>
+ </article>;
 }

@@ -12,7 +12,7 @@ export const notes: Record<
       "A shared Expo/React Native application with a Cloudflare Realtime audio integration.",
     ],
     boundary:
-      "Yappie is in private beta. Source code and build artifacts do not establish that every device, audio route, notification, or email flow has been validated.",
+      "it's in private beta. i'm still working through device testing, live audio and notifications. there's more to do before a wider release.",
   },
   ditch: {
     question: "Why should the audience stay in the audience?",
@@ -24,7 +24,7 @@ export const notes: Record<
       "A WebSocket/ffmpeg relay for sending composed media to multiple RTMP destinations.",
     ],
     boundary:
-      "DITCH is an active build. The public visitor wall above is a separate portfolio feature; it does not start a broadcast or capture your camera or microphone.",
+      "i'm still building it. the visitor chat below is a small separate feature for this portfolio. it doesn't start a broadcast or use your camera or microphone.",
   },
   writmail: {
     question: "Can outreach start with better research?",

@@ -3,19 +3,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { projects } from "@/lib/collection";
 
-const filters = ["All", "Apps & experiences", "Engineering tools"];
+const filters = ["all", "apps & experiences", "engineering tools"];
 export default function ProjectArchive({
   compact = false,
 }: {
   compact?: boolean;
 }) {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("all");
   const listed = compact
     ? projects.slice(2, 6)
     : projects.filter(
         (_, i) =>
-          filter === "All" ||
-          (filter === "Apps & experiences" ? i < 6 : i >= 6),
+          filter === "all" ||
+          (filter === "apps & experiences" ? i < 6 : i >= 6),
       );
   return (
     <div className="project-archive">
@@ -28,7 +28,7 @@ export default function ProjectArchive({
               onClick={() => setFilter(item)}
             >
               {item}
-              {item === "All" && <sup>12</sup>}
+              {item === "all" && <sup>12</sup>}
             </button>
           ))}
           <span aria-live="polite">{listed.length} projects</span>
