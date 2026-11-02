@@ -11,14 +11,14 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#c33c25",
-          color: "#f1ebdd",
+          background: "#a7bfe8",
+          color: "#171c22",
           fontSize: 54,
           fontFamily: "serif",
           fontWeight: 400,
         }}
       >
-        ✳
+        s
       </div>
     ),
     size,

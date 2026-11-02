@@ -187,7 +187,7 @@ export function YappieMatch() {
         ) : (
           <div className="match-splash">
             <img
-              src="/art/conversation-print.png"
+              src="/art/conversation-blue.webp"
               alt="Two illustrated strangers starting a conversation"
             />
             <span

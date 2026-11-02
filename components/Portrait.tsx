@@ -18,12 +18,12 @@ export default function Portrait() {
       print.current = image;
       const context = canvas.current?.getContext("2d");
       if (!context) return;
-      context.fillStyle = "#111110";
+      context.fillStyle = "#171c22";
       context.fillRect(0, 0, 600, 600);
       context.drawImage(image, 0, 0, 600, 600);
       setReady(true);
     };
-    image.src = "/art/sandesh-ink-v2.webp";
+    image.src = "/art/sandesh-blue.webp";
     return () => { mounted = false; };
   }, []);
 
@@ -32,7 +32,7 @@ export default function Portrait() {
     if (!context || !print.current) return;
     context.globalCompositeOperation = "source-over";
     context.clearRect(0, 0, 600, 600);
-    context.fillStyle = "#111110";
+    context.fillStyle = "#171c22";
     context.fillRect(0, 0, 600, 600);
     context.drawImage(print.current, 0, 0, 600, 600);
     previous.current = null;
@@ -83,7 +83,7 @@ export default function Portrait() {
     <div className="print-stage">
       <div className={`scratch-portrait ${rubbing ? "is-rubbing" : ""} ${photo ? "is-photo" : ""}`} role="img" aria-label={photo ? "Sandesh's original photograph" : "A chalk and charcoal portrait of Sandesh. Rub the ink off or use show photo to reveal the original photograph."}>
         <img className="portrait-original" src="/sandesh.jpg" alt="" width="600" height="600" />
-        <img className={`portrait-print-fallback ${ready || photo ? "canvas-ready" : ""}`} src="/art/sandesh-ink-v2.webp" alt="" width="600" height="600" fetchPriority="high" />
+        <img className={`portrait-print-fallback ${ready || photo ? "canvas-ready" : ""}`} src="/art/sandesh-blue.webp" alt="" width="600" height="600" fetchPriority="high" />
         <canvas ref={canvas} width="600" height="600" aria-hidden="true" style={{ visibility: photo ? "hidden" : undefined }}
           onPointerDown={start}
           onPointerMove={event => { if (event.currentTarget.hasPointerCapture(event.pointerId)) erase(event); }}

@@ -17,7 +17,7 @@ const stories: Record<string, {
     art?: string;
     alt?: string;
 }> = {
-    yappie: { intro: "meet someone. see where it goes.", why: "i wanted to make a place where talking to someone new is the first thing you do. matching comes first in yappie. then there are conversations, posts and live clubs if you want to stick around.", art: "/art/yappie-mouth.png", alt: "Yappie's textured vermilion and chalk talking mouth" },
+    yappie: { intro: "meet someone. see where it goes.", why: "i wanted to make a place where talking to someone new is the first thing you do. matching comes first in yappie. then there are conversations, posts and live clubs if you want to stick around.", art: "/art/yappie-mouth-blue.webp", alt: "Yappie's textured blue and chalk talking mouth" },
     ditch: { intro: "i wanted the audience in the show.", why: "watching a stream is fun. but i kept coming back to the idea of letting someone watching actually join in. ditch is the browser studio i've been building around that.", art: "/art/studio-host.webp", alt: "The DITCH browser production studio" },
     roadrash: { intro: "the game that started all of this.", why: "the first time i played road rash, everything else took a back seat. i just wanted to be around computers and play games. years later, i wanted to make a little piece of that feeling myself. so here's my browser tribute." }
 };
