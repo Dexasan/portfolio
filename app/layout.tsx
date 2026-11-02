@@ -30,26 +30,26 @@ const serif = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Sandesh Chapagain | apps, art & computers",
+    default: "Sandesh Chapagain | minds, machines & connection",
     template: "%s | Sandesh Chapagain",
   },
   description:
-    "hey, i'm sandesh. i make apps, i love good art, and i'm a little obsessed with computers. from chitwan, currently in rome.",
+    "hey, i'm sandesh. curious about cognitive science, the next generation of computing, and how we connect with each other and our machines.",
   authors: [{ name: "Sandesh Chapagain", url: "https://github.com/Dexasan" }],
   creator: "Sandesh Chapagain",
   openGraph: {
     type: "website",
     url: "/",
-    title: "Sandesh Chapagain | apps, art & computers",
+    title: "Sandesh Chapagain | minds, machines & connection",
     description:
-      "hey, i'm sandesh. i make apps. i love good art. and i'm a little obsessed with computers.",
+      "computers got me curious. how we think keeps me there. exploring cognition, computing and connection.",
     siteName: "Sandesh Chapagain",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Sandesh Chapagain | apps, art & computers",
+        alt: "Sandesh Chapagain | minds, machines & connection",
       },
     ],
   },

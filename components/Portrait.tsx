@@ -121,7 +121,7 @@ export default function Portrait() {
       </div>
       {!photo&&<><span className="print-note" aria-hidden="true">try rubbing this.</span><svg className="print-note-arrow" viewBox="0 0 90 65" fill="none" aria-hidden="true"><path d="M85 6C58 1 70 49 12 45m13-9L9 46l20 8"/></svg></>}
     </div>
-    {photo&&<div className="print-controls"><button ref={resetButton} onClick={reset}>make me handsome again</button></div>}
+    {(photo||revealed>=30)&&<div className="print-controls"><button ref={resetButton} onClick={reset}>make me handsome again</button></div>}
     <span className="sr-only" role="status">{photo?"Photo revealed. Make me handsome again restores the print.":""}</span>
   </div>;
 }
