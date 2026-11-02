@@ -24,6 +24,8 @@ main{min-height:65vh}
 .portrait-print-fallback.canvas-ready{visibility:hidden}
 .scratch-portrait canvas{z-index:2;cursor:crosshair;touch-action:pan-y}
 .scratch-portrait.is-rubbing canvas{touch-action:none;cursor:cell}
+.scratch-portrait.direct-rub canvas{touch-action:none;cursor:crosshair}
+.scratch-portrait canvas:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
 .scratch-portrait.is-photo canvas{pointer-events:none}
 .print-note{position:absolute;right:-5px;bottom:60px;width:107px;font:italic 20px/1.1 var(--font-serif);color:var(--muted);transform:rotate(8deg);text-align:left;pointer-events:none}
 .print-note-arrow{position:absolute;right:24px;bottom:19px;width:76px;height:54px;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;pointer-events:none}
@@ -95,6 +97,15 @@ main{min-height:65vh}
 .project-links a{padding-bottom:6px;border-bottom:1px solid var(--red)}
 .project-art{margin:12px auto 30px;text-align:center}
 .project-art img{max-height:230px;width:auto;max-width:100%;object-fit:contain}
+.project-art.mark-roadrash img{max-height:440px;max-width:100%;height:auto}
+.project-art.mark-ditch img{max-height:240px;width:240px;height:240px}
+.art-credit{font:11px/1.7 var(--font-sans);color:var(--muted);text-align:center;margin:-10px 0 32px}
+.art-credit a{text-decoration:underline;text-underline-offset:3px}
+.project-studio{margin:35px 0}
+.project-studio img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.work-page .archive-name.has-project-mark{display:grid;grid-template-columns:70px 1fr;column-gap:15px;align-items:center}
+.work-page .archive-project-art{grid-column:1;grid-row:1 / span 2;width:70px;height:80px;object-fit:contain}
+.work-page .has-project-mark>span,.work-page .has-project-mark>h3{grid-column:2}
 .project-art.studio-art img{max-height:none;width:100%;border:1px solid var(--line)}
 .project-page .reading-prose ul{margin:15px 0 30px;padding-left:20px;color:#cec8bc;font:14px/1.9 var(--font-sans)}
 .project-page .reading-prose li{margin:12px 0;padding-left:5px}

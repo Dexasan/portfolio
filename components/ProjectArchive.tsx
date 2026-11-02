@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { projects } from "@/lib/collection";
 
+const marks: Record<string,string> = { yappie: "/art/yappie-poster.webp", ditch: "/art/ditch-poster.webp", roadrash: "/art/roadrash-poster.webp" };
+
 const filters = ["all", "apps & experiences", "engineering tools"];
 export default function ProjectArchive({
   compact = false,
@@ -37,7 +39,8 @@ export default function ProjectArchive({
       <div className="archive-rows">
         {listed.map((project) => (
           <article className="archive-row" key={project.slug}>
-            <div className="archive-name">
+            <div className={`archive-name ${marks[project.slug] ? "has-project-mark" : ""}`}>
+              {marks[project.slug] && <img className="archive-project-art" src={marks[project.slug]} alt="" width="70" height="80"/>}
               <span>{project.kind}</span>
               <h3>
                 <Link href={`/work/${project.slug}`}>

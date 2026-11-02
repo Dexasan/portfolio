@@ -17,9 +17,9 @@ const stories: Record<string, {
     art?: string;
     alt?: string;
 }> = {
-    yappie: { intro: "meet someone. see where it goes.", why: "i wanted to make a place where talking to someone new is the first thing you do. matching comes first in yappie. then there are conversations, posts and live clubs if you want to stick around.", art: "/art/yappie-mouth-blue.webp", alt: "Yappie's textured blue and chalk talking mouth" },
-    ditch: { intro: "i wanted the audience in the show.", why: "watching a stream is fun. but i kept coming back to the idea of letting someone watching actually join in. ditch is the browser studio i've been building around that.", art: "/art/studio-host.webp", alt: "The DITCH browser production studio" },
-    roadrash: { intro: "the game that started all of this.", why: "the first time i played road rash, everything else took a back seat. i just wanted to be around computers and play games. years later, i wanted to make a little piece of that feeling myself. so here's my browser tribute." }
+    yappie: { intro: "meet someone. see where it goes.", why: "i wanted to make a place where talking to someone new is the first thing you do. matching comes first in yappie. then there are conversations, posts and live clubs if you want to stick around.", art: "/art/yappie-poster.webp", alt: "Yappie's original vermilion and chalk talking mouth, posterized" },
+    ditch: { intro: "i wanted the audience in the show.", why: "watching a stream is fun. but i kept coming back to the idea of letting someone watching actually join in. ditch is the browser studio i've been building around that.", art: "/art/ditch-poster.webp", alt: "DITCH's actual pink glitch D logo, posterized" },
+    roadrash: { intro: "the game that started all of this.", why: "the first time i played road rash, everything else took a back seat. i just wanted to be around computers and play games. years later, i wanted to make a little piece of that feeling myself. so here's my browser tribute.", art: "/art/roadrash-poster.webp", alt: "Posterized original Road Rash PC cover artwork" }
 };
 export default async function ProjectPage({ params }: {
     params: Promise<{
@@ -40,13 +40,15 @@ export default async function ProjectPage({ params }: {
   <p className="project-description">{story?.intro ?? project.description}</p>
   <p className="project-meta">{project.status.toLowerCase()} · {project.stack}</p>
   <div className="project-links">{project.href && <a href={project.href}>open {project.name.toLowerCase()} ↗</a>}{project.source && <a href={project.source}>source ↗</a>}{slug === "ditch" && <Link href="/deck">pitch deck ↗</Link>}</div>
-  {story?.art && <div className={`project-art ${slug === "ditch" ? "studio-art" : ""}`}><img src={story.art} alt={story.alt ?? ""} width={slug === "ditch" ? 1200 : 300} height={slug === "ditch" ? 750 : 300}/></div>}
+  {story?.art && <div className={`project-art project-mark mark-${slug}`}><img src={story.art} alt={story.alt ?? ""} width={slug === "roadrash" ? 800 : 600} height={slug === "roadrash" ? 1000 : 600}/></div>}
+  {slug === "roadrash" && <p className="art-credit">original Road Rash cover © Electronic Arts. <a href="https://www.old-games.ru/game/covers/118.html">art source ↗</a></p>}
   <div className="reading-prose">
    <h2>{story ? "why i made it." : note.question}</h2><p>{story?.why ?? note.approach}</p>
    {slug === "yappie" && <><h2>i wanted it to look like this, too.</h2><p>the ink drawings, the mouth, the type, the charcoal and red. i care about those things. i want the app to have some character when you open it.</p></>}
    <h2>what's in it.</h2><ul>{note.details.map(detail => <li key={detail}>{detail}</li>)}</ul>
    <h2>where it's at.</h2><p>{note.boundary}</p>
   </div>
+  {slug === "ditch" && <figure className="project-studio"><img src="/art/studio-host.webp" alt="The DITCH browser production studio" width="1200" height="750"/></figure>}
   {(slug === "yappie" || slug === "ditch") && <section className="project-experiment" aria-labelledby="experiment-title"><h2 id="experiment-title">{slug === "yappie" ? "try saying hello." : "leave something here."}</h2><p>{slug === "yappie" ? "a little version of the idea. this matches you with another person visiting my portfolio. someone else needs to be here too." : "a public chat for whoever drops by. write something and it stays here for the next person. messages refresh as people post."}</p>{slug === "yappie" ? <YappieMatch /> : <DitchWall />}</section>}
   <Link className="next-reading" href={`/work/${next.slug}`}>{next.name}<span aria-hidden="true">↗</span></Link>
  </article>;

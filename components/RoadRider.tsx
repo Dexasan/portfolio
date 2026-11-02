@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import BikeArtwork from "./BikeArtwork";
 
 export default function RoadRider() {
   const scene = useRef<HTMLDivElement>(null);
   const route = useRef<SVGPathElement>(null);
   const rider = useRef<SVGGElement>(null);
-  const wheels = useRef<SVGGElement>(null);
   const lap = useRef<number | null>(null);
   const [racing, setRacing] = useState(false);
   const [reduced, setReduced] = useState(false);
@@ -31,7 +29,6 @@ export default function RoadRider() {
       const angle = Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180 / Math.PI;
       const lean = Math.max(-6, Math.min(6, (angle - lastAngle) * 2));
       rider.current.setAttribute("transform", `translate(${point.x} ${point.y - 2}) rotate(${angle + lean})`);
-      wheels.current?.style.setProperty("--wheel-turn", `${progress * 3600}deg`);
       lastAngle = angle;
     }
 
@@ -104,7 +101,7 @@ export default function RoadRider() {
       <path className="road-edge" d="M-20 83C68 83 62 45 151 45S262 96 341 85 431 39 488 48 555 82 620 63" />
       <path ref={route} className="road-route" d="M-20 73C68 73 62 35 151 35S262 86 341 75 431 29 488 38 555 72 620 53" />
       <g ref={rider} className="little-rider" transform="translate(55 50)">
-        <BikeArtwork wheelsRef={wheels}/>
+        <image href="/art/roadrash-rider.webp" x="-25" y="-62" width="50" height="67" preserveAspectRatio="xMidYMax meet"/>
       </g>
     </svg>
     <div className="road-caption"><span className="cursor-road-caption">move your mouse along the road.</span><span className="touch-road-caption">road rash started all of this.</span><button onClick={() => {
