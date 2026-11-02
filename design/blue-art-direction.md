@@ -1,6 +1,6 @@
 # Blue portfolio artwork
 
-Muted blue #a7bfe8 on blue charcoal #171c22, with warm chalk text. Original keyboard and controller SVG drawings reference computers and games. The conversation print represents the social connection behind the apps. No decorative stars were added.
+Muted blue #a7bfe8 on blue charcoal #171c22, with warm chalk text. The background uses restrained ink tones and light print grain. Artwork stays in its portrait and project contexts, without wallpaper illustrations. The motorcycle follows mouse movement only within its existing road and never floats over the page.
 
 Built-in imagegen palette edits:
 

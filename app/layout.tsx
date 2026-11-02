@@ -8,7 +8,6 @@ import "./art-theme.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageMotion from "@/components/PageMotion";
-import PortfolioArtwork from "@/components/PortfolioArtwork";
 import { siteUrl } from "@/lib/site";
 const display = localFont({
   src: "../public/fonts/BarlowCondensed-Bold.ttf",
@@ -79,7 +78,6 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${serif.variable}`}
     >
       <body>
-        <PortfolioArtwork />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>

@@ -1,24 +1,8 @@
 :root{--paper:#171c22;--paper-deep:#1c232c;--night:#171c22;--ink:#eee9dd;--muted:#b8bdc6;--line:#3b4655;--accent:#a7bfe8;--red:var(--accent);--bright:var(--accent)}
-body{position:relative;isolation:isolate;background:#171c22}
-body:after{opacity:.055}
+body{position:relative;isolation:isolate;background:linear-gradient(115deg,#1b222c,#171c22 45%,#171b21)}
+body:after{opacity:.025}
 main,.personal-nav,.personal-footer{position:relative;z-index:1}
 .personal-home{position:relative}
-.portfolio-artwork{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;color:#a7bfe8;min-height:100vh}
-.portfolio-artwork figure{position:absolute;margin:0}
-.portfolio-artwork svg{display:block;width:100%;height:auto;stroke-linecap:round;stroke-linejoin:round}
-.portfolio-artwork figcaption{font:italic 21px/1.25 var(--font-serif);color:#a7bfe8;opacity:.7;max-width:220px;text-align:center;margin:9px auto 0}
-.art-solid{fill:#a7bfe8;fill-opacity:.09}
-.art-outline{stroke:currentColor;stroke-width:1.4}
-.art-key{stroke:#d9e1ee;stroke-width:1.1;fill:#242f3f;fill-opacity:.5}
-.art-hatch{fill:url(#keyboard-hatch);opacity:.5}
-.margin-keyboard{width:290px;left:calc(50% - 630px);top:140px;opacity:.68;transform:rotate(-4deg)}
-.margin-conversation{width:290px;left:calc(50% + 365px);top:340px;opacity:.6;transform:rotate(6deg)}
-.margin-conversation img{display:block;mix-blend-mode:screen;mask-image:radial-gradient(ellipse,#000 48%,transparent 74%)}
-.margin-controller{width:250px;left:calc(50% - 580px);top:1010px;opacity:.57;transform:rotate(12deg)}
-.margin-controller figcaption{transform:rotate(-4deg)}
-.cursor-bike{position:fixed;top:0;left:0;width:72px;height:72px;z-index:60;pointer-events:none;opacity:0;overflow:visible;transition:opacity .16s ease;will-change:transform}
-.cursor-bike[data-visible=true]{opacity:1}
-html[data-bike-following=true] .road-scene>.little-rider{opacity:0}
 .road-route{stroke:#6f88ad}.road-edge{stroke:#3f536c}
 .rider-wheel,.rider-body,.bike-engine{fill:#171c22}
 .rider-wheel path{stroke:#c7d1df}
@@ -36,7 +20,4 @@ html[data-bike-following=true] .road-scene>.little-rider{opacity:0}
 .project-page .red-button:hover:not(:disabled){background:#c4d5f2}
 .archive-filters button[aria-pressed=true]{background:transparent;border-color:var(--accent);color:var(--ink)}
 .project-page .wall-messages{scrollbar-color:#4b6080 #1b232d}
-@media(max-width:1200px) and (min-width:801px){.margin-keyboard{left:-65px;width:240px;opacity:.45}.margin-conversation{left:auto;right:-95px;width:255px;opacity:.4}.margin-controller{left:-50px;width:220px;opacity:.4}}
-@media(max-width:800px){.margin-keyboard{top:160px;left:-115px;width:200px;opacity:.25}.margin-conversation{top:520px;left:auto;right:-145px;width:230px;opacity:.22}.margin-controller{top:1120px;left:-90px;width:170px;opacity:.2}.portfolio-artwork figcaption{display:none}.print-note{background:#171c22d9}}
-@media(hover:none),(pointer:coarse){.cursor-bike{display:none}.cursor-road-caption{display:none}.touch-road-caption{display:inline}}
-@media(prefers-reduced-motion:reduce){.cursor-bike{display:none}.road-scene>.little-rider{opacity:1!important}}
+@media(hover:none),(pointer:coarse){.cursor-road-caption{display:none}.touch-road-caption{display:inline}}

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import BikeArtwork from "./BikeArtwork";
-import CursorBike from "./CursorBike";
 
 export default function RoadRider() {
   const scene = useRef<HTMLDivElement>(null);
@@ -36,11 +35,13 @@ export default function RoadRider() {
       lastAngle = angle;
     }
 
-    function measure() {
-      if (!scene.current) return;
-      const rect = scene.current.getBoundingClientRect();
-      target = Math.max(0.06, Math.min(0.94, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-      if (!preference.matches && !frame) frame = requestAnimationFrame(tick);
+    function follow(event: PointerEvent) {
+      if (event.pointerType !== "mouse" || preference.matches || lap.current !== null) return;
+      const track = route.current?.ownerSVGElement;
+      if (!track) return;
+      const rect = track.getBoundingClientRect();
+      target = Math.max(0.035, Math.min(0.965, (event.clientX - rect.left) / rect.width));
+      if (!frame) frame = requestAnimationFrame(tick);
     }
 
     function tick(time: number) {
@@ -74,7 +75,7 @@ export default function RoadRider() {
         setRacing(false);
         current = 0.45;
         place(current);
-      } else measure();
+      } else place(current);
     }
 
     function startLap() {
@@ -84,24 +85,21 @@ export default function RoadRider() {
     }
 
     onPreference();
-    measure();
-    window.addEventListener("scroll", measure, { passive: true });
-    window.addEventListener("resize", measure);
+    const track = route.current?.ownerSVGElement;
+    track?.addEventListener("pointermove", follow, { passive: true });
     preference.addEventListener("change", onPreference);
     scene.current?.addEventListener("take-lap", startLap);
     const element = scene.current;
     return () => {
       alive = false;
       cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", measure);
-      window.removeEventListener("resize", measure);
+      track?.removeEventListener("pointermove", follow);
       preference.removeEventListener("change", onPreference);
       element?.removeEventListener("take-lap", startLap);
     };
   }, []);
 
   return <div className="road-interlude" ref={scene}>
-    <CursorBike />
     <svg className="road-scene" viewBox="0 0 600 120" fill="none" aria-hidden="true">
       <path className="road-edge" d="M-20 83C68 83 62 45 151 45S262 96 341 85 431 39 488 48 555 82 620 63" />
       <path ref={route} className="road-route" d="M-20 73C68 73 62 35 151 35S262 86 341 75 431 29 488 38 555 72 620 53" />
@@ -109,7 +107,7 @@ export default function RoadRider() {
         <BikeArtwork wheelsRef={wheels}/>
       </g>
     </svg>
-    <div className="road-caption"><span className="cursor-road-caption">move your mouse. he follows.</span><span className="touch-road-caption">road rash started all of this.</span><button onClick={() => {
+    <div className="road-caption"><span className="cursor-road-caption">move your mouse along the road.</span><span className="touch-road-caption">road rash started all of this.</span><button onClick={() => {
       if (reduced) return;
       setRacing(true);
       scene.current?.dispatchEvent(new Event("take-lap"));
