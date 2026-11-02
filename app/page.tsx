@@ -6,18 +6,18 @@ export default function HomePage() {
     <p className="home-location">chitwan, nepal <span aria-hidden="true">↝</span> rome, italy</p>
     <div className="name-art"><span className="hand-note">hey, i'm</span><h1>SANDESH<span>CHAPAGAIN</span></h1></div>
     <Portrait />
-    <div className="home-intro">
-      <p>computers got me curious.<br />how we think keeps me there.</p>
-      <p className="home-small">i'm from chitwan, now in rome doing engineering sciences at tor vergata.</p>
-      <p className="home-connection">i keep coming back to cognitive science and what computers could become. i think the next step is a computer that understands what we're trying to do, without making us think like a machine.</p>
-      <p className="home-connection">two people finding each other. a person and a computer figuring something out. i care about that connection. i want to build things that make it come easier.</p>
+    <div className="home-intro home-story">
+      <p>i played road rash once and that was pretty much it. all i wanted to do after that was sit at a computer. games first, then wondering how any of it worked.</p>
+      <p>i'm from chitwan, nepal. these days i'm in rome studying engineering sciences at tor vergata. the computer obsession came with me.</p>
+      <p>now i'm just as curious about the person in front of the screen. how we think, what we mean, why getting a computer to do something can still be such a pain. that's what got me interested in cognitive science. i want to understand that better, and help build whatever comes next.</p>
+      <p>sometimes that's a person talking to a machine. sometimes it's two strangers talking to each other. either way, i want to make it easier for them to connect.</p>
     </div>
     <RoadRider />
     <ArcadeSelect label="choose a path" variant="paths" items={[
-      {id:"work",title:"things i've made",short:"the work",kind:"apps & experiments",summary:"ideas i had to try. some became apps, some are still experiments.",href:"/work",glyph:"build",action:"explore the work"},
+      {id:"work",title:"things i've made",short:"the work",kind:"apps & experiments",summary:"ideas i had to try. some became apps, some are still experiments.",href:"/work",art:"/art/marks/path-work.webp",action:"explore the work"},
       {id:"about",title:"how i got here",short:"the backstory",kind:"chitwan → rome",summary:"one game, a computer, and an obsession that never really went away.",href:"/about",art:"/art/roadrash-rider.webp",action:"start at the beginning"},
-      {id:"direction",title:"what next?",short:"what next",kind:"cognition & computing",summary:"master's, how we think, and the things i still need to learn.",href:"/direction",glyph:"mind",action:"see where i'm headed"},
-      {id:"thoughts",title:"the computer thing",short:"the idea",kind:"human ↔ machine",summary:"what if my computer understood what i meant? and what if it actually stayed mine?",href:"/thoughts",glyph:"computer",action:"hear me out"}
+      {id:"direction",title:"what next?",short:"what next",kind:"cognition & computing",summary:"master's, how we think, and the things i still need to learn.",href:"/direction",art:"/art/marks/path-direction.webp",action:"see where i'm headed"},
+      {id:"thoughts",title:"the computer thing",short:"the idea",kind:"human ↔ machine",summary:"what if my computer understood what i meant? and what if it actually stayed mine?",href:"/thoughts",art:"/art/marks/path-thoughts.webp",action:"hear me out"}
     ]}/>
     <p className="home-signoff">anyway, glad you're here. <span aria-hidden="true">↙</span></p>
   </div>;

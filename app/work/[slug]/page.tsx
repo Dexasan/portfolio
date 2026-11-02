@@ -32,6 +32,7 @@ export default async function ProjectPage({ params }: {
         notFound();
     const note = notes[slug];
     const story = stories[slug];
+    const artwork = story?.art ?? `/art/marks/${slug}.webp`;
     const next = projects[(projects.indexOf(project) + 1) % projects.length];
     return <article className="project-page">
   <Link className="back-link" href="/work">↖ all the things</Link>
@@ -40,7 +41,7 @@ export default async function ProjectPage({ params }: {
   <p className="project-description">{story?.intro ?? project.description}</p>
   <p className="project-meta">{project.status.toLowerCase()} · {project.stack}</p>
   <div className="project-links">{project.href && <a href={project.href}>open {project.name.toLowerCase()} ↗</a>}{project.source && <a href={project.source}>source ↗</a>}{slug === "ditch" && <Link href="/deck">pitch deck ↗</Link>}</div>
-  {story?.art && <div className={`project-art project-mark mark-${slug}`}><img src={story.art} alt={story.alt ?? ""} width={slug === "roadrash" ? 800 : 600} height={slug === "roadrash" ? 1000 : 600}/></div>}
+  <div className={`project-art project-mark mark-${slug}`}><img src={artwork} alt={story?.alt ?? `${project.name} illustrated mark`} width={slug === "roadrash" ? 800 : 600} height={slug === "roadrash" ? 1000 : 600}/></div>
   {slug === "roadrash" && <p className="art-credit">original Road Rash cover © Electronic Arts. <a href="https://www.old-games.ru/game/covers/118.html">art source ↗</a></p>}
   <div className="reading-prose">
    <h2>{story ? "why i made it." : note.question}</h2><p>{story?.why ?? note.approach}</p>
