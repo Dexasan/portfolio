@@ -28,10 +28,10 @@ export default function DirectionPage() {
         </figcaption>
       </figure>
       <div className="reading-prose">
-        <p className="lead-copy">i study engineering sciences at tor vergata. for my master's, i want to get into computational cognitive science. a fruit fly is part of the reason why.</p>
-        <p>i keep thinking about this one number: 139,255. that's how many neurons the <a href="https://www.nature.com/articles/s41586-024-07558-y">FlyWire team mapped in one adult fruit fly's brain</a>. there are about 50 million connections in that map. all of that in a fly.</p>
-        <p>the part that got me was what people did with it. <a href="https://www.nature.com/articles/s41586-024-07763-9">one team used the wiring to build a model</a> and predict which neurons could kick off a feeding response. they could then try those predictions on actual flies. you can change something in the model, see what it expects to happen, and go find out if the animal agrees.</p>
-        <p>that's what i want to learn how to do. start with something an animal or a person does, build a model that could explain it, then come up with an experiment that might prove me wrong. i'd love to spend a master's doing that. i'm especially curious about how something as ordinary as noticing a change around you turns into a decision to move.</p>
+        <p className="lead-copy">i study engineering sciences at tor vergata. i want to do my master's in computational cognitive science, and weirdly enough, a fruit fly made me want it more.</p>
+        <p>when i heard that people had mapped a fly's brain, i started thinking about my own. say we get good enough at this to map mine one day. could i live in a computer and still remember the first time i played road rash? would i wake up in there, or would i still be sitting here while someone else remembers being me?</p>
+        <p>that's where my mind goes when i think about neuralink or brain implants. imagine being able to use a computer just by thinking. now go a bit further. what would it feel like if the computer could give you a memory back? would it feel like remembering something, or like seeing it for the first time? i have no idea if we'll ever make anything that can do that. i want to understand what would have to happen for us to even get close.</p>
+        <p>i used to think about the future of computers mostly in terms of what we'd be able to do with them. now i wonder what using them might do to us. that's what i'd like to spend my master's thinking about. i want to understand enough about brains and computers to ask better questions than “could i live forever?” though honestly, i'd still like an answer to that one.</p>
         <Link className="next-reading" href="/work">things i have made <span aria-hidden="true">↗</span></Link>
       </div>
     </article>
