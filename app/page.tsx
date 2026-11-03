@@ -2,7 +2,6 @@ import Portrait from "@/components/Portrait";
 import ArcadeSelect from "@/components/ArcadeSelect";
 export default function HomePage() {
     return <div className="personal-home">
-    <p className="home-location">chitwan, nepal <span aria-hidden="true">↝</span> rome, italy</p>
     <div className="name-art"><span className="hand-note">hey, i'm</span><h1>SANDESH<span>CHAPAGAIN</span></h1></div>
     <Portrait />
     <div className="home-intro home-story">
