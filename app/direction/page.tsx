@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "what next?",
-  description: "From Engineering Sciences at Tor Vergata to questions about wearable sensing, cognition and human-computer interaction.",
+  description: "From Engineering Sciences at Tor Vergata to a master's in computational cognitive science, by way of a fruit fly.",
   alternates: { canonical: "/direction" },
 };
 
@@ -28,10 +28,10 @@ export default function DirectionPage() {
         </figcaption>
       </figure>
       <div className="reading-prose">
-        <p className="lead-copy">i study engineering sciences at tor vergata. the question i keep coming back to is what a computer can tell about the person using it, and what it should do when it gets that person wrong.</p>
-        <p>take a phone in someone's pocket. the accelerometer and gyroscope give you a record of how the phone moved. you can look for a walking rhythm in that signal, but move the phone to a bag or try it on someone with a different gait and the pattern changes. i'd want to test on people the model has never seen and look at which activities it confuses. a good score means more when you know where it breaks.</p>
-        <p>then there's the interface. say a wearable thinks you've stopped walking and offers to pause a route. getting that wrong once is fine. doing it every time you stop at a crossing would drive you mad. i'd like to test when an interface should act, when it should ask, and when people would rather it left them alone.</p>
-        <p>that's why i'm looking at master's programmes in human-computer interaction and computational cognitive science. i want to get better at designing experiments where you can tell whether an interface actually helped someone. give two groups the same task, change when the system steps in, and see what happens to errors, interruptions and how quickly people get back on track.</p>
+        <p className="lead-copy">i study engineering sciences at tor vergata. for my master's, i want to get into computational cognitive science. a fruit fly is part of the reason why.</p>
+        <p>i keep thinking about this one number: 139,255. that's how many neurons the <a href="https://www.nature.com/articles/s41586-024-07558-y">FlyWire team mapped in one adult fruit fly's brain</a>. there are about 50 million connections in that map. all of that in a fly.</p>
+        <p>the part that got me was what people did with it. <a href="https://www.nature.com/articles/s41586-024-07763-9">one team used the wiring to build a model</a> and predict which neurons could kick off a feeding response. they could then try those predictions on actual flies. you can change something in the model, see what it expects to happen, and go find out if the animal agrees.</p>
+        <p>that's what i want to learn how to do. start with something an animal or a person does, build a model that could explain it, then come up with an experiment that might prove me wrong. i'd love to spend a master's doing that. i'm especially curious about how something as ordinary as noticing a change around you turns into a decision to move.</p>
         <Link className="next-reading" href="/work">things i have made <span aria-hidden="true">↗</span></Link>
       </div>
     </article>
