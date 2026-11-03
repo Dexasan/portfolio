@@ -17,7 +17,6 @@ export default function HomePage() {
       {id:"work",title:"things i've made",short:"the work",kind:"apps & experiments",summary:"ideas i had to try. some became apps, some are still experiments.",href:"/work",art:"/art/marks/path-work.webp",action:"explore the work"},
       {id:"about",title:"how i got here",short:"the backstory",kind:"chitwan → rome",summary:"one game, a computer, and an obsession that never really went away.",href:"/about",art:"/art/roadrash-rider.webp",action:"start at the beginning"},
       {id:"direction",title:"what next?",short:"what next",kind:"cognition & computing",summary:"master's, how we think, and the things i still need to learn.",href:"/direction",art:"/art/marks/path-direction.webp",action:"see where i'm headed"},
-      {id:"thoughts",title:"the computer thing",short:"the idea",kind:"human ↔ machine",summary:"what if my computer understood what i meant? and what if it actually stayed mine?",href:"/thoughts",art:"/art/marks/path-thoughts.webp",action:"hear me out"}
     ]}/>
     <p className="home-signoff">anyway, glad you're here. <span aria-hidden="true">↙</span></p>
   </div>;

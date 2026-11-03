@@ -8,7 +8,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/contact",
     "/direction",
-    "/thoughts",
     ...projects.map((project) => `/work/${project.slug}`),
   ].map((route) => ({
     url: `${siteUrl}${route}`,
