@@ -1,5 +1,4 @@
 import Portrait from "@/components/Portrait";
-import RoadRider from "@/components/RoadRider";
 import ArcadeSelect from "@/components/ArcadeSelect";
 export default function HomePage() {
     return <div className="personal-home">
@@ -12,7 +11,6 @@ export default function HomePage() {
       <p>now i'm just as curious about the person in front of the screen. how we think, what we mean, why getting a computer to do something can still be such a pain. that's what got me interested in cognitive science. i want to understand that better, and help build whatever comes next.</p>
       <p>sometimes that's a person talking to a machine. sometimes it's two strangers talking to each other. either way, i want to make it easier for them to connect.</p>
     </div>
-    <RoadRider />
     <ArcadeSelect label="choose a path" variant="paths" items={[
       {id:"work",title:"things i've made",short:"the work",kind:"apps & experiments",summary:"ideas i had to try. some became apps, some are still experiments.",href:"/work",art:"/art/marks/path-work.webp",action:"explore the work"},
       {id:"about",title:"how i got here",short:"the backstory",kind:"chitwan → rome",summary:"one game, a computer, and an obsession that never really went away.",href:"/about",art:"/art/roadrash-rider.webp",action:"start at the beginning"},
