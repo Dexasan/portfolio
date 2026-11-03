@@ -3,6 +3,8 @@ body{position:relative;isolation:isolate;background:linear-gradient(115deg,#1b22
 body:after{opacity:.025}
 main,.personal-nav,.personal-footer{position:relative;z-index:1}
 .personal-home{position:relative}
+.personal-brand .dex-mark{display:block;width:76px;height:auto}
+.personal-brand:hover .dex-mark{filter:brightness(1.12)}
 .road-route{stroke:#6f88ad}.road-edge{stroke:#3f536c}
 .rider-wheel,.rider-body,.bike-engine{fill:#171c22}
 .rider-wheel path{stroke:#c7d1df}
