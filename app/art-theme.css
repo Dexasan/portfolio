@@ -21,3 +21,27 @@ main,.personal-nav,.personal-footer{position:relative;z-index:1}
 .archive-filters button[aria-pressed=true]{background:transparent;border-color:var(--accent);color:var(--ink)}
 .project-page .wall-messages{scrollbar-color:#4b6080 #1b232d}
 @media(hover:none),(pointer:coarse){.cursor-road-caption{display:none}.touch-road-caption{display:inline}}
+
+/* Wider composition, with a separate measure for sustained reading. */
+:root{--ink:#f5f0e5;--muted:#c6cbd3}
+body:after{opacity:.012}
+.name-art h1{transform:none;letter-spacing:-.035em}
+.name-art h1 span{letter-spacing:-.025em}
+.select-grid .select-tile:after{background:repeating-linear-gradient(0deg,transparent 0 3px,#0a101512 3px 4px)}
+@keyframes name-press-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(min-width:601px){
+  .personal-nav,.personal-footer{width:min(1080px,calc(100% - 72px))}
+  .personal-home{width:min(960px,calc(100% - 72px))}
+  .name-art{max-width:750px;container-type:inline-size;margin:24px auto 16px}
+  .name-art h1{font-size:clamp(104px,25cqw,188px);line-height:.82;padding-top:32px}
+  .name-art h1 span{font-size:clamp(86px,22cqw,165px);margin-top:10px}
+  .hand-note{left:8%;top:0}
+  .personal-home .home-story{max-width:620px}
+  .personal-home .home-story>p{font-size:16px;line-height:1.75}
+  .personal-home .home-story>p:first-child{font-size:32px;line-height:1.28}
+  .road-interlude{max-width:760px}
+  .reading-page,.project-page{width:min(800px,calc(100% - 72px))}
+  .reading-prose{max-width:66ch}
+  .work-page{width:min(960px,calc(100% - 72px))}
+}
+@media(max-width:350px){.name-art h1{font-size:clamp(62px,23vw,80px)}.name-art h1 span{font-size:clamp(46px,17vw,58px)}}
