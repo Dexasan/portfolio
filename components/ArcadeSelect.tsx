@@ -47,6 +47,5 @@ export default function ArcadeSelect({ items, label, variant = "projects" }: {it
       </div>
       <Link href={selected.href} className="select-open">{selected.action??`open ${selected.title.toLowerCase()}`}<span aria-hidden="true">↗</span></Link>
     </div>}
-    <p className="select-help">{variant==="paths"?"each tile opens a page.":"tap a tile, then open it."} <span>keyboard: arrow keys to choose{variant==="paths"?", enter to open.":"."}</span></p>
   </section>;
 }

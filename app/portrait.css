@@ -178,8 +178,6 @@ main{min-height:65vh}
 .select-open span{color:var(--select-ink);font:27px var(--font-serif);transition:transform .18s}
 .select-open:hover span{transform:translate(3px,-3px)}
 .select-open:focus-visible{outline:2px solid var(--select-ink);outline-offset:3px}
-.select-help{font:10px/1.7 var(--font-sans);color:var(--muted);margin:10px 0 0}
-.select-help span{float:right}
 .arcade-paths .select-entry{min-height:180px}
 .arcade-paths .select-copy h3{font-size:36px}
 .arcade-paths .select-tile-name{font-size:24px}
@@ -196,7 +194,7 @@ main{min-height:65vh}
   .select-preview-art img{width:82px;height:110px}.select-preview-art svg{width:74px;height:74px}.select-preview-art:before{width:70px;height:70px}
   .select-copy h3{font-size:35px}.select-summary{font-size:12px}.select-meta{font-size:9px}
   .select-tile-name{font-size:17px}.select-grid .select-tile{padding:12px 3px 10px;min-height:106px}.select-tile-art{width:59px;height:51px}.select-tile-art svg{width:40px;height:40px}
-  .select-help span{float:none;display:block}.arcade-paths .select-copy h3{font-size:31px}.arcade-paths .select-entry{min-height:220px}.arcade-paths .select-tile-name{font-size:22px}
+  .arcade-paths .select-tile-name{font-size:22px}
 }
 @media(max-width:350px){.select-entry{grid-template-columns:1fr;gap:18px}.select-preview-art{min-height:100px}.select-preview-art img{width:90px;height:110px}.select-copy h3{font-size:37px}.select-grid{gap:5px;padding:5px}.select-heading h2{font-size:22px}.select-tile-name{font-size:14px}}
 
@@ -210,5 +208,5 @@ main{min-height:65vh}
 .select-path-arrow{position:absolute;right:12px;bottom:8px;font:23px var(--font-serif);color:var(--select-ink);transition:transform .2s}
 .arcade-paths .select-tile:hover .select-path-arrow{transform:translate(2px,-2px)}
 .arcade-projects .select-tile-art{width:85px;height:70px}
-@media(max-width:600px){.personal-home .home-story>p{font-size:14px}.personal-home .home-story>p:first-child{font-size:25px}.arcade-paths .select-grid .select-tile{padding:17px 10px 28px;min-height:245px}.arcade-paths .select-tile-art{width:90px;height:90px}.arcade-paths .select-tile-name{font-size:24px}.select-path-description{font-size:10px}.arcade-projects .select-tile-art{width:61px;height:57px}}
+@media(max-width:600px){.personal-home .home-story>p{font-size:14px}.personal-home .home-story>p:first-child{font-size:25px}.arcade-paths .select-grid .select-tile{padding:14px 10px 30px;min-height:0;gap:9px}.arcade-paths .select-tile-art{width:82px;height:78px}.arcade-paths .select-tile-name{font-size:23px}.select-path-description{font-size:12px;line-height:1.45}.arcade-projects .select-tile-art{width:61px;height:57px}}
 @media(max-width:350px){.arcade-paths .select-grid .select-tile{padding-inline:7px}.arcade-paths .select-tile-name{font-size:21px}.arcade-paths .select-tile-art{width:83px;height:83px}}
