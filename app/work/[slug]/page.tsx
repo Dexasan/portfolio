@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: {
   <h1>{project.name}</h1>
   <p className="project-description">{story?.intro ?? project.description}</p>
   <p className="project-meta">{project.status.toLowerCase()} · {project.stack}</p>
-  <div className="project-links">{project.href && <a href={project.href}>open {project.name.toLowerCase()} ↗</a>}{project.source && <a href={project.source}>source ↗</a>}{slug === "ditch" && <Link href="/deck">pitch deck ↗</Link>}</div>
+  <div className="project-links">{slug === "yappie" && <a className="project-download" href="https://expo.dev/artifacts/eas/1jfZm7t_rt_t_QemWIw_MDYAea4VCpCzhsaWULD9Jc4.apk" download>download latest Android build ↓</a>}{project.href && <a href={project.href}>open {project.name.toLowerCase()} ↗</a>}{project.source && <a href={project.source}>source ↗</a>}{slug === "ditch" && <Link href="/deck">pitch deck ↗</Link>}</div>
   <div className={`project-art project-mark mark-${slug}`}><img src={artwork} alt={story?.alt ?? `${project.name} illustrated mark`} width={slug === "roadrash" ? 800 : 600} height={slug === "roadrash" ? 1000 : 600}/></div>
   {slug === "roadrash" && <p className="art-credit">original Road Rash cover © Electronic Arts. <a href="https://www.old-games.ru/game/covers/118.html">art source ↗</a></p>}
   <div className="reading-prose">

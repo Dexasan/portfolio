@@ -10,6 +10,6 @@ export default function ProjectArchive({compact=false}:{compact?:boolean}) {
   const listed=compact?projects.slice(2,6):projects.filter((_,i)=>filter==="all"||(filter==="apps & experiences"?i<6:i>=6));
   return <div className="project-archive">
     {!compact&&<div className="archive-filters" role="group" aria-label="Filter projects">{filters.map(item=><button key={item} aria-pressed={item===filter} onClick={()=>setFilter(item)}>{item}</button>)}<span aria-live="polite">{listed.length} projects</span></div>}
-    <ArcadeSelect label="choose a project" items={listed.map(project=>({id:project.slug,title:project.name,kind:project.kind,summary:project.description,href:'/work/'+project.slug,art:marks[project.slug]??`/art/marks/${project.slug}.webp`,meta:project.status.toLowerCase()+' · '+project.stack}))}/>
+    <ArcadeSelect label="choose a project" items={listed.map(project=>({id:project.slug,title:project.name,kind:project.kind,summary:project.description,href:project.href??('/work/'+project.slug),art:marks[project.slug]??`/art/marks/${project.slug}.webp`,meta:project.status.toLowerCase()+' · '+project.stack}))}/>
   </div>;
 }

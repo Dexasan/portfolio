@@ -34,11 +34,11 @@ export default function ArcadeSelect({ items, label, variant = "projects" }: {it
         <span className="select-path-description">{item.summary}</span>
         <span className="select-path-arrow" aria-hidden="true">↗</span>
         <span className="selection-corner" aria-hidden="true"/>
-      </Link>:<button className="select-tile" type="button" key={item.id} ref={node=>{controls.current[index]=node;}} data-selected={selected.id===item.id} aria-pressed={selected.id===item.id} aria-controls={`${variant}-preview`} onClick={()=>setSelectedId(item.id)} onFocus={()=>setSelectedId(item.id)} onPointerEnter={event=>{if(event.pointerType==="mouse")setSelectedId(item.id);}} onKeyDown={event=>move(event,index)}>
+      </Link>:<Link href={item.href} className="select-tile" key={item.id} ref={node=>{controls.current[index]=node;}} data-selected={selected.id===item.id} onFocus={()=>setSelectedId(item.id)} onPointerEnter={event=>{if(event.pointerType==="mouse")setSelectedId(item.id);}} onKeyDown={event=>move(event,index)}>
         <span className="select-tile-art"><img src={item.art} width="120" height="120" alt=""/></span>
         <span className="select-tile-name">{item.short??item.title}</span>
         <span className="selection-corner" aria-hidden="true"/>
-      </button>)}
+      </Link>)}
     </div>
     {variant==="projects"&&<div className="select-preview" id={`${variant}-preview`}>
       <div className="select-entry" key={selected.id}>
